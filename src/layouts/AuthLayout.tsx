@@ -1,18 +1,18 @@
-import { Button, Card, Divider, Flex, Text, Title } from "@tremor/react";
-import logo from "./../assets/logo.svg";
-import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Outlet } from "react-router-dom";
+import { Button, Card, Divider, Flex, Title } from '@tremor/react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Navigate, Outlet } from 'react-router-dom';
+import Logo from '../ui/Logo';
+import { useUser } from '../features/auth/useUser';
 
 function AuthLayout() {
+  const { user, isAuthenticated } = useUser();
+
+  if (user && isAuthenticated) return <Navigate to="/dashboard" />;
+
   return (
-    <div className="relative grid min-h-screen grid-cols-3">
-      <Flex
-        alignItems="center"
-        justifyContent="center"
-        aria-colspan={2}
-        className="col-span-2"
-      >
-        <Card className="max-w-md h-fit">
+    <div className="relative flex min-h-screen">
+      <Flex alignItems="center" justifyContent="center" className="p-6">
+        <Card className="max-w-sm h-fit">
           <div className="space-y-2">
             <Button
               icon={FaGoogle}
@@ -36,7 +36,7 @@ function AuthLayout() {
         </Card>
       </Flex>
 
-      <section className="relative flex items-center justify-center p-20 bg-tremor-brand">
+      <section className="relative items-center justify-center hidden p-10 sm:flex lg:p-20 bg-tremor-brand">
         <a href="https://github.com/yacineahmaich" target="_blank">
           <Button
             icon={FaGithub}
@@ -50,7 +50,7 @@ function AuthLayout() {
         </a>
 
         <Flex flexDirection="col">
-          <img src={logo} className="mx-auto mb-10" />
+          <Logo gradient className="mb-6" />
           <Title className="text-white">
             Effortlessly Manage Your Expenses with Pocket Wide
           </Title>
