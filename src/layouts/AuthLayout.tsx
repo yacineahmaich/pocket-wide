@@ -7,7 +7,7 @@ import { useUser } from '../features/auth/useUser';
 function AuthLayout() {
   const { user, isAuthenticated } = useUser();
 
-  if (user && isAuthenticated) return <Navigate to="/dashboard" />;
+  if (user && isAuthenticated) return <Navigate to="/" />;
 
   return (
     <div className="relative flex min-h-screen">
