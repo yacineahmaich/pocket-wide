@@ -1,5 +1,14 @@
-function Incomes() {
-  return <div>Incomes</div>;
+import FilterExpenses from '../features/expenses/FilterExpenses';
+import IncomesTable from '../features/incomes/IncomesTable';
+
+function Expenses() {
+  return (
+    <div className="flex divide-x divide-gray-100">
+      {/* filters */}
+      <FilterExpenses />
+      <IncomesTable />
+    </div>
+  );
 }
 
-export default Incomes;
+export default Expenses;

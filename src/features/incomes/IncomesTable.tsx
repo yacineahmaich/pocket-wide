@@ -10,17 +10,23 @@ import {
   Text,
   Title,
 } from '@tremor/react';
-import { FaArrowDown, FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import {
+  FaArrowUp,
+  FaBook,
+  FaPencilAlt,
+  FaTrashAlt,
+  FaUps,
+} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utils/helpers';
 import CategoryIcon from '../../ui/CategorySelect';
-import { useExpenses } from './useExpenses';
+import { useIncomes } from './useIncomes';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/lottie/searchingDocs.json';
 import Pagination from '../../ui/Pagination';
 
-function ExpensesTable() {
-  const { data, isLoading } = useExpenses();
+function IncomesTable() {
+  const { data, isLoading } = useIncomes();
 
   if (isLoading)
     return <Lottie animationData={animationData} className="m-6" />;
@@ -28,10 +34,10 @@ function ExpensesTable() {
   return (
     <section className="flex-1 p-6">
       <div className="flex items-center justify-between">
-        <Title className="mb-4 text-gray-400">Expenses</Title>
+        <Title className="mb-4 text-gray-400">Incomes</Title>
         <Link to="create">
-          <Button color="blue" variant="light" size="xs" icon={FaArrowDown}>
-            Add Expense
+          <Button color="blue" variant="light" size="xs" icon={FaArrowUp}>
+            Add Income
           </Button>
         </Link>
       </div>
@@ -85,4 +91,4 @@ function ExpensesTable() {
   );
 }
 
-export default ExpensesTable;
+export default IncomesTable;

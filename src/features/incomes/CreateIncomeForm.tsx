@@ -1,4 +1,5 @@
-import { categories } from '../../utils/constants';
+import { DevTool } from '@hookform/devtools';
+import Label from '../../ui/Label';
 import {
   Button,
   Card,
@@ -7,19 +8,18 @@ import {
   Text,
   TextInput,
 } from '@tremor/react';
-import TextArea from '../../ui/TextArea';
-import Label from '../../ui/Label';
-import CategoryIcon from '../../ui/CategorySelect';
 import DatePicker from '../../ui/DatePicker';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { createExpenseSchema } from '../../utils/validation/expense';
-import { DevTool } from '@hookform/devtools';
 import FieldError from '../../ui/FieldError';
+import CategoryIcon from '../../ui/CategorySelect';
+import { categories } from '../../utils/constants';
+import TextArea from '../../ui/TextArea';
+import { useForm } from 'react-hook-form';
+import { createIncomeSchema } from '../../utils/validation/income';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useDropzone } from 'react-dropzone';
-import { useCreateExpense } from './useCreateExpense';
+import { useCreateIncome } from './useCreateIncome';
 
-function CreateExpenseForm() {
+function CreateIncomeForm() {
   // Manage Form State
   const {
     register,
@@ -33,7 +33,7 @@ function CreateExpenseForm() {
       date: new Date().toLocaleDateString('en-CA'),
       amount: 0,
     },
-    resolver: yupResolver<Expense>(createExpenseSchema),
+    resolver: yupResolver<Income>(createIncomeSchema),
   });
 
   // Uplaod Attachements
@@ -44,11 +44,11 @@ function CreateExpenseForm() {
       },
     });
 
-  const { mutate: createExpense, isLoading } = useCreateExpense();
+  const { mutate: createIncome, isLoading } = useCreateIncome();
 
   const onSubmit = handleSubmit(data => {
     console.log(acceptedFiles);
-    createExpense({
+    createIncome({
       ...data,
       attachement: acceptedFiles[0],
     });
@@ -161,4 +161,4 @@ function CreateExpenseForm() {
   );
 }
 
-export default CreateExpenseForm;
+export default CreateIncomeForm;
