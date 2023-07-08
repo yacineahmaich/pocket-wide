@@ -12,8 +12,8 @@ export const useLogin = () => {
     onSuccess: ({ user }) => {
       queryClient.setQueryData(['user'], user);
     },
-    onError: () => {
-      toast.error('Invalid login credentials');
+    onError: (err: Error) => {
+      toast.error(err.message);
     },
   });
 };
