@@ -3,11 +3,8 @@ import Stat from './Stat';
 
 function Stats() {
   const { data, isLoading } = useStats();
-  console.log(data);
   const saving = data && data?.incomes.current - data?.expenses.current;
   const savingPrevMonth = data && data?.incomes.prev - data?.expenses.prev;
-
-  console.log(savingPrevMonth);
 
   if (isLoading) return <p>Loading...</p>;
   return (

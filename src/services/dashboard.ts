@@ -1,3 +1,4 @@
+import { formatDate, getDateFromStartDate } from '../utils/helpers';
 import supabase from './supabase';
 
 export const getStats = async () => {
@@ -69,4 +70,49 @@ export const getStats = async () => {
       prev: incomesTotalPrevMonth ?? 0,
     },
   };
+};
+
+export const getPerformance = async (): Promise<{
+  expenses: { [key: string]: number }[];
+  incomes: { [key: string]: number }[];
+}> => {
+  const date = formatDate(getDateFromStartDate(new Date()));
+
+  const { data: expensesData, error: expensesError } = await supabase
+    .from('expenses')
+    .select('*')
+    .gte('date', date);
+
+  if (expensesError) {
+    throw new Error(expensesError.message);
+  }
+  const { data: incomesData, error: incomesError } = await supabase
+    .from('incomes')
+    .select('*')
+    .gte('date', date);
+
+  if (incomesError) {
+    throw new Error(incomesError.message);
+  }
+  const expenses = expensesData?.reduce((acc, exp) => {
+    if (!acc[exp.date]) {
+      acc[exp.date] = exp.amount;
+    } else {
+      acc[exp.date] += exp.amount;
+    }
+
+    return acc;
+  }, {} as { [key: string]: number });
+
+  const incomes = incomesData?.reduce((acc, exp) => {
+    if (!acc[exp.date]) {
+      acc[exp.date] = exp.amount;
+    } else {
+      acc[exp.date] += exp.amount;
+    }
+
+    return acc;
+  }, {} as { [key: string]: number });
+
+  return { expenses, incomes } ?? {};
 };

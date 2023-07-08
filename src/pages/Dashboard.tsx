@@ -1,5 +1,6 @@
 import { Title } from '@tremor/react';
 import Stats from '../features/dashboard/Stats';
+import PerformanceChart from '../features/dashboard/PerformanceChart';
 
 function Dashboard() {
   return (
@@ -9,6 +10,7 @@ function Dashboard() {
       </Title>
 
       <Stats />
+      <PerformanceChart />
     </div>
   );
 }
