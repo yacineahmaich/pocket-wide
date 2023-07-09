@@ -22,7 +22,7 @@ const Stat: FC<Props> = ({ current, prev, label }) => {
         )}
         <small>
           <span className={diff > 0 ? 'text-green-500' : 'text-red-500'}>
-            MAD {Math.abs(diff)}
+            {formatCurrency(Math.abs(diff), 'USD')}
           </span>{' '}
           to previous month
         </small>

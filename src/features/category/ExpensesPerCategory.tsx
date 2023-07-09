@@ -1,4 +1,4 @@
-import { Card, Metric, Text } from '@tremor/react';
+import { Card, Text } from '@tremor/react';
 import { useExpensesPerCategory } from './useExpensesPerCategory';
 import { categories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
@@ -8,7 +8,7 @@ function ExpensesPerCategory() {
   const { data } = useExpensesPerCategory();
 
   return (
-    <section className="my-20">
+    <section className="my-10">
       <Text>Expenses Per Category</Text>
 
       <div className="grid grid-cols-4 gap-4 my-6">

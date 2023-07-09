@@ -42,16 +42,12 @@ function PerformanceChart() {
 
   return (
     <div className="mt-10">
-      {/* <div className="flex items-center justify-between">
-        <Text>Select Month</Text>
-        <DateRangePicker onValueChange={handleDateRangeChange} />
-      </div> */}
       <Text>Current Month Performance</Text>
       <AreaChart
         className="h-96"
-        data={chartdata}
+        data={data ?? []}
         index="date"
-        categories={['SemiAnalysis', 'The Pragmatic Engineer']}
+        categories={['expenses', 'incomes']}
         colors={['indigo', 'rose']}
         valueFormatter={value => formatCurrency(value, 'USD')}
       />

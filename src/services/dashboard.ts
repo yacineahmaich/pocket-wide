@@ -72,10 +72,9 @@ export const getStats = async () => {
   };
 };
 
-export const getPerformance = async (): Promise<{
-  expenses: { [key: string]: number }[];
-  incomes: { [key: string]: number }[];
-}> => {
+export const getPerformance = async (): Promise<
+  { date: string; expenses: number; incomes: number }[]
+> => {
   const date = formatDate(getDateFromStartDate(new Date()));
 
   const { data: expensesData, error: expensesError } = await supabase
@@ -94,25 +93,32 @@ export const getPerformance = async (): Promise<{
   if (incomesError) {
     throw new Error(incomesError.message);
   }
-  const expenses = expensesData?.reduce((acc, exp) => {
-    if (!acc[exp.date]) {
-      acc[exp.date] = exp.amount;
+
+  const res: { [key: string]: { expenses: number; incomes: number } } = {};
+
+  expensesData?.forEach(exp => {
+    if (!res[exp.date]?.expenses) {
+      res[exp.date] = { ...res[exp.date], expenses: exp.amount };
     } else {
-      acc[exp.date] += exp.amount;
+      res[exp.date].expenses += exp.amount;
     }
+  });
 
-    return acc;
-  }, {} as { [key: string]: number });
-
-  const incomes = incomesData?.reduce((acc, exp) => {
-    if (!acc[exp.date]) {
-      acc[exp.date] = exp.amount;
+  incomesData?.forEach(inc => {
+    if (!res[inc.date]?.incomes) {
+      res[inc.date] = { ...res[inc.date], incomes: inc.amount };
     } else {
-      acc[exp.date] += exp.amount;
+      res[inc.date].incomes += inc.amount;
     }
+  });
 
-    return acc;
-  }, {} as { [key: string]: number });
+  const x = Object.entries(res).reduce(
+    (acc, [date, { expenses, incomes }]) => [
+      ...acc,
+      { date, expenses: expenses ?? 0, incomes: incomes ?? 0 },
+    ],
+    [] as { date: string; expenses: number; incomes: number }[]
+  );
 
-  return { expenses, incomes } ?? {};
+  return x;
 };
