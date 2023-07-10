@@ -31,17 +31,14 @@ const navigation = [
 
 function Navigation() {
   return (
-    <nav className="flex justify-end py-3 space-x-3 border-b border-gray-50">
+    <nav className="flex justify-end space-x-3 border-b sm:space-x-5 border-gray-50">
       {navigation.map(item => (
         <NavLink
           key={item.label}
           to={item.to}
           className={({ isActive }) => `
-          flex items-center gap-2 px-4 py-0.5 transition-all border border-gray-100 rounded-full bg-gray-50 hover:ring-1 ring-tremor-brand-emphasis hover:border-transparent hover:text-tremor-brand-emphasis hover:bg-tremor-background
-          ${
-            isActive &&
-            'ring-tremor-brand-emphasis text-tremor-brand-emphasis bg-tremor-background'
-          }          
+            text-sm  flex items-center gap-1 sm:gap-2 px-1 h-full py-3 border-b-2
+            ${isActive ? 'border-gray-300' : 'border-transparent'}
           `}
           end
         >

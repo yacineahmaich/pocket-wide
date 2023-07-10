@@ -8,7 +8,7 @@ function Stats() {
 
   if (isLoading) return <p>Loading...</p>;
   return (
-    <div className="grid grid-cols-3 gap-6">
+    <div className="grid gap-6 md:grid-cols-3">
       <Stat label="saving" current={saving ?? 0} prev={savingPrevMonth ?? 0} />
       <Stat
         label="Incomes"

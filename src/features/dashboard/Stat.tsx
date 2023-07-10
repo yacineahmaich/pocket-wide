@@ -13,7 +13,9 @@ const Stat: FC<Props> = ({ current, prev, label }) => {
   return (
     <Card>
       <Text>{label}</Text>
-      <Metric className="mb-4">{formatCurrency(current ?? 0, 'USD')}</Metric>
+      <Metric className="mb-2 lg:mb-4">
+        {formatCurrency(current ?? 0, 'USD')}
+      </Metric>
       <div className="flex items-center gap-4">
         {current && current > 0 ? (
           <Badge icon={HiArrowTrendingUp} color="green" />
