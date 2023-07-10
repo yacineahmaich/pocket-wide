@@ -38,8 +38,6 @@ const chartdata = [
 function PerformanceChart() {
   const { data } = usePerformance();
 
-  console.log(data);
-
   return (
     <div className="mt-10">
       <Text>Current Month Performance</Text>
