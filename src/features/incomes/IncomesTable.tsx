@@ -14,12 +14,15 @@ import Lottie from 'lottie-react';
 import animationData from '../../assets/lottie/searchingDocs.json';
 import Pagination from '../../ui/Pagination';
 import IncomeRow from './IncomeRow';
+import NoRecords from '../../ui/NoRecords';
 
 function IncomesTable() {
   const { data, isLoading } = useIncomes();
 
   if (isLoading)
     return <Lottie animationData={animationData} className="m-6" />;
+
+  if (data?.data.length === 0) return <NoRecords resource="incomes" />;
 
   return (
     <section className="flex-1 p-6">

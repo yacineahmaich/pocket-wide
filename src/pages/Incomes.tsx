@@ -4,7 +4,6 @@ import IncomesTable from '../features/incomes/IncomesTable';
 function Expenses() {
   return (
     <div className="flex divide-x divide-gray-100">
-      {/* filters */}
       <FilterExpenses />
       <IncomesTable />
     </div>

@@ -17,7 +17,7 @@ module.exports = {
           brand: {
             faint: '##FAB0BC', // blue-50
             muted: '##F87F94', // blue-200
-            subtle: '##F65F79', // blue-400
+            subtle: '#F65F79', // blue-400
             DEFAULT: '#F43F5E', // blue-500
             emphasis: '#F10F36', // blue-700
             inverted: '#ffffff', // white

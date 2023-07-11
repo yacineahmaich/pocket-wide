@@ -1,30 +1,28 @@
 import {
   Button,
-  Icon,
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeaderCell,
   TableRow,
-  Text,
   Title,
 } from '@tremor/react';
-import { FaArrowDown, FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import { FaArrowDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { formatCurrency } from '../../utils/helpers';
-import CategoryIcon from '../../ui/CategorySelect';
 import { useExpenses } from './useExpenses';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/lottie/searchingDocs.json';
 import Pagination from '../../ui/Pagination';
 import ExpenseRow from './ExpenseRow';
+import NoRecords from '../../ui/NoRecords';
 
 function ExpensesTable() {
   const { data, isLoading } = useExpenses();
 
   if (isLoading)
     return <Lottie animationData={animationData} className="m-6" />;
+
+  if (data?.data.length === 0) return <NoRecords resource="expenses" />;
 
   return (
     <section className="flex-1 p-6">

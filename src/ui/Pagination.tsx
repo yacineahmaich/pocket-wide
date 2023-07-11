@@ -27,6 +27,8 @@ function Pagination({ count }: Props) {
     setSearchParams(searchParams);
   };
 
+  if (!hasMore && currentPage === 1) return null;
+
   return (
     <div className="flex items-center justify-center gap-3 mt-4">
       <Button
