@@ -53,3 +53,9 @@ export const createIncome = async ({ attachement, ...expense }: Income) => {
 
   return data as Income | null;
 };
+
+export const deleteIncome = async ({ id }: { id: number }) => {
+  const { error } = await supabase.from('incomes').delete().eq('id', id);
+
+  if (error) throw new Error(error.message);
+};

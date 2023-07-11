@@ -1,29 +1,19 @@
 import {
   Button,
-  Icon,
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeaderCell,
   TableRow,
-  Text,
   Title,
 } from '@tremor/react';
-import {
-  FaArrowUp,
-  FaBook,
-  FaPencilAlt,
-  FaTrashAlt,
-  FaUps,
-} from 'react-icons/fa';
+import { FaArrowUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { formatCurrency } from '../../utils/helpers';
-import CategoryIcon from '../../ui/CategorySelect';
 import { useIncomes } from './useIncomes';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/lottie/searchingDocs.json';
 import Pagination from '../../ui/Pagination';
+import IncomeRow from './IncomeRow';
 
 function IncomesTable() {
   const { data, isLoading } = useIncomes();
@@ -53,36 +43,7 @@ function IncomesTable() {
         </TableHead>
         <TableBody>
           {data?.data?.map(item => (
-            <TableRow key={item.title}>
-              <TableCell>
-                <Text>
-                  <CategoryIcon categoryKey={item.category} />
-                </Text>
-              </TableCell>
-              <TableCell>{item.title}</TableCell>
-              <TableCell>{item.date}</TableCell>
-              <TableCell>
-                <Text>{formatCurrency(item.amount, 'USD')}</Text>
-              </TableCell>
-              <TableCell className="space-x-3">
-                <button>
-                  <Icon
-                    icon={FaTrashAlt}
-                    color="red"
-                    variant="solid"
-                    size="xs"
-                  />
-                </button>
-                <Link to="">
-                  <Icon
-                    icon={FaPencilAlt}
-                    color="green"
-                    variant="solid"
-                    size="xs"
-                  />
-                </Link>
-              </TableCell>
-            </TableRow>
+            <IncomeRow key={item.id} item={item} />
           ))}
         </TableBody>
       </Table>
