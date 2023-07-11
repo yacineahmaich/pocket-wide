@@ -21,7 +21,5 @@ export const getPaginationParams = (page: number) => {
   const from = page * PAGE_SIZE - PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
-  console.log(from, to);
-
   return { from, to };
 };

@@ -55,3 +55,9 @@ export const createExpense = async ({ attachement, ...expense }: Expense) => {
 
   return data as Expense | null;
 };
+
+export const deleteExpense = async ({ id }: { id: number }) => {
+  const { error } = await supabase.from('expenses').delete().eq('id', id);
+
+  if (error) throw new Error(error.message);
+};

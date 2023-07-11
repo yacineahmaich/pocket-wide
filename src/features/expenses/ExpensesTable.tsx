@@ -18,6 +18,7 @@ import { useExpenses } from './useExpenses';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/lottie/searchingDocs.json';
 import Pagination from '../../ui/Pagination';
+import ExpenseRow from './ExpenseRow';
 
 function ExpensesTable() {
   const { data, isLoading } = useExpenses();
@@ -47,36 +48,7 @@ function ExpensesTable() {
         </TableHead>
         <TableBody>
           {data?.data?.map(item => (
-            <TableRow key={item.title}>
-              <TableCell>
-                <Text>
-                  <CategoryIcon categoryKey={item.category} />
-                </Text>
-              </TableCell>
-              <TableCell>{item.title}</TableCell>
-              <TableCell>{item.date}</TableCell>
-              <TableCell>
-                <Text>{formatCurrency(item.amount, 'USD')}</Text>
-              </TableCell>
-              <TableCell className="space-x-3">
-                <button>
-                  <Icon
-                    icon={FaTrashAlt}
-                    color="red"
-                    variant="solid"
-                    size="xs"
-                  />
-                </button>
-                <Link to="">
-                  <Icon
-                    icon={FaPencilAlt}
-                    color="green"
-                    variant="solid"
-                    size="xs"
-                  />
-                </Link>
-              </TableCell>
-            </TableRow>
+            <ExpenseRow key={item.title} item={item} />
           ))}
         </TableBody>
       </Table>
