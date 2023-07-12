@@ -1,62 +1,56 @@
-import { categories } from '../../utils/constants';
-import {
-  Button,
-  Card,
-  Select,
-  SelectItem,
-  Text,
-  TextInput,
-} from '@tremor/react';
-import TextArea from '../../ui/TextArea';
+import { FC } from 'react';
 import Label from '../../ui/Label';
-import CategoryIcon from '../../ui/CategorySelect';
+import { Button, Select, SelectItem, Text, TextInput } from '@tremor/react';
 import DatePicker from '../../ui/DatePicker';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { expenseSchema } from '../../utils/validation/expense';
-import { DevTool } from '@hookform/devtools';
 import FieldError from '../../ui/FieldError';
-import { useDropzone } from 'react-dropzone';
-import { useCreateExpense } from './useCreateExpense';
+import CategoryIcon from '../../ui/CategorySelect';
+import { categories } from '../../utils/constants';
+import TextArea from '../../ui/TextArea';
+import { useForm } from 'react-hook-form';
+import { Navigate, useParams } from 'react-router-dom';
+import { useIncomes } from './useIncomes';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useUpdateIncome } from './useUpdateIncome';
+import { incomeSchema } from '../../utils/validation/income';
+type Props = {
+  children?: React.ReactNode;
+};
+const EditIncomeForm: FC<Props> = () => {
+  const { id = -1 } = useParams();
+  const { data } = useIncomes();
+  const { mutate: updateIncome, isLoading: isUpdating } = useUpdateIncome();
 
-function CreateExpenseForm() {
-  // Manage Form State
+  const incomeData = data?.data.find(exp => exp.id === +id);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
-    setValue,
-    control,
     getValues,
-  } = useForm<CreateEditExpense>({
+    setValue,
+  } = useForm<CreateEditIncome>({
     defaultValues: {
-      date: new Date().toLocaleDateString('en-CA'),
-      amount: 0,
+      title: incomeData?.title,
+      amount: incomeData?.amount,
+      category: incomeData?.category,
+      date: incomeData?.date,
+      description: incomeData?.description,
+      tags: incomeData?.tags,
     },
-    resolver: yupResolver<CreateEditExpense>(expenseSchema),
+    resolver: yupResolver<CreateEditIncome>(incomeSchema),
   });
 
-  // Uplaod Attachements
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({
-      accept: {
-        'image/png': ['.png', '.jpg', '.jpeg'],
-      },
-    });
-
-  const { mutate: createExpense, isLoading } = useCreateExpense();
-
-  const onSubmit = handleSubmit(data => {
-    console.log(acceptedFiles);
-    createExpense({
-      ...data,
-      attachement: acceptedFiles[0],
+  const onSubmit = handleSubmit(income => {
+    updateIncome({
+      id: incomeData?.id ?? -1,
+      income,
     });
   });
+
+  if (!incomeData) return <Navigate to="/incomes" />;
 
   return (
     <section className="overflow-y-auto">
-      <DevTool control={control} />
       <div>
         <form action="" className="space-y-4" onSubmit={onSubmit}>
           <div className="space-y-1">
@@ -66,7 +60,7 @@ function CreateExpenseForm() {
               {...register('title')}
               error={!!errors.title}
               errorMessage={errors.title?.message}
-              disabled={isLoading}
+              disabled={isUpdating}
             />
           </div>
           <div className="space-y-1">
@@ -77,12 +71,12 @@ function CreateExpenseForm() {
               {...register('amount')}
               error={!!errors.amount}
               errorMessage={errors.amount?.message}
-              disabled={isLoading}
+              disabled={isUpdating}
             />
           </div>
           <div className="space-y-1">
             <Label htmlFor="date">Date</Label>
-            <DatePicker id="date" {...register('date')} disabled={isLoading} />
+            <DatePicker id="date" {...register('date')} disabled={isUpdating} />
             {!!errors.date && <FieldError msg={errors.date.message} />}
           </div>
           <div className="space-y-1">
@@ -91,10 +85,9 @@ function CreateExpenseForm() {
               id="category"
               defaultValue={getValues().category}
               onValueChange={category => {
-                console.log(category);
                 setValue('category', category);
               }}
-              disabled={isLoading}
+              disabled={isUpdating}
             >
               {categories.map(category => {
                 const CIcon = () => <CategoryIcon categoryKey={category.key} />;
@@ -118,28 +111,10 @@ function CreateExpenseForm() {
               id="description"
               rows={5}
               {...register('description')}
-              disabled={isLoading}
+              disabled={isUpdating}
             ></TextArea>
           </div>
 
-          <div className="space-y-1">
-            <Label htmlFor="attachements">Attachements</Label>
-            <Card
-              {...getRootProps()}
-              className="max-w-full p-6 text-sm font-semibold text-center border-x-2 sm:p-10 text-tremor-brand"
-              color="gray"
-            >
-              <input type="text" {...getInputProps()} disabled={isLoading} />
-              {isDragActive ? (
-                <p>Drop the files here ...</p>
-              ) : (
-                <p>
-                  Drag 'n' drop some files here,
-                  <br /> or click to select files
-                </p>
-              )}
-            </Card>
-          </div>
           <div className="space-y-1">
             <Label htmlFor="tags">Tags</Label>
             <TextInput
@@ -148,17 +123,17 @@ function CreateExpenseForm() {
               {...register('tags')}
               error={!!errors.tags}
               errorMessage={errors.tags?.message}
-              disabled={isLoading}
+              disabled={isUpdating}
             />
           </div>
 
-          <Button className="w-full mt-auto h-fit" loading={isLoading}>
-            Create
+          <Button className="w-full mt-auto h-fit" loading={isUpdating}>
+            Save changes
           </Button>
         </form>
       </div>
     </section>
   );
-}
+};
 
-export default CreateExpenseForm;
+export default EditIncomeForm;

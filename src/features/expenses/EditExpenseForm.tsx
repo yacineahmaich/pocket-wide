@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { Navigate, useParams } from 'react-router-dom';
 import { useExpenses } from './useExpenses';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ExpenseSchema } from '../../utils/validation/expense';
+import { expenseSchema } from '../../utils/validation/expense';
 import { useUpdateExpense } from './useUpdateExpense';
 type Props = {
   children?: React.ReactNode;
@@ -37,7 +37,7 @@ const EditExpenseForm: FC<Props> = () => {
       description: expenseData?.description,
       tags: expenseData?.tags,
     },
-    resolver: yupResolver<CreateEditExpense>(ExpenseSchema),
+    resolver: yupResolver<CreateEditExpense>(expenseSchema),
   });
 
   const onSubmit = handleSubmit(expense => {

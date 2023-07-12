@@ -45,7 +45,7 @@ const IncomeRow: FC<Props> = ({ item }) => {
           onConfirm={() => deleteIncome({ id: item.id })}
           isLoading={isLoading}
         />
-        <Link to="">
+        <Link to={`${item.id}/edit`}>
           <Icon icon={FaPencilAlt} color="green" variant="solid" size="xs" />
         </Link>
       </TableCell>

@@ -22,7 +22,10 @@ export const getIncomes = async ({
   };
 };
 
-export const createIncome = async ({ attachement, ...expense }: Income) => {
+export const createIncome = async ({
+  attachement,
+  ...expense
+}: CreateEditIncome) => {
   let attachementPath = '';
   if (attachement) {
     const imageName = new Date().getTime();
@@ -52,6 +55,18 @@ export const createIncome = async ({ attachement, ...expense }: Income) => {
   if (error) throw new Error(error.message);
 
   return data as Income | null;
+};
+
+export const updateIncome = async ({
+  id,
+  income,
+}: {
+  id: number;
+  income: CreateEditIncome;
+}) => {
+  const { error } = await supabase.from('incomes').update(income).eq('id', id);
+
+  if (error) throw new Error(error.message);
 };
 
 export const deleteIncome = async ({ id }: { id: number }) => {

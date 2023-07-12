@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const createIncomeSchema = Yup.object({
+export const incomeSchema = Yup.object({
   title: Yup.string().min(4).required(),
   description: Yup.string(),
   amount: Yup.number().min(1).required(),

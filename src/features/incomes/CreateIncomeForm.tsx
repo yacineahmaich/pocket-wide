@@ -14,7 +14,7 @@ import CategoryIcon from '../../ui/CategorySelect';
 import { categories } from '../../utils/constants';
 import TextArea from '../../ui/TextArea';
 import { useForm } from 'react-hook-form';
-import { createIncomeSchema } from '../../utils/validation/income';
+import { incomeSchema } from '../../utils/validation/income';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDropzone } from 'react-dropzone';
 import { useCreateIncome } from './useCreateIncome';
@@ -28,12 +28,12 @@ function CreateIncomeForm() {
     setValue,
     control,
     getValues,
-  } = useForm<Expense>({
+  } = useForm<CreateEditIncome>({
     defaultValues: {
       date: new Date().toLocaleDateString('en-CA'),
       amount: 0,
     },
-    resolver: yupResolver<Income>(createIncomeSchema),
+    resolver: yupResolver<CreateEditIncome>(incomeSchema),
   });
 
   // Uplaod Attachements

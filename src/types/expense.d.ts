@@ -16,5 +16,5 @@ interface CreateEditExpense {
   date: string;
   tags: string;
   category: string;
-  attachement: File | undefined;
+  attachement?: File;
 }
