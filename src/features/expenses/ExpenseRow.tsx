@@ -45,7 +45,7 @@ const ExpenseRow: FC<Props> = ({ item }) => {
           onConfirm={() => deleteExpense({ id: item.id })}
           isLoading={isLoading}
         />
-        <Link to="">
+        <Link to={`${item.id}/edit`}>
           <Icon icon={FaPencilAlt} color="green" variant="solid" size="xs" />
         </Link>
       </TableCell>

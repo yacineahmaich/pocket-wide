@@ -10,6 +10,7 @@ import Category from './pages/Category';
 import CreateExpense from './pages/CreateExpense';
 import Expenses from './pages/Expenses';
 import CreateIncome from './pages/CreateIncome';
+import EditExpense from './pages/EditExpense';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
               {
                 path: 'create',
                 element: <CreateExpense />,
+              },
+              {
+                path: ':id/edit',
+                element: <EditExpense />,
               },
             ],
           },

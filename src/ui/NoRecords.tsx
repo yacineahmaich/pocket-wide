@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Lottie from 'lottie-react';
-import animationData from '../assets/lottie/no-data.json';
+import animationData from '../assets/lottie/searchingDocs.json';
 
 type Props = {
   resource: string;

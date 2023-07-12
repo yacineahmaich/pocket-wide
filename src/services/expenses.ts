@@ -22,7 +22,10 @@ export const getExpenses = async ({
   };
 };
 
-export const createExpense = async ({ attachement, ...expense }: Expense) => {
+export const createExpense = async ({
+  attachement,
+  ...expense
+}: CreateEditExpense) => {
   let attachementPath = '';
   if (attachement) {
     const imageName = new Date().getTime();
@@ -54,6 +57,21 @@ export const createExpense = async ({ attachement, ...expense }: Expense) => {
   console.log(data);
 
   return data as Expense | null;
+};
+
+export const updateExpense = async ({
+  id,
+  expense,
+}: {
+  id: number;
+  expense: CreateEditExpense;
+}) => {
+  const { error } = await supabase
+    .from('expenses')
+    .update(expense)
+    .eq('id', id);
+
+  if (error) throw new Error(error.message);
 };
 
 export const deleteExpense = async ({ id }: { id: number }) => {
