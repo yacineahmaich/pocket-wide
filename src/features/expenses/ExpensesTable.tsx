@@ -1,14 +1,10 @@
 import {
-  Button,
   Table,
   TableBody,
   TableHead,
   TableHeaderCell,
   TableRow,
-  Title,
 } from '@tremor/react';
-import { FaArrowDown } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import { useExpenses } from './useExpenses';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/lottie/searchingDocs.json';
@@ -25,15 +21,7 @@ function ExpensesTable() {
   if (data?.data.length === 0) return <NoRecords resource="expenses" />;
 
   return (
-    <section className="flex-1 p-6">
-      <div className="flex items-center justify-between">
-        <Title className="mb-4 text-gray-400">Expenses</Title>
-        <Link to="create">
-          <Button color="blue" variant="light" size="xs" icon={FaArrowDown}>
-            Add Expense
-          </Button>
-        </Link>
-      </div>
+    <>
       <Table className="mt-5">
         <TableHead>
           <TableRow>
@@ -51,7 +39,7 @@ function ExpensesTable() {
         </TableBody>
       </Table>
       <Pagination count={data?.count as number} />
-    </section>
+    </>
   );
 }
 

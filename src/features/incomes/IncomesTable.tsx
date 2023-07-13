@@ -1,14 +1,10 @@
 import {
-  Button,
   Table,
   TableBody,
   TableHead,
   TableHeaderCell,
   TableRow,
-  Title,
 } from '@tremor/react';
-import { FaArrowUp } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import { useIncomes } from './useIncomes';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/lottie/searchingDocs.json';
@@ -25,15 +21,7 @@ function IncomesTable() {
   if (data?.data.length === 0) return <NoRecords resource="incomes" />;
 
   return (
-    <section className="flex-1 p-6">
-      <div className="flex items-center justify-between">
-        <Title className="mb-4 text-gray-400">Incomes</Title>
-        <Link to="create">
-          <Button color="blue" variant="light" size="xs" icon={FaArrowUp}>
-            Add Income
-          </Button>
-        </Link>
-      </div>
+    <>
       <Table className="mt-5">
         <TableHead>
           <TableRow>
@@ -51,7 +39,7 @@ function IncomesTable() {
         </TableBody>
       </Table>
       <Pagination count={data?.count as number} />
-    </section>
+    </>
   );
 }
 

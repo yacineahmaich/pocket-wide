@@ -1,15 +1,31 @@
-import { Title } from '@tremor/react';
-
 import { FC } from 'react';
+import { Title, Button } from '@tremor/react';
 import Logo from '../ui/Logo';
+import { FaAngleLeft } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 type Props = {
   children?: React.ReactNode;
   title: string;
 };
 const FormLayout: FC<Props> = ({ children, title }) => {
+  const navigate = useNavigate();
+
   return (
     <div>
-      <Title className="mb-6 text-center text-gray-400">{title}</Title>
+      <div className="flex flex-col items-start gap-3 mb-6">
+        <Title className="mx-auto text-center text-gray-400">{title}</Title>
+        <Button
+          role="link"
+          variant="light"
+          icon={FaAngleLeft}
+          size="xs"
+          color="blue"
+          onClick={() => navigate('..')}
+        >
+          Back
+        </Button>
+      </div>
 
       <main className="grid min-h-screen gap-10 md:grid-cols-2">
         {children}
