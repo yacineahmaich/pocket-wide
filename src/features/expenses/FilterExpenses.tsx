@@ -16,48 +16,78 @@ import { categories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
 
 function FilterExpenses() {
-  const [seachParams, setSearchParams] = useSearchParams();
-  const currentFrom = seachParams.get('from') || '';
-  const currentTo = seachParams.get('to') || '';
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentFrom = searchParams.get('from') || '';
+  const currentTo = searchParams.get('to') || '';
 
   const currentDate: DateRangePickerValue = {
     from: currentFrom ? new Date(currentFrom) : undefined,
     to: currentTo ? new Date(currentTo) : undefined,
   };
-  const currentSearch = seachParams.get('search') || '';
-  const currentMinAmount = seachParams.get('min-amount') || '';
-  const currentMaxAmount = seachParams.get('max-amount') || '';
-  const currentCategory = seachParams.get('category') || '';
-  const currentTag = seachParams.get('tag') || '';
+  const currentSearch = searchParams.get('search') || '';
+  const currentMinAmount = searchParams.get('min-amount') || '';
+  const currentMaxAmount = searchParams.get('max-amount') || '';
+  const currentCategory = searchParams.get('category') || '';
+  const currentTag = searchParams.get('tag') || '';
 
-  const { register, watch, setValue, handleSubmit, reset, control } = useForm({
-    defaultValues: {
-      date: currentDate,
-      search: currentSearch,
-      minAmount: currentMinAmount,
-      maxAmount: currentMaxAmount,
-      category: currentCategory,
-      tag: currentTag,
-    },
-  });
+  const { register, getValues, setValue, handleSubmit, reset, control } =
+    useForm({
+      defaultValues: {
+        date: currentDate,
+        search: currentSearch,
+        minAmount: currentMinAmount,
+        maxAmount: currentMaxAmount,
+        category: currentCategory,
+        tag: currentTag,
+      },
+    });
 
   const handleClearFilters = () => {
     setSearchParams('');
     reset();
   };
-  console.log('re-rendered');
-  const onSubmit = handleSubmit(data => {
-    seachParams.set('from', formatDate(data.date.from ?? ''));
-    seachParams.set('to', formatDate(data.date.to ?? ''));
-    seachParams.set('search', data.search);
-    seachParams.set('min-amount', data.minAmount);
-    seachParams.set('max-amount', data.maxAmount);
-    seachParams.set('category', data.category);
-    seachParams.set('tag', data.tag);
 
-    setSearchParams(seachParams);
-    console.log(data);
-  });
+  const onSubmit = handleSubmit(
+    ({ date, search, minAmount, maxAmount, category, tag }) => {
+      if (date.from) {
+        searchParams.set('from', formatDate(date.from));
+      } else {
+        searchParams.delete('from');
+      }
+      if (date.to) {
+        searchParams.set('to', formatDate(date.to));
+      } else {
+        searchParams.delete('to');
+      }
+      if (search) {
+        searchParams.set('search', search);
+      } else {
+        searchParams.delete('search');
+      }
+      if (minAmount) {
+        searchParams.set('min-amount', minAmount);
+      } else {
+        searchParams.delete('min-amount');
+      }
+      if (maxAmount) {
+        searchParams.set('max-amount', maxAmount);
+      } else {
+        searchParams.delete('max-amount');
+      }
+      if (category) {
+        searchParams.set('category', category);
+      } else {
+        searchParams.delete('category');
+      }
+      if (tag) {
+        searchParams.set('tag', tag);
+      } else {
+        searchParams.delete('tag');
+      }
+
+      setSearchParams(searchParams);
+    }
+  );
 
   return (
     <section className="w-1/3 p-8">
@@ -80,7 +110,7 @@ function FilterExpenses() {
         <div>
           <Label>Date</Label>
           <DateRangePicker
-            defaultValue={watch('date')}
+            defaultValue={getValues('date')}
             onValueChange={value => setValue('date', value)}
           />
         </div>
@@ -100,7 +130,7 @@ function FilterExpenses() {
           <Label>Category</Label>
           <Select
             id="category"
-            defaultValue={watch('category')}
+            defaultValue={getValues('category')}
             onValueChange={category => {
               console.log(category);
               setValue('category', category);
