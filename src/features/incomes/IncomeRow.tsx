@@ -30,7 +30,7 @@ const IncomeRow: FC<Props> = ({ item }) => {
         </Text>
       </TableCell>
       <TableCell>{item.title}</TableCell>
-      <TableCell>{item.date}</TableCell>
+      <TableCell className="hidden md:block">{item.date}</TableCell>
       <TableCell>
         <Text>{formatCurrency(item.amount, 'USD')}</Text>
       </TableCell>

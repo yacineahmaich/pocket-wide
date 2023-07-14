@@ -22,12 +22,12 @@ function IncomesTable() {
 
   return (
     <>
-      <Table className="mt-5">
+      <Table className="mt-3">
         <TableHead>
           <TableRow>
             <TableHeaderCell></TableHeaderCell>
             <TableHeaderCell>Title</TableHeaderCell>
-            <TableHeaderCell>Date</TableHeaderCell>
+            <TableHeaderCell className="hidden md:block">Date</TableHeaderCell>
             <TableHeaderCell>Amount</TableHeaderCell>
             <TableHeaderCell>Actions</TableHeaderCell>
           </TableRow>

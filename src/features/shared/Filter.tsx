@@ -90,7 +90,7 @@ function Filter() {
   );
 
   return (
-    <section className="w-1/3 p-8">
+    <section className="hidden w-1/3 p-8 lg:block">
       <DevTool control={control} />
       <form action="" className="space-y-4" onSubmit={onSubmit}>
         <div className="flex items-center justify-between">
