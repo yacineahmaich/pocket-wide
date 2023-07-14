@@ -15,7 +15,7 @@ import { formatDate } from '../../utils/helpers';
 import { categories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
 
-function FilterExpenses() {
+function Filter() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFrom = searchParams.get('from') || '';
   const currentTo = searchParams.get('to') || '';
@@ -156,4 +156,4 @@ function FilterExpenses() {
   );
 }
 
-export default FilterExpenses;
+export default Filter;

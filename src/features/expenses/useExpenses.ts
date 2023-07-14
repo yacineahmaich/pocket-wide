@@ -21,8 +21,6 @@ export const useExpenses = () => {
   const category = searchParams.get('category') || '';
   const tag = searchParams.get('tag') || '';
 
-  console.log(date);
-
   const filterOptions: Filters = {
     date,
     search,

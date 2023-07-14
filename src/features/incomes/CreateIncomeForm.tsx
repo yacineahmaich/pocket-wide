@@ -47,7 +47,6 @@ function CreateIncomeForm() {
   const { mutate: createIncome, isLoading } = useCreateIncome();
 
   const onSubmit = handleSubmit(data => {
-    console.log(acceptedFiles);
     createIncome({
       ...data,
       attachement: acceptedFiles[0],
