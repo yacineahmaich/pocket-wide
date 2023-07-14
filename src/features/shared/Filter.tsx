@@ -9,13 +9,16 @@ import {
 import Label from '../../ui/Label';
 import { HiXMark } from 'react-icons/hi2';
 import { useForm } from 'react-hook-form';
-import { DevTool } from '@hookform/devtools';
 import { useSearchParams } from 'react-router-dom';
 import { formatDate } from '../../utils/helpers';
 import { categories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
 
-function Filter() {
+type Props = {
+  onFilter?: () => void;
+};
+
+function Filter({ onFilter }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFrom = searchParams.get('from') || '';
   const currentTo = searchParams.get('to') || '';
@@ -30,21 +33,21 @@ function Filter() {
   const currentCategory = searchParams.get('category') || '';
   const currentTag = searchParams.get('tag') || '';
 
-  const { register, getValues, setValue, handleSubmit, reset, control } =
-    useForm({
-      defaultValues: {
-        date: currentDate,
-        search: currentSearch,
-        minAmount: currentMinAmount,
-        maxAmount: currentMaxAmount,
-        category: currentCategory,
-        tag: currentTag,
-      },
-    });
+  const { register, getValues, setValue, handleSubmit, reset } = useForm({
+    defaultValues: {
+      date: currentDate,
+      search: currentSearch,
+      minAmount: currentMinAmount,
+      maxAmount: currentMaxAmount,
+      category: currentCategory,
+      tag: currentTag,
+    },
+  });
 
   const handleClearFilters = () => {
     setSearchParams('');
     reset();
+    onFilter && onFilter();
   };
 
   const onSubmit = handleSubmit(
@@ -86,12 +89,12 @@ function Filter() {
       }
 
       setSearchParams(searchParams);
+      onFilter && onFilter();
     }
   );
 
   return (
-    <section className="hidden w-1/3 p-8 lg:block">
-      <DevTool control={control} />
+    <section className="max-w-[450px]">
       <form action="" className="space-y-4" onSubmit={onSubmit}>
         <div className="flex items-center justify-between">
           <Button color="blue" size="xs">

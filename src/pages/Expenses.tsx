@@ -7,7 +7,9 @@ import Filter from '../features/shared/Filter';
 function Expenses() {
   return (
     <div className="flex divide-gray-100 lg:divide-x">
-      <Filter />
+      <div className="hidden w-1/3 p-8 lg:block">
+        <Filter />
+      </div>
       <section className="flex-1 p-3 lg:p-6">
         <div className="flex items-center justify-between">
           <Title className="mb-4 text-gray-400">Expenses</Title>
