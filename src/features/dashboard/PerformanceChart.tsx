@@ -13,7 +13,7 @@ function PerformanceChart() {
   }, [data]);
 
   return (
-    <Card className="col-span-2">
+    <Card className="md:col-span-2">
       <Title>Current Month</Title>
       <Text>Expense / income</Text>
       <AreaChart
