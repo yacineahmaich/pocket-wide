@@ -14,7 +14,7 @@ module.exports = {
       colors: {
         // light mode
         tremor: {
-          brand: {d
+          brand: {
             faint: '##FAB0BC', // blue-50
             muted: '##F87F94', // blue-200
             subtle: '##F65F79', // blue-400

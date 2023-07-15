@@ -1,6 +1,7 @@
 import { Title } from '@tremor/react';
 import Stats from '../features/dashboard/Stats';
 import PerformanceChart from '../features/dashboard/PerformanceChart';
+import Overview from '../features/dashboard/Overview';
 
 function Dashboard() {
   return (
@@ -10,7 +11,10 @@ function Dashboard() {
       </Title>
 
       <Stats />
-      <PerformanceChart />
+      <div className="grid grid-cols-3 gap-6 mt-10">
+        <PerformanceChart />
+        <Overview />
+      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export const formatDate = (date: string | Date) => {
 
 export const getDateFromStartDate = (date: Date | string) => {
   const transformedDate = new Date(date);
-  transformedDate.setMonth(new Date().getMonth() - 1);
+  transformedDate.setDate(1);
   return transformedDate;
 };
 

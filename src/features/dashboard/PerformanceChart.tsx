@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { formatCurrency } from '../../utils/helpers';
-import { AreaChart, Text } from '@tremor/react';
+import { AreaChart, Card, Text, Title } from '@tremor/react';
 import { usePerformance } from './usePerformance';
 
 function PerformanceChart() {
@@ -13,8 +13,9 @@ function PerformanceChart() {
   }, [data]);
 
   return (
-    <div className="mt-10">
-      <Text>Current Month Performance</Text>
+    <Card className="col-span-2">
+      <Title>Current Month</Title>
+      <Text>Expense / income</Text>
       <AreaChart
         className="h-96"
         data={sortedData ?? []}
@@ -23,7 +24,7 @@ function PerformanceChart() {
         colors={['indigo', 'rose']}
         valueFormatter={value => formatCurrency(value, 'USD')}
       />
-    </div>
+    </Card>
   );
 }
 
