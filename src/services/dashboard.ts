@@ -1,4 +1,9 @@
-import { formatDate, getDateFromStartDate } from '../utils/helpers';
+import { categories } from '../utils/constants';
+import {
+  formatCurrency,
+  formatDate,
+  getDateFromStartDate,
+} from '../utils/helpers';
 import supabase from './supabase';
 
 export const getStats = async () => {
@@ -17,12 +22,12 @@ export const getStats = async () => {
   const { data: expensesCurMonth, error: expensesCurMonthError } =
     await supabase
       .from('expenses')
-      .select<any, Expense>('*')
+      .select<'*', Expense>('*')
       .gte('date', firstDayOfCurMonth);
   const { data: expensesPrevMonth, error: expensesPrevMonthError } =
     await supabase
       .from('expenses')
-      .select<any, Expense>('*')
+      .select<'*', Expense>('*')
       .gte('date', firstDayOfPrevMonth)
       .lt('date', firstDayOfCurMonth);
 
@@ -31,12 +36,12 @@ export const getStats = async () => {
 
   const { data: incomesCurMonth, error: incomesCurMonthError } = await supabase
     .from('incomes')
-    .select<any, Income>('*')
+    .select<'*', Income>('*')
     .gte('date', firstDayOfCurMonth);
   const { data: incomesPrevMonth, error: incomesPrevMonthError } =
     await supabase
       .from('incomes')
-      .select<any, Income>('*')
+      .select<'*', Income>('*')
       .gte('date', firstDayOfPrevMonth)
       .lt('date', firstDayOfCurMonth);
 
@@ -121,4 +126,59 @@ export const getPerformance = async (): Promise<
   );
 
   return x;
+};
+
+export const getCategoriesOverview = async () => {
+  const date = new Date();
+  date.setDate(1);
+  const { data: expenses, error: expensesError } = await supabase
+    .from('expenses')
+    .select<'*', Expense>('*')
+    .gte('date', formatDate(date));
+
+  if (expensesError) throw new Error(expensesError.message);
+
+  const { data: incomes, error: incomesError } = await supabase
+    .from('incomes')
+    .select<'*', Income>('*')
+    .gte('date', formatDate(date));
+
+  if (incomesError) throw new Error(incomesError.message);
+
+  const expensesPerCategory = expenses.reduce((acc, exp) => {
+    acc[exp.category] = acc[exp.category]
+      ? acc[exp.category] + exp.amount
+      : exp.amount;
+    return acc;
+  }, {} as { [key: string]: number });
+
+  const incomesPerCategory = incomes.reduce((acc, inc) => {
+    acc[inc.category] = acc[inc.category]
+      ? acc[inc.category] + inc.amount
+      : inc.amount;
+    return acc;
+  }, {} as { [key: string]: number });
+
+  console.log(expensesPerCategory);
+  console.log(incomesPerCategory);
+
+  const transformedExpenses = Object.entries(expensesPerCategory).map(
+    ([name, value]) => ({
+      name,
+      value: formatCurrency(value, 'USD'),
+      icon: categories.find(c => c.key === name)?.Icon,
+    })
+  );
+  const transformedIncomes = Object.entries(incomesPerCategory).map(
+    ([name, value]) => ({
+      name,
+      value: formatCurrency(value, 'USD'),
+      icon: categories.find(c => c.key === name)?.Icon,
+    })
+  );
+
+  return {
+    expenses: transformedExpenses,
+    incomes: transformedIncomes,
+  };
 };

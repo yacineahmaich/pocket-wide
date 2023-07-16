@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getCategoriesOverview } from '../../services/categories';
+import { getCategoriesOverview } from '../../services/dashboard';
 
 export const useCategoryOverview = () => {
   return useQuery({
