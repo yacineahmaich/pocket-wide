@@ -12,12 +12,8 @@ import {
 } from '@tremor/react';
 import { useCategoryOverview } from './useCategoryOverview';
 import { useState } from 'react';
-import {
-  FaArrowDown,
-  FaArrowUp,
-  FaCircleNotch,
-  FaSpinner,
-} from 'react-icons/fa';
+import { FaArrowDown, FaArrowUp, FaCircleNotch } from 'react-icons/fa';
+import OverviewSkeleton from './OverviewSkeleton';
 
 function Overview() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -31,15 +27,16 @@ function Overview() {
       <Text>Category</Text>
 
       {isLoading ? (
-        <div className="mt-20 text-center">
-          <Icon
-            icon={FaCircleNotch}
-            className="animate-spin"
-            size="xl"
-            color="gray"
-          />
-        </div>
+        <OverviewSkeleton />
       ) : (
+        // <div className="mt-20 text-center">
+        //   <Icon
+        //     icon={FaCircleNotch}
+        //     className="animate-spin"
+        //     size="xl"
+        //     color="gray"
+        //   />
+        // </div>
         <>
           <TabGroup
             index={selectedIndex}

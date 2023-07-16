@@ -2,9 +2,11 @@ import { useMemo } from 'react';
 import { formatCurrency } from '../../utils/helpers';
 import { AreaChart, Card, Text, Title } from '@tremor/react';
 import { usePerformance } from './usePerformance';
+import animationData from '../../assets/lottie/chart.json';
+import Lottie from 'lottie-react';
 
 function PerformanceChart() {
-  const { data } = usePerformance();
+  const { data, isLoading } = usePerformance();
 
   const sortedData = useMemo(() => {
     return data?.sort(
@@ -16,14 +18,18 @@ function PerformanceChart() {
     <Card className="md:col-span-2">
       <Title>Current Month</Title>
       <Text>Expense / income</Text>
-      <AreaChart
-        className="h-96"
-        data={sortedData ?? []}
-        index="date"
-        categories={['expenses', 'incomes']}
-        colors={['indigo', 'rose']}
-        valueFormatter={value => formatCurrency(value, 'USD')}
-      />
+      {isLoading ? (
+        <Lottie animationData={animationData} />
+      ) : (
+        <AreaChart
+          className="h-96"
+          data={sortedData ?? []}
+          index="date"
+          categories={['expenses', 'incomes']}
+          colors={['indigo', 'rose']}
+          valueFormatter={value => formatCurrency(value, 'USD')}
+        />
+      )}
     </Card>
   );
 }
