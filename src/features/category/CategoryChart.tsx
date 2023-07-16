@@ -37,6 +37,11 @@ function CategoryChart({ date }: Props) {
     })
     .map(exp => ({ date: exp.date, value: exp.amount }));
 
+  const validCategories = [...new Set(data?.map(exp => exp.category))];
+  const filteredCategories = categories.filter(c =>
+    validCategories.includes(c.key)
+  );
+
   return (
     <section>
       <div className="flex items-center justify-between">
@@ -49,7 +54,7 @@ function CategoryChart({ date }: Props) {
           className="w-80"
           placeholder="Select Category"
         >
-          {categories.map(category => {
+          {filteredCategories.map(category => {
             const CIcon = () => <CategoryIcon categoryKey={category.key} />;
 
             return (
