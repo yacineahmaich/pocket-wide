@@ -10,7 +10,20 @@ import { useState } from 'react';
 
 function Category() {
   const [date, setDate] = useState<DateRangePickerValue>();
+  console.log(date);
+  const to = new Date(date?.to!);
 
+  const isThesameDay = date?.from?.getTime() === date?.to?.getTime();
+
+  if (isThesameDay) {
+    to.setHours(23);
+    to.setMinutes(59);
+    to.setSeconds(59);
+  }
+
+  const selectedDate =
+    date?.from && date.to && (isThesameDay ? { ...date, to } : date);
+  // console.log(selectedDate);
   return (
     <div>
       <Title className="text-center text-gray-400">Category</Title>
@@ -18,8 +31,8 @@ function Category() {
         <Text>Expenses Per Category</Text>
         <DateRangePicker value={date} onValueChange={setDate} />
       </div>
-      <ExpensesPerCategory date={date} />
-      <CategoryChart date={date} />
+      <ExpensesPerCategory date={selectedDate} />
+      <CategoryChart date={selectedDate} />
     </div>
   );
 }
