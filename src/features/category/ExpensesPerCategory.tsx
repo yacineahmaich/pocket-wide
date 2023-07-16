@@ -1,20 +1,16 @@
-import {
-  Card,
-  DateRangePicker,
-  DateRangePickerValue,
-  Text,
-} from '@tremor/react';
-import { useExpensesPerCategory } from './useExpensesPerCategory';
+import { Card, DateRangePickerValue, Text } from '@tremor/react';
+import { useAllExpenses } from './useAllExpenses';
 import { categories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
 import { formatCurrency } from '../../utils/helpers';
 import CategoryCardSekeleton from './CategoryCardSekeleton';
-import { useState } from 'react';
 
-function ExpensesPerCategory() {
-  const [date, setDate] = useState<DateRangePickerValue>();
-  console.log(date);
-  const { data, isLoading } = useExpensesPerCategory();
+type Props = {
+  date: DateRangePickerValue | undefined;
+};
+
+function ExpensesPerCategory({ date }: Props) {
+  const { data, isLoading } = useAllExpenses();
 
   // calculte total  expenses per each category
 
@@ -36,12 +32,7 @@ function ExpensesPerCategory() {
   }, {} as { [key: string]: number });
 
   return (
-    <section className="my-10">
-      <div className="flex items-center justify-between">
-        <Text>Expenses Per Category</Text>
-        <DateRangePicker value={date} onValueChange={setDate} />
-      </div>
-
+    <section className="mb-10">
       <div className="grid gap-4 my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {isLoading
           ? Array.from({ length: 4 }, (_, idx) => (

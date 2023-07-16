@@ -1,6 +1,6 @@
 import supabase from './supabase';
 
-export const getExpensesPerCategory = async () => {
+export const getAllExpenses = async () => {
   const { data, error } = await supabase
     .from('expenses')
     .select<'*', Expense>('*');
