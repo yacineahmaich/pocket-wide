@@ -1,7 +1,6 @@
 import { Outlet, Navigate } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
 import Header from '../ui/Header';
-import Navigation from '../ui/Navigation';
 
 function DashboardLayout() {
   const { user, isAuthenticated } = useUser();
@@ -11,7 +10,6 @@ function DashboardLayout() {
   return (
     <div className="px-3 sm:px-6">
       <Header />
-      <Navigation />
       <div className="py-3">
         <Outlet />
       </div>
