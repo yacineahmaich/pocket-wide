@@ -1,16 +1,15 @@
-import { Text, Icon } from '@tremor/react';
 import Logo from './Logo';
-import {} from 'react-icons/fa';
-import { useUser } from '../features/auth/useUser';
 import { useLogout } from '../features/auth/useLogout';
 import {
-  FaAngleDown,
   FaChartBar,
   FaLongArrowAltDown,
   FaMoneyCheck,
   FaBuffer,
+  FaSignOutAlt,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { Button, Text } from '@tremor/react';
+import { useUser } from '../features/auth/useUser';
 
 const navigation = [
   {
@@ -37,7 +36,7 @@ const navigation = [
 
 function Header() {
   const { user } = useUser();
-  // const { mutate: logout, isLoading } = useLogout();
+  const { mutate: logout, isLoading } = useLogout();
 
   return (
     <header className="flex items-center justify-between w-full py-3 border-b border-b-gray-50">
@@ -53,8 +52,17 @@ function Header() {
         <button className="flex items-center px-4 py-2 bg-gray-100 rounded-full">
           <Logo className="w-6 h-6 mr-3" />
           <Text>{user?.user_metadata.username ?? user?.email}</Text>
-          <Icon icon={FaAngleDown} size="xs" color="gray" />
         </button>
+        <Button
+          icon={FaSignOutAlt}
+          variant="light"
+          color="red"
+          size="xs"
+          loading={isLoading}
+          onClick={() => logout()}
+        >
+          Logout
+        </Button>
       </nav>
     </header>
   );
