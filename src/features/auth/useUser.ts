@@ -7,6 +7,10 @@ export const useUser = () => {
     queryFn: getUser,
     staleTime: Infinity,
     retry: false,
+    onSuccess: () => {
+      document.body.style.overflow = 'auto';
+      document.querySelector('.loader')?.remove();
+    },
   });
 
   const isAuthenticated = user?.role === 'authenticated';

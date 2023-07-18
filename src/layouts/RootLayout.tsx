@@ -1,18 +1,10 @@
-import Logo from '../ui/Logo';
 import { Outlet } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
 
 function RootLayout() {
-  const { isLoading, user } = useUser();
-  console.log(user);
-  if (isLoading)
-    return (
-      <div className="flex items-center justify-center w-full h-screen ">
-        <Logo className="animate-pulse" />
-      </div>
-    );
+  const { isLoading } = useUser();
 
-  return <Outlet />;
+  return isLoading ? null : <Outlet />;
 }
 
 export default RootLayout;

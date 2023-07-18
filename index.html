@@ -6,7 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pocket Wide | Take Control of Your Expenses with Pocket Wide</title>
   </head>
+  <style>
+    body {
+      overflow: hidden;
+    }
+    .loader {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
   <body>
+    <div class="loader">
+      <img src="/logo.svg" alt="pocket wide logo" />
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
