@@ -24,7 +24,8 @@ function UserAvatar({ small }: Props) {
         className="text-gray-400 leading-1 flex h-full w-full items-center justify-center bg-white  text-[15px] font-medium uppercase"
         delayMs={600}
       >
-        {user?.user_metadata.username[0] ?? user?.user_metadata.full_name[0]}
+        {user?.user_metadata?.username?.[0] ??
+          user?.user_metadata?.full_name?.[0]}
       </Avatar.Fallback>
     </Avatar.Root>
   );
