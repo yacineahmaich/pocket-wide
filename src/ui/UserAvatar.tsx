@@ -21,10 +21,10 @@ function UserAvatar({ small }: Props) {
         alt="Colm Tuite"
       />
       <Avatar.Fallback
-        className="text-gray-400 leading-1 flex h-full w-full items-center justify-center bg-white text-[15px] font-medium"
+        className="text-gray-400 leading-1 flex h-full w-full items-center justify-center bg-white  text-[15px] font-medium uppercase"
         delayMs={600}
       >
-        {user?.user_metadata.username ?? user?.user_metadata.full_name}
+        {user?.user_metadata.username[0] ?? user?.user_metadata.full_name[0]}
       </Avatar.Fallback>
     </Avatar.Root>
   );

@@ -3,7 +3,6 @@ import {
   Bold,
   Card,
   Flex,
-  Icon,
   Tab,
   TabGroup,
   TabList,
@@ -12,7 +11,7 @@ import {
 } from '@tremor/react';
 import { useCategoryOverview } from './useCategoryOverview';
 import { useState } from 'react';
-import { FaArrowDown, FaArrowUp, FaCircleNotch } from 'react-icons/fa';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import OverviewSkeleton from './OverviewSkeleton';
 
 function Overview() {
@@ -29,14 +28,6 @@ function Overview() {
       {isLoading ? (
         <OverviewSkeleton />
       ) : (
-        // <div className="mt-20 text-center">
-        //   <Icon
-        //     icon={FaCircleNotch}
-        //     className="animate-spin"
-        //     size="xl"
-        //     color="gray"
-        //   />
-        // </div>
         <>
           <TabGroup
             index={selectedIndex}

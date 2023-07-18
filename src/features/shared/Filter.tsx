@@ -16,7 +16,7 @@ import CategoryIcon from '../../ui/CategorySelect';
 
 type Props = {
   onFilter?: () => void;
-  loading: boolean;
+  loading?: boolean;
 };
 
 function Filter({ onFilter, loading }: Props) {

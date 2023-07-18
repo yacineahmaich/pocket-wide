@@ -11,7 +11,7 @@ export const signupSchema = Yup.object({
   password: Yup.string()
     .min(6)
     .matches(
-      /^[0-9A-Za-z]*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][0-9a-zA-Z]*$/,
+      /^[0-9A-Za-z]*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?][0-9a-zA-Z]*$/,
       'password should have at least one special character'
     )
     .required(),
