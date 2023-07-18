@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
 
 function RootLayout() {
-  const { isLoading } = useUser();
-
+  const { isLoading, user } = useUser();
+  console.log(user);
   if (isLoading)
     return (
       <div className="flex items-center justify-center w-full h-screen ">

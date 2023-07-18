@@ -26,7 +26,7 @@ function Header() {
         <button className="flex items-center px-2 py-1 bg-gray-100 rounded-full">
           <UserAvatar small />
           <Text className="px-4 py-2">
-            {user?.user_metadata.username ?? user?.email}
+            {user?.user_metadata.username ?? user?.user_metadata.full_name}
           </Text>
         </button>
         <Button

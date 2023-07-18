@@ -1,7 +1,7 @@
 import * as Avatar from '@radix-ui/react-avatar';
 
 type Props = {
-  small: boolean;
+  small?: boolean;
 };
 
 function UserAvatar({ small }: Props) {

@@ -12,7 +12,6 @@ function MobileNavigation() {
   const [open, setOpen] = useState(false);
 
   const { user } = useUser();
-  const defautUsername = user?.email?.split('@')[0];
 
   const navigate = useNavigate();
   const handleNavigate = (to: string) => {
@@ -40,7 +39,7 @@ function MobileNavigation() {
             <UserAvatar />
             <div className="flex flex-col ml-3">
               <span className="font-medium capitalize">
-                {user?.user_metadata.username ?? defautUsername}
+                {user?.user_metadata.username ?? user?.user_metadata.full_name}
               </span>
               <span className="text-sm font-medium text-gray-400">
                 {user?.email}

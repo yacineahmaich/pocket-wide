@@ -3,6 +3,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Navigate, Outlet } from 'react-router-dom';
 import Logo from '../ui/Logo';
 import { useUser } from '../features/auth/useUser';
+import { signinWithGithub, signinWithGoogle } from '../services/auth';
 
 function AuthLayout() {
   const { user, isAuthenticated } = useUser();
@@ -19,6 +20,7 @@ function AuthLayout() {
               variant="secondary"
               color="gray"
               className="w-full"
+              onClick={() => signinWithGoogle()}
             >
               Continue with Google
             </Button>
@@ -27,6 +29,7 @@ function AuthLayout() {
               variant="primary"
               color="gray"
               className="w-full"
+              onClick={() => signinWithGithub()}
             >
               Continue with Github
             </Button>

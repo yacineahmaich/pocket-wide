@@ -39,7 +39,6 @@ export const getUser = async () => {
   const { data, error } = await supabase.auth.getUser();
 
   if (error) throw new Error(error.message);
-
   return data.user;
 };
 
@@ -47,4 +46,15 @@ export const logout = async () => {
   const { error } = await supabase.auth.signOut();
 
   if (error) throw new Error(error.message);
+};
+
+export const signinWithGoogle = () => {
+  supabase.auth.signInWithOAuth({
+    provider: 'google',
+  });
+};
+export const signinWithGithub = () => {
+  supabase.auth.signInWithOAuth({
+    provider: 'github',
+  });
 };
