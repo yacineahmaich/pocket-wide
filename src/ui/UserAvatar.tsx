@@ -1,10 +1,13 @@
 import * as Avatar from '@radix-ui/react-avatar';
+import { useUser } from '../features/auth/useUser';
 
 type Props = {
   small?: boolean;
 };
 
 function UserAvatar({ small }: Props) {
+  const { user } = useUser();
+
   return (
     <Avatar.Root
       className={`
@@ -14,14 +17,14 @@ function UserAvatar({ small }: Props) {
     >
       <Avatar.Image
         className="h-full w-full rounded-[inherit] object-cover"
-        src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
+        src={user?.user_metadata.avatar_url}
         alt="Colm Tuite"
       />
       <Avatar.Fallback
         className="text-gray-400 leading-1 flex h-full w-full items-center justify-center bg-white text-[15px] font-medium"
         delayMs={600}
       >
-        CT
+        {user?.user_metadata.username ?? user?.user_metadata.full_name}
       </Avatar.Fallback>
     </Avatar.Root>
   );
