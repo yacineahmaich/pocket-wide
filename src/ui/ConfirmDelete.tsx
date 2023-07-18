@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import * as AlertDialog from '@radix-ui/react-dialog';
 import { Button } from '@tremor/react';
 
 type Props = {
@@ -19,10 +19,7 @@ const ConfirmDelete: FC<Props> = ({
   return (
     <AlertDialog.Root open={open} onOpenChange={setOpen}>
       <AlertDialog.Portal>
-        <AlertDialog.Overlay
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/20"
-        />
+        <AlertDialog.Overlay className="fixed inset-0 bg-black/20" />
         <AlertDialog.Content className="fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[500px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
           <AlertDialog.Title className="mb-0 text-lg font-semibold">
             Delete <span className="capitalize">{resource}</span>
@@ -32,11 +29,11 @@ const ConfirmDelete: FC<Props> = ({
             action cannot be undone.
           </AlertDialog.Description>
           <div className="flex justify-end gap-6">
-            <AlertDialog.Cancel asChild>
+            <AlertDialog.Close asChild>
               <Button variant="light" color="gray" size="xs">
                 Cancel
               </Button>
-            </AlertDialog.Cancel>
+            </AlertDialog.Close>
             <Button
               color="red"
               variant="secondary"

@@ -1,16 +1,3 @@
-export const BRAND_QUOTES = [
-  'Welcome to Pocket Wide',
-  'Managing Your Expenses with Pocket Wide',
-  'Start Tracking Your Expenses with Pocket Wide',
-  'Simplify Your Finances with Pocket Wide',
-  'Take Control of Your Expenses with Pocket Wide',
-  'Pocket Wide: Your Personal Expense Manager',
-  'Effortlessly Manage Your Expenses with Pocket Wide',
-  'Pocket Wide: Smart Solutions for Your Expenses',
-  'Experience Easy Expense Tracking with Pocket Wide',
-  'Join Pocket Wide and Stay on Top of Your Expenses',
-];
-
 import {
   AcademicCapIcon,
   AdjustmentsIcon,
@@ -37,6 +24,38 @@ import {
   MdOutlineElderlyWoman,
   MdPrecisionManufacturing,
 } from 'react-icons/md';
+
+export const BRAND_QUOTES = [
+  'Welcome to Pocket Wide',
+  'Managing Your Expenses with Pocket Wide',
+  'Start Tracking Your Expenses with Pocket Wide',
+  'Simplify Your Finances with Pocket Wide',
+  'Take Control of Your Expenses with Pocket Wide',
+  'Pocket Wide: Your Personal Expense Manager',
+  'Effortlessly Manage Your Expenses with Pocket Wide',
+  'Pocket Wide: Smart Solutions for Your Expenses',
+  'Experience Easy Expense Tracking with Pocket Wide',
+  'Join Pocket Wide and Stay on Top of Your Expenses',
+];
+
+export const NAVIGATION = [
+  {
+    to: '',
+    label: 'Dashboard',
+  },
+  {
+    to: '/expenses',
+    label: 'Expenses',
+  },
+  {
+    to: '/incomes',
+    label: 'Incomes',
+  },
+  {
+    to: '/category',
+    label: 'Category',
+  },
+];
 
 export const categories = [
   {
