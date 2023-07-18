@@ -1,6 +1,6 @@
-# PocketWide
+# [Pocket Wide](https://pocket-wide.netlify.app/)
 
-A budget management app where you can manage and visualize your incomes and expenses in one place.
+A Finance tracking web app where users can track their expenses and incomes in one place.
 
 ## Features
 
@@ -8,13 +8,18 @@ A budget management app where you can manage and visualize your incomes and expe
 - Manage Incomes (create | edit | delete ...)
 - Visualize your monthly expenses & icnomes
 - List expenses & incomes (with pagination)
-- Filter records
+- Organize expenses & incomes under categories
+- Filtering
+- Search
+- Stats
+  ...
 
 ## Technologies Used
 
 - React
+- Typescript
 - Tailwindcss
-- Supabase
+- supabase
 
 ## Installation
 
