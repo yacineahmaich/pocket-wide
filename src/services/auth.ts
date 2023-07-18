@@ -51,10 +51,16 @@ export const logout = async () => {
 export const signinWithGoogle = () => {
   supabase.auth.signInWithOAuth({
     provider: 'google',
+    options: {
+      redirectTo: 'https://pocket-wide.netlify.app',
+    },
   });
 };
 export const signinWithGithub = () => {
   supabase.auth.signInWithOAuth({
     provider: 'github',
+    options: {
+      redirectTo: 'https://pocket-wide.netlify.app',
+    },
   });
 };
