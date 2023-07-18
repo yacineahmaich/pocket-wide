@@ -10,12 +10,13 @@ import Pagination from '../../ui/Pagination';
 import IncomeRow from './IncomeRow';
 import NoRecords from '../../ui/NoRecords';
 import LoadingAnimation from '../../ui/LoadingAnimation';
+import ErrorMessage from '../../ui/ErrorMessage';
 
 function IncomesTable() {
-  const { data, isLoading } = useIncomes();
+  const { data, isLoading, isError, error, refetch } = useIncomes();
 
+  if (isError) return <ErrorMessage error={error} retry={refetch} />;
   if (isLoading) return <LoadingAnimation />;
-
   if (data?.data.length === 0) return <NoRecords resource="incomes" />;
 
   return (

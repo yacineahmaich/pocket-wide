@@ -16,9 +16,10 @@ import CategoryIcon from '../../ui/CategorySelect';
 
 type Props = {
   onFilter?: () => void;
+  loading: boolean;
 };
 
-function Filter({ onFilter }: Props) {
+function Filter({ onFilter, loading }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFrom = searchParams.get('from') || '';
   const currentTo = searchParams.get('to') || '';
@@ -115,19 +116,20 @@ function Filter({ onFilter }: Props) {
           <DateRangePicker
             defaultValue={getValues('date')}
             onValueChange={value => setValue('date', value)}
+            disabled={loading}
           />
         </div>
         <div>
           <Label>Seacrh</Label>
-          <TextInput {...register('search')} />
+          <TextInput {...register('search')} disabled={loading} />
         </div>
         <div>
           <Label>Min Amount</Label>
-          <TextInput {...register('minAmount')} />
+          <TextInput {...register('minAmount')} disabled={loading} />
         </div>
         <div>
           <Label>Max Amount</Label>
-          <TextInput {...register('maxAmount')} />
+          <TextInput {...register('maxAmount')} disabled={loading} />
         </div>
         <div>
           <Label>Category</Label>
@@ -138,6 +140,7 @@ function Filter({ onFilter }: Props) {
               console.log(category);
               setValue('category', category);
             }}
+            disabled={loading}
           >
             {categories.map(category => {
               const CIcon = () => <CategoryIcon categoryKey={category.key} />;
@@ -152,7 +155,7 @@ function Filter({ onFilter }: Props) {
         </div>
         <div>
           <Label>Tag</Label>
-          <TextInput {...register('tag')} />
+          <TextInput {...register('tag')} disabled={loading} />
         </div>
       </form>
     </section>

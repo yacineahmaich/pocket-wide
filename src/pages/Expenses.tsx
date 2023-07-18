@@ -5,14 +5,16 @@ import { FaArrowDown, FaPen, FaSlidersH } from 'react-icons/fa';
 import Filter from '../features/shared/Filter';
 import MobileFilter from '../features/shared/MobileFilter';
 import { useState } from 'react';
+import { useExpenses } from '../features/expenses/useExpenses';
 
 function Expenses() {
   const [open, setOpen] = useState(false);
+  const { isFetching } = useExpenses();
 
   return (
     <div className="flex divide-gray-100 lg:divide-x">
       <div className="hidden w-1/3 p-8 lg:block">
-        <Filter />
+        <Filter loading={isFetching} />
       </div>
       <section className="flex-1 p-3 lg:p-6">
         <div className="flex items-center justify-between">

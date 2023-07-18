@@ -10,9 +10,12 @@ import Pagination from '../../ui/Pagination';
 import ExpenseRow from './ExpenseRow';
 import NoRecords from '../../ui/NoRecords';
 import LoadingAnimation from '../../ui/LoadingAnimation';
+import ErrorMessage from '../../ui/ErrorMessage';
 
 function ExpensesTable() {
-  const { data, isLoading } = useExpenses();
+  const { data, isLoading, isError, error, refetch } = useExpenses();
+
+  if (isError) return <ErrorMessage error={error} retry={refetch} />;
 
   if (isLoading) return <LoadingAnimation />;
 
