@@ -30,8 +30,8 @@ const ExpenseRow: FC<Props> = ({ item }) => {
         </Text>
       </TableCell>
       <TableCell>{item.title}</TableCell>
-      <TableCell className="hidden md:block">{item.date}</TableCell>
-      <TableCell>
+      <TableCell className="hidden md:table-cell">{item.date}</TableCell>
+      <TableCell className="hidden md:table-cell">
         <Text>{formatCurrency(item.amount, 'USD')}</Text>
       </TableCell>
       <TableCell className="space-x-3">

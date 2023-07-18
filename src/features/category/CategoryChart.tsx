@@ -71,9 +71,9 @@ function CategoryChart({ date }: Props) {
           <LineChart
             className="mt-6"
             data={categoryExpenses ?? []}
-            index="year"
+            index="date"
             categories={['value']}
-            colors={['emerald', 'gray']}
+            colors={['blue']}
             valueFormatter={value => formatCurrency(value, 'USD')}
             yAxisWidth={40}
           />

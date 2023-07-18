@@ -27,8 +27,12 @@ function IncomesTable() {
           <TableRow>
             <TableHeaderCell></TableHeaderCell>
             <TableHeaderCell>Title</TableHeaderCell>
-            <TableHeaderCell className="hidden md:block">Date</TableHeaderCell>
-            <TableHeaderCell>Amount</TableHeaderCell>
+            <TableHeaderCell className="hidden md:table-cell">
+              Date
+            </TableHeaderCell>
+            <TableHeaderCell className="hidden md:table-cell">
+              Amount
+            </TableHeaderCell>
             <TableHeaderCell>Actions</TableHeaderCell>
           </TableRow>
         </TableHead>
