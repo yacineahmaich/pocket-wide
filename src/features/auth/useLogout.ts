@@ -11,6 +11,7 @@ export const useLogout = () => {
     retry: false,
     onSuccess: () => {
       queryClient.setQueryData(['user'], null);
+      queryClient.removeQueries();
     },
     onError: () => {
       toast.error('Could not logout!');
