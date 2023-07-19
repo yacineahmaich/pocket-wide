@@ -24,14 +24,14 @@ const ExpenseRow: FC<Props> = ({ item }) => {
 
   return (
     <TableRow key={item.title}>
-      <TableCell>
+      <TableCell className="hidden sm:table-cell">
         <Text>
           <CategoryIcon categoryKey={item.category} />
         </Text>
       </TableCell>
       <TableCell>{item.title}</TableCell>
       <TableCell className="hidden sm:table-cell">{item.date}</TableCell>
-      <TableCell className="hidden sm:table-cell">
+      <TableCell>
         <Text>{formatCurrency(item.amount, 'USD')}</Text>
       </TableCell>
       <TableCell className="space-x-3">

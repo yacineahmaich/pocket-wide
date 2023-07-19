@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <header className="flex items-center justify-between w-full py-3 border-b border-b-gray-50">
-      <Logo className="w-10 h-10" />
+      <Logo className="w-7 sm:w-10 h-7 sm:h-10" />
       <nav className="items-center hidden gap-3 sm:flex">
         <ul className="flex items-center gap-6 mr-10 text-sm font-medium text-gray-400 lg:mr-20">
           {NAVIGATION.map(item => (

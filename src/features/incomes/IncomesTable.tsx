@@ -24,14 +24,12 @@ function IncomesTable() {
       <Table className="mt-3">
         <TableHead>
           <TableRow>
-            <TableHeaderCell></TableHeaderCell>
+            <TableHeaderCell className="hidden sm:table-cell"></TableHeaderCell>
             <TableHeaderCell>Title</TableHeaderCell>
             <TableHeaderCell className="hidden sm:table-cell">
               Date
             </TableHeaderCell>
-            <TableHeaderCell className="hidden sm:table-cell">
-              Amount
-            </TableHeaderCell>
+            <TableHeaderCell>Amount</TableHeaderCell>
             <TableHeaderCell>Actions</TableHeaderCell>
           </TableRow>
         </TableHead>

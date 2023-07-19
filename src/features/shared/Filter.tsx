@@ -96,7 +96,7 @@ function Filter({ onFilter, loading }: Props) {
 
   return (
     <section className="max-w-[450px]">
-      <form action="" className="space-y-4" onSubmit={onSubmit}>
+      <form action="" className="space-y-2 lg:space-y-4" onSubmit={onSubmit}>
         <div className="flex items-center justify-between">
           <Button color="blue" size="xs">
             Filter

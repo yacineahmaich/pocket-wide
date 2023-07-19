@@ -16,9 +16,9 @@ function Expenses() {
       <div className="hidden w-1/3 p-8 lg:block">
         <Filter loading={isFetching} />
       </div>
-      <section className="flex-1 min-h-screen p-3 lg:p-6">
-        <div className="flex items-center justify-between">
-          <Title className="mb-4 text-gray-400">Incomes</Title>
+      <section className="flex-1 min-h-screen ">
+        <div className="flex items-center justify-between p-3 mb-4 lg:p-6">
+          <Title className="text-gray-400">Incomes</Title>
           <div>
             <Button
               variant="light"
