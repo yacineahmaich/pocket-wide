@@ -1,11 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import { getPaginationParams } from '../../utils/helpers';
 import { getIncomes } from '../../services/incomes';
 import { DateRangePickerValue } from '@tremor/react';
 import { Filters } from '../../types/filter';
+import { PAGE_SIZE } from '../../utils/config';
 
 export const useIncomes = () => {
+  const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
 
@@ -37,6 +39,30 @@ export const useIncomes = () => {
         pagination: getPaginationParams(page),
         filters: filterOptions,
       }),
+    onSuccess({ count }) {
+      // PRE-FETCHING
+      const pageCount = Math.ceil(count ?? 0 / PAGE_SIZE);
+      if (page < pageCount) {
+        queryClient.prefetchQuery({
+          queryKey: ['incomes', { page: page + 1, filterOptions }],
+          queryFn: () =>
+            getIncomes({
+              pagination: getPaginationParams(page + 1),
+              filters: filterOptions,
+            }),
+        });
+      }
+      if (page > 1) {
+        queryClient.prefetchQuery({
+          queryKey: ['incomes', { page: page - 1, filterOptions }],
+          queryFn: () =>
+            getIncomes({
+              pagination: getPaginationParams(page - 1),
+              filters: filterOptions,
+            }),
+        });
+      }
+    },
     keepPreviousData: true,
   });
 };
