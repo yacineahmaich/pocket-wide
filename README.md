@@ -4,21 +4,22 @@ A Finance tracking web app where users can track their expenses and incomes in o
 
 ## Features
 
-- Manage Expenses (create | edit | delete ...)
-- Manage Incomes (create | edit | delete ...)
+- Manage Expenses
+- Manage Incomes
 - Visualize your monthly expenses & icnomes
 - List expenses & incomes (with pagination)
 - Organize expenses & incomes under categories
 - Filtering
 - Search
 - Stats
-  ...
+- Oauth
 
 ## Technologies Used
 
 - React
 - Typescript
 - Tailwindcss
+- Radix-ui
 - supabase
 
 ## Installation
