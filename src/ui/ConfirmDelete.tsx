@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button, Icon, Text } from '@tremor/react';
-import { FaExclamationCircle, FaExclamationTriangle } from 'react-icons/fa';
+import { FaExclamationCircle } from 'react-icons/fa';
 import { HiXMark } from 'react-icons/hi2';
 
 type Props = {
