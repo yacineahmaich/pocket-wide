@@ -9,7 +9,7 @@ function DashboardLayout() {
   if (!user || !isAuthenticated) return <Navigate to="/login" />;
 
   return (
-    <div className="px-3 sm:px-6">
+    <div className="px-3 pt-16 sm:px-6">
       <Header />
       <div className="py-3">
         <Outlet />

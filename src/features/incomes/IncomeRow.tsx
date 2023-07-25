@@ -5,15 +5,12 @@ import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utils/helpers';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import ConfirmDelete from '../../ui/ConfirmDelete';
-import { useQueryClient } from '@tanstack/react-query';
 import { useDeleteIncome } from './useDeleteIncome';
-import { toast } from 'sonner';
 
 type Props = {
   item: Income;
 };
 const IncomeRow: FC<Props> = ({ item }) => {
-  const queryClient = useQueryClient();
   const [open, setOpen] = useState(false);
 
   const { mutate: deleteIncome, isLoading } = useDeleteIncome();
@@ -23,9 +20,7 @@ const IncomeRow: FC<Props> = ({ item }) => {
       { id: item.id },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries(['incomes']);
           setOpen(false);
-          toast.message('income deleted');
         },
       }
     );

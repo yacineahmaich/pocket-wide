@@ -1,12 +1,15 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteIncome } from '../../services/incomes';
-
-type Vars = {
-  id: number;
-};
+import { toast } from 'sonner';
 
 export const useDeleteIncome = () => {
-  return useMutation<unknown, unknown, Vars>({
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: deleteIncome,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['incomes']);
+      toast.success('income deleted');
+    },
   });
 };

@@ -1,12 +1,15 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteExpense } from '../../services/expenses';
-
-type Vars = {
-  id: number;
-};
+import { toast } from 'sonner';
 
 export const useDeleteExpense = () => {
-  return useMutation<unknown, unknown, Vars>({
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: deleteExpense,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['expenses']);
+      toast.success('expense deleted');
+    },
   });
 };

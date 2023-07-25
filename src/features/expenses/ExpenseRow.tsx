@@ -6,14 +6,11 @@ import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import { useDeleteExpense } from './useDeleteExpense';
-import { useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 type Props = {
   item: Expense;
 };
 const ExpenseRow: FC<Props> = ({ item }) => {
-  const queryClient = useQueryClient();
   const [open, setOpen] = useState(false);
 
   const { mutate: deleteExpense, isLoading } = useDeleteExpense();
@@ -23,9 +20,7 @@ const ExpenseRow: FC<Props> = ({ item }) => {
       { id: item.id },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries(['expenses']);
           setOpen(false);
-          toast.message('expense deleted');
         },
       }
     );

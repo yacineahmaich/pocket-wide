@@ -2,7 +2,7 @@ import { Text } from '@tremor/react';
 
 function Footer() {
   return (
-    <footer className="flex flex-col items-center justify-between gap-6 px-6 py-10 mb-6 border border-gray-300 sm:flex-row rounded-xl">
+    <footer className="flex flex-col items-center justify-between gap-6 px-6 py-10 mt-12 mb-6 border border-gray-300 sm:flex-row rounded-xl">
       <Text className="text-center">
         © 2023 Pocket Wide, Inc. All rights reserved.
       </Text>
