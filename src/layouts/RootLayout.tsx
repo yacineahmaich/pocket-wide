@@ -1,10 +1,15 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
 
 function RootLayout() {
   const { isLoading } = useUser();
 
-  return isLoading ? null : <Outlet />;
+  return isLoading ? null : (
+    <>
+      <Outlet />
+      <ScrollRestoration getKey={location => location.pathname} />
+    </>
+  );
 }
 
 export default RootLayout;
