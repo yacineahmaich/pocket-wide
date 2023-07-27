@@ -2,10 +2,13 @@ import { Title } from '@tremor/react';
 import Stats from '../features/dashboard/Stats';
 import PerformanceChart from '../features/dashboard/PerformanceChart';
 import Overview from '../features/dashboard/Overview';
+import { Helmet } from 'react-helmet';
 
 function Dashboard() {
   return (
     <div className="py-3">
+      <Helmet title="Pocket Wide | Dashboard" />
+
       <Title className="mb-8 text-center text-gray-400">
         Monthly Performance Dashboard
       </Title>
