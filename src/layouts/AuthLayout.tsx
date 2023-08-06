@@ -1,7 +1,7 @@
-import { Button, Card, Divider, Flex, Title } from '@tremor/react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Navigate, Outlet } from 'react-router-dom';
 import Logo from '../ui/Logo';
+import { Navigate, Outlet } from 'react-router-dom';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Button, Card, Divider, Flex, Title } from '@tremor/react';
 import { useUser } from '../features/auth/useUser';
 import { signinWithGithub, signinWithGoogle } from '../services/auth';
 
@@ -35,7 +35,9 @@ function AuthLayout() {
             </Button>
           </div>
           <Divider />
+          {/* Form Fields */}
           <Outlet />
+          {/* Form Fields */}
         </Card>
       </Flex>
 
