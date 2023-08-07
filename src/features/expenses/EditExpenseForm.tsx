@@ -7,8 +7,7 @@ import CategoryIcon from '../../ui/CategorySelect';
 import { categories } from '../../utils/constants';
 import TextArea from '../../ui/TextArea';
 import { useForm } from 'react-hook-form';
-import { Navigate, useParams } from 'react-router-dom';
-import { useExpenses } from './useExpenses';
+import { Navigate, useLocation } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { expenseSchema } from '../../utils/validation/expense';
 import { useUpdateExpense } from './useUpdateExpense';
@@ -16,11 +15,11 @@ type Props = {
   children?: React.ReactNode;
 };
 const EditExpenseForm: FC<Props> = () => {
-  const { id = -1 } = useParams();
-  const { data } = useExpenses();
-  const { mutate: updateExpense, isLoading: isUpdating } = useUpdateExpense();
+  const location = useLocation();
 
-  const expenseData = data?.data.find(exp => exp.id === +id);
+  const expenseData = location?.state as Income | null;
+
+  const { mutate: updateExpense, isLoading: isUpdating } = useUpdateExpense();
 
   const {
     register,

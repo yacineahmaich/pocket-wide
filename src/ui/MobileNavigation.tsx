@@ -24,8 +24,8 @@ function MobileNavigation() {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger className="sm:hidden">
-        <button className="">
+      <Dialog.Trigger className="sm:hidden" asChild>
+        <button>
           <Icon icon={MenuAlt3Icon} color="gray" />
         </button>
       </Dialog.Trigger>

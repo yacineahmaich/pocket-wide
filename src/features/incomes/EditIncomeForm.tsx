@@ -7,8 +7,7 @@ import CategoryIcon from '../../ui/CategorySelect';
 import { categories } from '../../utils/constants';
 import TextArea from '../../ui/TextArea';
 import { useForm } from 'react-hook-form';
-import { Navigate, useParams } from 'react-router-dom';
-import { useIncomes } from './useIncomes';
+import { Navigate, useLocation } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useUpdateIncome } from './useUpdateIncome';
 import { incomeSchema } from '../../utils/validation/income';
@@ -16,11 +15,11 @@ type Props = {
   children?: React.ReactNode;
 };
 const EditIncomeForm: FC<Props> = () => {
-  const { id = -1 } = useParams();
-  const { data } = useIncomes();
-  const { mutate: updateIncome, isLoading: isUpdating } = useUpdateIncome();
+  const location = useLocation();
 
-  const incomeData = data?.data.find(exp => exp.id === +id);
+  const incomeData = location?.state as Income | null;
+
+  const { mutate: updateIncome, isLoading: isUpdating } = useUpdateIncome();
 
   const {
     register,
