@@ -18,6 +18,7 @@ export const signup = async ({ email, password, username }: Signup) => {
     options: {
       data: {
         username,
+        currency: 'USD',
       },
     },
   });

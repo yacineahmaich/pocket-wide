@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
 import CurrencyModalProvider from '../ui/CurrencyModalProvider';
 import Footer from '../ui/Footer';
-import Header from '../ui/Header';
+import Header from '../ui/header/Header';
 
 function DashboardLayout() {
   const { user, isAuthenticated } = useUser();

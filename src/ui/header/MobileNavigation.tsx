@@ -2,13 +2,13 @@ import { MenuAlt3Icon } from '@heroicons/react/solid';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button, Icon } from '@tremor/react';
 import { HiXMark } from 'react-icons/hi2';
-import UserAvatar from './UserAvatar';
-import { useUser } from '../features/auth/useUser';
-import { NAVIGATION } from '../utils/constants';
+import UserAvatar from '../UserAvatar';
+import { useUser } from '../../features/auth/useUser';
+import { NAVIGATION } from '../../utils/constants';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
-import { useLogout } from '../features/auth/useLogout';
+import { useLogout } from '../../features/auth/useLogout';
 
 function MobileNavigation() {
   const [open, setOpen] = useState(false);
