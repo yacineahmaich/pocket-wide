@@ -18,8 +18,21 @@ import { DevTool } from '@hookform/devtools';
 import FieldError from '../../ui/FieldError';
 import { useDropzone } from 'react-dropzone';
 import { useCreateExpense } from './useCreateExpense';
+import { useUser } from '../auth/useUser';
+import { useCurrencyModal } from '../../ui/CurrencyModalProvider';
 
 function CreateExpenseForm() {
+  const { user } = useUser();
+  const { openCurrencyModal } = useCurrencyModal();
+
+  const { mutate: createExpense, isLoading } = useCreateExpense();
+  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
+    useDropzone({
+      accept: {
+        'image/png': ['.png', '.jpg', '.jpeg'],
+      },
+    });
+
   // Manage Form State
   const {
     register,
@@ -36,18 +49,12 @@ function CreateExpenseForm() {
     resolver: yupResolver<CreateEditExpense>(expenseSchema),
   });
 
-  // Uplaod Attachements
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({
-      accept: {
-        'image/png': ['.png', '.jpg', '.jpeg'],
-      },
-    });
-
-  const { mutate: createExpense, isLoading } = useCreateExpense();
-
   const onSubmit = handleSubmit(data => {
-    console.log(acceptedFiles);
+    if (!user?.user_metadata.currency) {
+      openCurrencyModal();
+      return;
+    }
+
     createExpense({
       ...data,
       attachement: acceptedFiles[0],
@@ -58,7 +65,7 @@ function CreateExpenseForm() {
     <section className="overflow-y-auto">
       <DevTool control={control} />
       <div>
-        <form action="" className="space-y-4" onSubmit={onSubmit}>
+        <form className="space-y-4" onSubmit={onSubmit}>
           <div className="space-y-1">
             <Label htmlFor="title">Title</Label>
             <TextInput
@@ -73,7 +80,9 @@ function CreateExpenseForm() {
             <Label htmlFor="amount">Amount</Label>
             <TextInput
               id="amount"
-              icon={() => <Text className="p-2">MAD</Text>}
+              icon={() => (
+                <Text className="p-2">{user?.user_metadata.currency}</Text>
+              )}
               {...register('amount')}
               error={!!errors.amount}
               errorMessage={errors.amount?.message}
@@ -91,7 +100,6 @@ function CreateExpenseForm() {
               id="category"
               defaultValue={getValues().category}
               onValueChange={category => {
-                console.log(category);
                 setValue('category', category);
               }}
               disabled={isLoading}

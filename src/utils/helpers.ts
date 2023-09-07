@@ -1,6 +1,6 @@
 import { PAGE_SIZE } from './config';
 
-export const formatCurrency = (price: number, currency: string) => {
+export const formatCurrency = (price: number, currency = 'USD') => {
   return new Intl.NumberFormat(navigator.language, {
     style: 'currency',
     currency,

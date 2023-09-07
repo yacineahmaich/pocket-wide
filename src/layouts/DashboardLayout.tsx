@@ -1,7 +1,8 @@
-import { Outlet, Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
-import Header from '../ui/Header';
+import CurrencyModalProvider from '../ui/CurrencyModalProvider';
 import Footer from '../ui/Footer';
+import Header from '../ui/Header';
 
 function DashboardLayout() {
   const { user, isAuthenticated } = useUser();
@@ -12,7 +13,9 @@ function DashboardLayout() {
     <div className="px-3 pt-16 sm:px-6">
       <Header />
       <div className="py-3">
-        <Outlet />
+        <CurrencyModalProvider>
+          <Outlet />
+        </CurrencyModalProvider>
       </div>
       <Footer />
     </div>

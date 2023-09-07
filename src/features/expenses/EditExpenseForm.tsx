@@ -11,11 +11,13 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { expenseSchema } from '../../utils/validation/expense';
 import { useUpdateExpense } from './useUpdateExpense';
+import { useUser } from '../auth/useUser';
 type Props = {
   children?: React.ReactNode;
 };
 const EditExpenseForm: FC<Props> = () => {
   const location = useLocation();
+  const { user } = useUser();
 
   const expenseData = location?.state as Income | null;
 
@@ -66,7 +68,9 @@ const EditExpenseForm: FC<Props> = () => {
             <Label htmlFor="amount">Amount</Label>
             <TextInput
               id="amount"
-              icon={() => <Text className="p-2">MAD</Text>}
+              icon={() => (
+                <Text className="p-2">{user?.user_metadata.currency}</Text>
+              )}
               {...register('amount')}
               error={!!errors.amount}
               errorMessage={errors.amount?.message}

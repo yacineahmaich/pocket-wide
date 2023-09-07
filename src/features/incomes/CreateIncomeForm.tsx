@@ -18,8 +18,13 @@ import { incomeSchema } from '../../utils/validation/income';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDropzone } from 'react-dropzone';
 import { useCreateIncome } from './useCreateIncome';
+import { useCurrencyModal } from '../../ui/CurrencyModalProvider';
+import { useUser } from '../auth/useUser';
 
 function CreateIncomeForm() {
+  const { openCurrencyModal } = useCurrencyModal();
+  const { user } = useUser();
+
   // Manage Form State
   const {
     register,
@@ -47,6 +52,11 @@ function CreateIncomeForm() {
   const { mutate: createIncome, isLoading } = useCreateIncome();
 
   const onSubmit = handleSubmit(data => {
+    if (!user?.user_metadata.currency) {
+      openCurrencyModal();
+      return;
+    }
+
     createIncome({
       ...data,
       attachement: acceptedFiles[0],
@@ -72,7 +82,9 @@ function CreateIncomeForm() {
             <Label htmlFor="amount">Amount</Label>
             <TextInput
               id="amount"
-              icon={() => <Text className="p-2">MAD</Text>}
+              icon={() => (
+                <Text className="p-2">{user?.user_metadata.currency}</Text>
+              )}
               {...register('amount')}
               error={!!errors.amount}
               errorMessage={errors.amount?.message}
@@ -90,7 +102,6 @@ function CreateIncomeForm() {
               id="category"
               defaultValue={getValues().category}
               onValueChange={category => {
-                console.log(category);
                 setValue('category', category);
               }}
               disabled={isLoading}

@@ -2,19 +2,23 @@ import { Badge, Card, Metric, Text } from '@tremor/react';
 import { FC } from 'react';
 import { formatCurrency } from '../../utils/helpers';
 import { HiArrowTrendingDown, HiArrowTrendingUp } from 'react-icons/hi2';
+import { useUser } from '../auth/useUser';
 type Props = {
   label: string;
   current: number;
   prev: number;
 };
 const Stat: FC<Props> = ({ current, prev, label }) => {
+  const { user } = useUser();
+
   const diff = current - prev;
+  const currency = user?.user_metadata.currency;
 
   return (
     <Card>
       <Text>{label}</Text>
       <Metric className="mb-2 lg:mb-4">
-        {formatCurrency(current ?? 0, 'USD')}
+        {formatCurrency(current ?? 0, currency)}
       </Metric>
       <div className="flex items-center gap-4">
         {current && current > 0 ? (
@@ -24,7 +28,7 @@ const Stat: FC<Props> = ({ current, prev, label }) => {
         )}
         <small>
           <span className={diff > 0 ? 'text-green-500' : 'text-red-500'}>
-            {formatCurrency(Math.abs(diff), 'USD')}
+            {formatCurrency(Math.abs(diff), currency)}
           </span>{' '}
           to previous month
         </small>

@@ -6,11 +6,13 @@ import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import { useDeleteExpense } from './useDeleteExpense';
+import { useUser } from '../auth/useUser';
 
 type Props = {
   item: Expense;
 };
 const ExpenseRow: FC<Props> = ({ item }) => {
+  const { user } = useUser();
   const [open, setOpen] = useState(false);
 
   const { mutate: deleteExpense, isLoading } = useDeleteExpense();
@@ -36,7 +38,7 @@ const ExpenseRow: FC<Props> = ({ item }) => {
       <TableCell>{item.title}</TableCell>
       <TableCell className="hidden sm:table-cell">{item.date}</TableCell>
       <TableCell>
-        <Text>{formatCurrency(item.amount, 'USD')}</Text>
+        <Text>{formatCurrency(item.amount, user?.user_metadata.currency)}</Text>
       </TableCell>
       <TableCell className="space-x-3">
         <button onClick={() => setOpen(true)}>
