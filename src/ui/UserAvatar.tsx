@@ -12,7 +12,7 @@ function UserAvatar({ small }: Props) {
     <Avatar.Root
       className={`
     bg-black/20 inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle
-    ${small ? 'h-[35px] w-[35px]' : 'h-[45px] w-[45px]'}
+    ${small ? 'h-[30px] w-[30px]' : 'h-[45px] w-[45px]'}
     `}
     >
       <Avatar.Image

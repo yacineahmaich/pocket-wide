@@ -12,6 +12,7 @@ import Expenses from './pages/Expenses';
 import CreateIncome from './pages/CreateIncome';
 import EditExpense from './pages/EditExpense';
 import EditIncome from './pages/EditIncome';
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
           {
             path: 'category',
             element: <Category />,
+          },
+          {
+            path: 'profile',
+            element: <Profile />,
           },
         ],
       },

@@ -19,11 +19,9 @@ import FieldError from '../../ui/FieldError';
 import { useDropzone } from 'react-dropzone';
 import { useCreateExpense } from './useCreateExpense';
 import { useUser } from '../auth/useUser';
-import { useCurrencyModal } from '../../ui/CurrencyModalProvider';
 
 function CreateExpenseForm() {
   const { user } = useUser();
-  const { openCurrencyModal } = useCurrencyModal();
 
   const { mutate: createExpense, isLoading } = useCreateExpense();
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
@@ -50,11 +48,6 @@ function CreateExpenseForm() {
   });
 
   const onSubmit = handleSubmit(data => {
-    if (!user?.user_metadata.currency) {
-      openCurrencyModal();
-      return;
-    }
-
     createExpense({
       ...data,
       attachement: acceptedFiles[0],

@@ -18,11 +18,9 @@ import { incomeSchema } from '../../utils/validation/income';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDropzone } from 'react-dropzone';
 import { useCreateIncome } from './useCreateIncome';
-import { useCurrencyModal } from '../../ui/CurrencyModalProvider';
 import { useUser } from '../auth/useUser';
 
 function CreateIncomeForm() {
-  const { openCurrencyModal } = useCurrencyModal();
   const { user } = useUser();
 
   // Manage Form State
@@ -52,11 +50,6 @@ function CreateIncomeForm() {
   const { mutate: createIncome, isLoading } = useCreateIncome();
 
   const onSubmit = handleSubmit(data => {
-    if (!user?.user_metadata.currency) {
-      openCurrencyModal();
-      return;
-    }
-
     createIncome({
       ...data,
       attachement: acceptedFiles[0],
