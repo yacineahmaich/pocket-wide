@@ -9,3 +9,8 @@ interface Signup {
   password: string;
   passwordConfirmation: string;
 }
+
+interface UpdatePassword {
+  newPassword: string;
+  newPasswordConfirmation: string;
+}

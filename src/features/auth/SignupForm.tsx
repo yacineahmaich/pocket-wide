@@ -2,7 +2,7 @@ import { Button, Text, TextInput } from '@tremor/react';
 import { Link } from 'react-router-dom';
 import { signupSchema } from '../../utils/validation/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useSignup } from './useSignup';
 
 function SignupForm() {
@@ -16,7 +16,7 @@ function SignupForm() {
     resolver: yupResolver(signupSchema),
   });
 
-  const onSubmit: SubmitHandler<Signup> = function (data) {
+  const onSubmit = (data: Signup) => {
     signup(data);
   };
   return (

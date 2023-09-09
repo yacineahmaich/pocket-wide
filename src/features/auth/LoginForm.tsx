@@ -1,5 +1,5 @@
 import { Button, Text, TextInput } from '@tremor/react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../utils/validation/auth';
@@ -17,7 +17,7 @@ function LoginForm() {
     resolver: yupResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<Login> = async function (data) {
+  const onSubmit = async function (data: Login) {
     login(data, {
       onError: () => {
         reset({ password: '' });

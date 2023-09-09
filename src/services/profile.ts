@@ -1,3 +1,4 @@
+import { string } from 'yup';
 import supabase from './supabase';
 
 export const updateProfile = async ({
@@ -57,4 +58,12 @@ export const removeProfile = async ({ userId }: { userId: string }) => {
   if (userError) throw new Error(userError.message);
 
   return user;
+};
+
+export const updatePassword = async ({ password }: { password: string }) => {
+  const { error } = await supabase.auth.updateUser({
+    password,
+  });
+
+  if (error) throw new Error(error.message);
 };
