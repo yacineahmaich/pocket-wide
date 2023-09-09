@@ -4,11 +4,13 @@ import { MdEdit } from 'react-icons/md';
 import { useUser } from '../auth/useUser';
 import { useUpdateProfile } from './useUpdateProfile';
 import userAlt from '../../assets/user-alt.jpg';
+import { useRemoveProfile } from './useRemoveProfile';
 
 const UpadateProfile: React.FC = () => {
   const [profile, setProfile] = useState<File>();
   const { user } = useUser();
   const { mutate: updateProfile, isLoading } = useUpdateProfile();
+  const { mutate: removeProfile, isLoading: isRemoving } = useRemoveProfile();
 
   const profilePreview = profile ? URL.createObjectURL(profile) : null;
 
@@ -21,9 +23,7 @@ const UpadateProfile: React.FC = () => {
         <div className="relative w-fit rounded-full">
           <img
             src={profilePreview || user?.user_metadata.avatar_url || userAlt}
-            width={90}
-            height={90}
-            className="rounded-full mb-4 bg-gray-100"
+            className="rounded-full w-28 h-28 object-cover mb-4 bg-gray-100"
           />
           <label
             htmlFor="image"
@@ -50,12 +50,22 @@ const UpadateProfile: React.FC = () => {
                 { onSuccess: () => setProfile(undefined) }
               );
             }}
+            disabled={isLoading || isRemoving}
             loading={isLoading}
           >
             Update Profile
           </Button>
           {user?.user_metadata.avatar_url && (
-            <Button size="xs">remove Profile</Button>
+            <Button
+              size="xs"
+              onClick={() => {
+                removeProfile({ userId: user.id });
+              }}
+              disabled={isLoading || isRemoving}
+              loading={isRemoving}
+            >
+              remove Profile
+            </Button>
           )}
         </div>
       </div>

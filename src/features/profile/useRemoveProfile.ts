@@ -1,20 +1,20 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateProfile } from '../../services/profile';
+import { removeProfile } from '../../services/profile';
 import { toast } from 'sonner';
 
-export const useUpdateProfile = () => {
+export const useRemoveProfile = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: updateProfile,
+    mutationFn: removeProfile,
     onError: () => {
-      toast.error('Could not update profile');
+      toast.error('Could not remove profile')
     },
     onSuccess: user => {
       if (!user) return;
 
       queryClient.setQueryData(['user'], user);
-      toast.success('Profile updated');
+      toast.success('Profile removed');
     },
   });
 };

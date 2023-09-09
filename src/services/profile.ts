@@ -7,7 +7,7 @@ export const updateProfile = async ({
   profile: File;
   userId: string;
 }) => {
-  const path = `profiles/${userId}/${Date.now().toString()}`;
+  const path = `profiles/${userId}`;
 
   const { data, error } = await supabase.storage
     .from('pocket-wide')
@@ -24,14 +24,33 @@ export const updateProfile = async ({
     data.path
   }?version=${Date.now().toString()}`;
 
-  console.log(profilePath);
-
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.updateUser({
     data: {
       avatar_url: profilePath,
+    },
+  });
+
+  if (userError) throw new Error(userError.message);
+
+  return user;
+};
+
+export const removeProfile = async ({ userId }: { userId: string }) => {
+  const { error } = await supabase.storage
+    .from('pocket-wide')
+    .remove([`profiles/${userId}`]);
+
+  if (error) throw new Error(error.message);
+
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.updateUser({
+    data: {
+      avatar_url: '',
     },
   });
 
