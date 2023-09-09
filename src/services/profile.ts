@@ -1,4 +1,3 @@
-import { string } from 'yup';
 import supabase from './supabase';
 
 export const updateProfile = async ({

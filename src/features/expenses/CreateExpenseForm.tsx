@@ -14,7 +14,6 @@ import DatePicker from '../../ui/DatePicker';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { expenseSchema } from '../../utils/validation/expense';
-import { DevTool } from '@hookform/devtools';
 import FieldError from '../../ui/FieldError';
 import { useDropzone } from 'react-dropzone';
 import { useCreateExpense } from './useCreateExpense';
@@ -37,7 +36,6 @@ function CreateExpenseForm() {
     formState: { errors },
     handleSubmit,
     setValue,
-    control,
     getValues,
   } = useForm<CreateEditExpense>({
     defaultValues: {
@@ -56,9 +54,8 @@ function CreateExpenseForm() {
 
   return (
     <section className="overflow-y-auto">
-      <DevTool control={control} />
-      <div>
-        <form className="space-y-4" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
+        <div className="space-y-4">
           <div className="space-y-1">
             <Label htmlFor="title">Title</Label>
             <TextInput
@@ -156,8 +153,8 @@ function CreateExpenseForm() {
           <Button className="w-full mt-auto h-fit" loading={isLoading}>
             Create
           </Button>
-        </form>
-      </div>
+        </div>
+      </form>
     </section>
   );
 }

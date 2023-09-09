@@ -11,10 +11,10 @@ function UserAvatar({ size = 45 }: Props) {
 
   return (
     <Avatar.Root
-      className={`
+      className="
     bg-black/20 inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle
-    ${`w-[${size}px] h-[${size}px]`}
-    `}
+    "
+      style={{ width: `${size}px`, height: `${size}px` }}
     >
       <Avatar.Image
         className="h-full w-full rounded-[inherit] object-cover"

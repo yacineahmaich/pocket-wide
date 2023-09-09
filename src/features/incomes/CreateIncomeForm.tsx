@@ -1,4 +1,3 @@
-import { DevTool } from '@hookform/devtools';
 import Label from '../../ui/Label';
 import {
   Button,
@@ -58,9 +57,8 @@ function CreateIncomeForm() {
 
   return (
     <section className="overflow-y-auto">
-      <DevTool control={control} />
-      <div>
-        <form action="" className="space-y-4" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
+        <div className="space-y-4">
           <div className="space-y-1">
             <Label htmlFor="title">Title</Label>
             <TextInput
@@ -158,8 +156,8 @@ function CreateIncomeForm() {
           <Button className="w-full mt-auto h-fit" loading={isLoading}>
             Create
           </Button>
-        </form>
-      </div>
+        </div>
+      </form>
     </section>
   );
 }

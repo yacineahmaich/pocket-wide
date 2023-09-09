@@ -26,12 +26,12 @@ const UserDropdown: React.FC = () => {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           sideOffset={5}
-          className="min-w-[220px] animate-in data-[state=open]:slide-in-from-top-1 bg-gray-50 mt-0.5 z-10 rounded-md p-2 shadow-lg border border-gray-100"
+          className="min-w-[220px] animate-in data-[state=open]:slide-in-from-top-1 bg-gray-50 mt-0.5 z-10 rounded-md p-1 shadow-lg border border-gray-100"
         >
           <DropdownMenu.Item asChild>
             <Link
               to="/profile"
-              className="flex gap-1 items-center p-1 data-[highlighted]:bg-gray-200 outline-none rounded-full"
+              className="flex gap-1 items-center p-1 data-[highlighted]:bg-gray-200 outline-none rounded"
             >
               <Icon icon={HiUser} className="text-gray-600" />
               <span className="text-gray-600 text-sm">Profile</span>
@@ -39,7 +39,7 @@ const UserDropdown: React.FC = () => {
           </DropdownMenu.Item>
           <DropdownMenu.Item asChild>
             <button
-              className="flex w-full gap-1 items-center p-1 data-[highlighted]:bg-gray-200 outline-none rounded-full"
+              className="flex w-full gap-1 items-center p-1 data-[highlighted]:bg-gray-200 outline-none rounded"
               onClick={() => logout()}
             >
               <Icon icon={BiLogOutCircle} className="text-gray-600" />
