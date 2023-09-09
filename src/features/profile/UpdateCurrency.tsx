@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Select, SelectItem, Text } from '@tremor/react';
-import { useCurrencies } from '../shared/useCurrencies';
-import { useUpdateCurrency } from '../shared/useUpdateCurrency';
+import { useCurrencies } from './useCurrencies';
+import { useUpdateCurrency } from './useUpdateCurrency';
 import { useUser } from '../auth/useUser';
 
 type UpdateCurrencyProps = {};
@@ -42,7 +42,6 @@ const UpdateCurrency: React.FC<UpdateCurrencyProps> = () => {
 
             updateCurrency({ currency });
           }}
-          disabled={isLoading}
           loading={isLoading}
         >
           Update Currency

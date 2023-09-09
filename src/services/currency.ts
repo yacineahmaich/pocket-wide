@@ -1,11 +1,15 @@
 import supabase from './supabase';
 
 export const updateCurrency = async ({ currency }: { currency: string }) => {
-  await supabase.auth.updateUser({
+  const { data, error } = await supabase.auth.updateUser({
     data: {
       currency,
     },
   });
+
+  if (error) throw new Error(error.message);
+
+  return data.user;
 };
 
 export const getCurrencies = async () => {
