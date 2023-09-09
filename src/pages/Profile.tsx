@@ -1,5 +1,5 @@
 import { Title } from '@tremor/react';
-import UpadateProfileImage from '../features/profile/UpadateProfileImage';
+import UpadateProfileImage from '../features/profile/UpadateProfile';
 import UpdatePassword from '../features/profile/UpdatePassword';
 import UpdateCurrency from '../features/profile/UpdateCurrency';
 

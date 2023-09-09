@@ -1,18 +1,19 @@
 import * as Avatar from '@radix-ui/react-avatar';
 import { useUser } from '../features/auth/useUser';
+import userAlt from '../assets/user-alt.jpg';
 
 type Props = {
-  small?: boolean;
+  size?: number;
 };
 
-function UserAvatar({ small }: Props) {
+function UserAvatar({ size = 45 }: Props) {
   const { user } = useUser();
 
   return (
     <Avatar.Root
       className={`
     bg-black/20 inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle
-    ${small ? 'h-[30px] w-[30px]' : 'h-[45px] w-[45px]'}
+    ${`w-[${size}px] h-[${size}px]`}
     `}
     >
       <Avatar.Image
@@ -20,12 +21,8 @@ function UserAvatar({ small }: Props) {
         src={user?.user_metadata.avatar_url}
         alt="Colm Tuite"
       />
-      <Avatar.Fallback
-        className="text-gray-400 leading-1 flex h-full w-full items-center justify-center bg-white  text-[15px] font-medium uppercase"
-        delayMs={600}
-      >
-        {user?.user_metadata?.username?.[0] ??
-          user?.user_metadata?.full_name?.[0]}
+      <Avatar.Fallback className="h-full w-full bg-gray-50" delayMs={600}>
+        <img src={userAlt} className="w-full h-full" />
       </Avatar.Fallback>
     </Avatar.Root>
   );

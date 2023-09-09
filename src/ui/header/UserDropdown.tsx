@@ -16,9 +16,9 @@ const UserDropdown: React.FC = () => {
     <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>
         <button className="flex items-center px-2 py-1 bg-gray-100 rounded-full">
-          <UserAvatar small />
+          <UserAvatar size={30} />
           <Text className="px-3">
-            {user?.user_metadata.username ?? user?.user_metadata.full_name}
+            {user?.user_metadata.full_name || user?.user_metadata.user_name}
           </Text>
           <Icon icon={HiOutlineBars3BottomRight} color="gray" />
         </button>
