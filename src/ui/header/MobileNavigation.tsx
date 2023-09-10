@@ -1,7 +1,7 @@
 import { MenuAlt3Icon } from '@heroicons/react/solid';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button, Icon } from '@tremor/react';
-import { HiXMark } from 'react-icons/hi2';
+import { HiUser, HiXMark } from 'react-icons/hi2';
 import UserAvatar from '../UserAvatar';
 import { useUser } from '../../features/auth/useUser';
 import { NAVIGATION } from '../../utils/constants';
@@ -11,14 +11,14 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { useLogout } from '../../features/auth/useLogout';
 
 function MobileNavigation() {
+  const _navigate = useNavigate();
   const [open, setOpen] = useState(false);
-
   const { user } = useUser();
   const { mutate: logout, isLoading } = useLogout();
 
-  const navigate = useNavigate();
-  const handleNavigate = (to: string) => {
-    navigate(to);
+
+  const navigate = (to: string) => {
+    _navigate(to);
     setOpen(false);
   };
 
@@ -56,7 +56,7 @@ function MobileNavigation() {
               <ul className="space-y-4 text-sm font-medium text-gray-400">
                 {NAVIGATION.map(item => (
                   <li key={item.label}>
-                    <a role="button" onClick={() => handleNavigate(item.to)}>
+                    <a role="button" onClick={() => navigate(item.to)}>
                       {item.label}
                     </a>
                   </li>
@@ -65,12 +65,21 @@ function MobileNavigation() {
             </nav>
           </div>
 
-          <div className="p-4 mt-auto border-t border-gray-200">
+          <div className="flex flex-col items-center px-4 py-2 space-y-2 mt-auto border-t border-gray-200">
+            <Button
+              icon={HiUser}
+              color="gray"
+              size="xs"
+              className="w-full"
+              onClick={() => navigate('/profile')}
+            >
+              Profile
+            </Button>
             <Button
               icon={FaSignOutAlt}
-              variant="light"
               color="red"
               size="xs"
+              className="w-full"
               loading={isLoading}
               onClick={() => logout()}
             >

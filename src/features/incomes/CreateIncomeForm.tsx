@@ -22,13 +22,11 @@ import { useUser } from '../auth/useUser';
 function CreateIncomeForm() {
   const { user } = useUser();
 
-  // Manage Form State
   const {
     register,
     formState: { errors },
     handleSubmit,
     setValue,
-    control,
     getValues,
   } = useForm<CreateEditIncome>({
     defaultValues: {
