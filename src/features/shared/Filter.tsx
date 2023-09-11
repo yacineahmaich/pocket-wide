@@ -61,7 +61,7 @@ function Filter({ onFilter, loading }: Props) {
     }
   );
 
-  const isFiltered = Object.entries(filter).some(([_, value]) => value);
+  const isFiltered = Object.entries(filter).some(field => field[1]);
 
   return (
     <section className="max-w-[450px]">
@@ -78,7 +78,14 @@ function Filter({ onFilter, loading }: Props) {
               size="xs"
               onClick={() => {
                 clearFilter();
-                reset();
+                reset({
+                  date: {},
+                  search: '',
+                  category: '',
+                  maxAmount: '',
+                  minAmount: '',
+                  tag: '',
+                });
               }}
             >
               clear
