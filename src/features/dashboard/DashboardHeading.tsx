@@ -1,4 +1,4 @@
-import { DateRangePicker, DateRangePickerValue, Title } from '@tremor/react';
+import { DateRangePicker, DateRangePickerValue } from '@tremor/react';
 import { formatDate } from '../../utils/helpers';
 import { useFilter } from '../shared/useFilter';
 
@@ -11,10 +11,7 @@ function DashboardHeading() {
   };
 
   return (
-    <div className="my-10 flex items-center justify-between">
-      <Title className="text-center text-gray-400">
-        Monitor your expenses
-      </Title>
+    <div className="my-10 flex items-center justify-end">
       <DateRangePicker
         value={currentDateRange}
         onValueChange={date =>
