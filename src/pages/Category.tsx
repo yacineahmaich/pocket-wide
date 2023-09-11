@@ -7,7 +7,7 @@ import {
 import ExpensesPerCategory from '../features/category/ExpensesPerCategory';
 import CategoryChart from '../features/category/CategoryChart';
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 function Category() {
   const [date, setDate] = useState<DateRangePickerValue>();

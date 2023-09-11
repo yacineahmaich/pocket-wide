@@ -6,7 +6,7 @@ import Filter from '../features/shared/Filter';
 import MobileFilter from '../features/shared/MobileFilter';
 import { useState } from 'react';
 import { useExpenses } from '../features/expenses/useExpenses';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 function Expenses() {
   const [open, setOpen] = useState(false);

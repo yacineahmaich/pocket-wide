@@ -1,5 +1,5 @@
 import { Title } from '@tremor/react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import UpadateProfileImage from '../features/profile/UpadateProfile';
 import UpdateCurrency from '../features/profile/UpdateCurrency';
 import UpdatePassword from '../features/profile/UpdatePassword';
