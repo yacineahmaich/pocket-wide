@@ -1,64 +1,52 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { getExpenses } from '../../services/expenses';
 import { useSearchParams } from 'react-router-dom';
-import { getPaginationParams } from '../../utils/helpers';
-import { Filters } from '../../types/filter';
-import { DateRangePickerValue } from '@tremor/react';
+import { getExpenses } from '../../services/expenses';
 import { PAGE_SIZE } from '../../utils/config';
+import { getPaginationParams } from '../../utils/helpers';
+import { useFilter } from '../shared/useFilter';
 
 export const useExpenses = () => {
   const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
 
-  const currentFrom = searchParams.get('from');
-  const currentTo = searchParams.get('to');
-  const date: DateRangePickerValue = {
-    from: currentFrom ? new Date(currentFrom) : undefined,
-    to: currentTo ? new Date(currentTo) : undefined,
-  };
-  const search = searchParams.get('search') || '';
-  const minAmount = searchParams.get('min-amount') || '';
-  const maxAmount = searchParams.get('max-amount') || '';
-  const category = searchParams.get('category') || '';
-  const tag = searchParams.get('tag') || '';
-
-  const filterOptions: Filters = {
-    date,
-    search,
-    minAmount,
-    maxAmount,
-    category,
-    tag,
-  };
+  const { filter } = useFilter([
+    'from',
+    'to',
+    'search',
+    'min-amount',
+    'max-amount',
+    'category',
+    'tag',
+  ]);
 
   return useQuery({
-    queryKey: ['expenses', { page, filterOptions }],
+    queryKey: ['expenses', { page, filter }],
     queryFn: () =>
       getExpenses({
         pagination: getPaginationParams(page),
-        filters: filterOptions,
+        filter,
       }),
     onSuccess({ count }) {
       // PRE-FETCHING
       const pageCount = Math.ceil(count ?? 0 / PAGE_SIZE);
       if (page < pageCount) {
         queryClient.prefetchQuery({
-          queryKey: ['expenses', { page: page + 1, filterOptions }],
+          queryKey: ['expenses', { page: page + 1, filter }],
           queryFn: () =>
             getExpenses({
               pagination: getPaginationParams(page + 1),
-              filters: filterOptions,
+              filter,
             }),
         });
       }
       if (page > 1) {
         queryClient.prefetchQuery({
-          queryKey: ['expenses', { page: page - 1, filterOptions }],
+          queryKey: ['expenses', { page: page - 1, filter }],
           queryFn: () =>
             getExpenses({
               pagination: getPaginationParams(page - 1),
-              filters: filterOptions,
+              filter,
             }),
         });
       }

@@ -7,7 +7,9 @@ export const formatCurrency = (price: number, currency = 'USD') => {
   }).format(price);
 };
 
-export const formatDate = (date: string | Date) => {
+export const formatDate = (date?: string | Date) => {
+  if (!date) return;
+
   return new Date(date).toLocaleDateString('en-CA');
 };
 

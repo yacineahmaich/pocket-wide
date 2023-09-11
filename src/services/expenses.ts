@@ -1,39 +1,37 @@
-import { Filters } from '../types/filter';
 import { formatDate } from '../utils/helpers';
 import supabase from './supabase';
 
 type Params = {
   pagination: { from: number; to: number };
-  filters: Filters;
+  filter: { [key: string]: string };
 };
 
 export const getExpenses = async ({
   pagination: { from, to },
-  filters,
+  filter,
 }: Params): Promise<{ data: Expense[]; count: number | null }> => {
   let query = supabase.from('expenses').select('*', { count: 'exact' });
 
-  if (filters.date.from) {
-    query = query.gte('date', formatDate(filters.date.from));
+  if (filter.from) {
+    query = query.gte('date', formatDate(filter.from));
   }
-  if (filters.date.to) {
-    query = query.lte('date', formatDate(filters.date.to));
+  if (filter.to) {
+    query = query.lte('date', formatDate(filter.to));
   }
-  if (filters.search) {
-    query = query.ilike('title', `%${filters.search}%`);
-    // query = query.ilike('description', `%${filters.search}%`);
+  if (filter.search) {
+    query = query.ilike('title', `%${filter.search}%`);
   }
-  if (filters.minAmount) {
-    query = query.gte('amount', filters.minAmount);
+  if (filter.minAmount) {
+    query = query.gte('amount', filter.minAmount);
   }
-  if (filters.maxAmount) {
-    query = query.lte('amount', filters.maxAmount);
+  if (filter.maxAmount) {
+    query = query.lte('amount', filter.maxAmount);
   }
-  if (filters.category) {
-    query = query.eq('category', filters.category);
+  if (filter.category) {
+    query = query.eq('category', filter.category);
   }
-  if (filters.tag) {
-    query = query.ilike('tags', `%${filters.tag}%`);
+  if (filter.tag) {
+    query = query.ilike('tags', `%${filter.tag}%`);
   }
 
   const { data, count, error } = await query.range(from, to);

@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet-async';
 
 function Category() {
   const [date, setDate] = useState<DateRangePickerValue>();
-  console.log(date);
+
   const to = new Date(date?.to!);
 
   const isThesameDay = date?.from?.getTime() === date?.to?.getTime();
@@ -32,7 +32,11 @@ function Category() {
         <Title className="text-center text-gray-400">Category</Title>
         <div className="flex items-center justify-between mt-10">
           <Text>Expenses Per Category</Text>
-          <DateRangePicker value={date} onValueChange={setDate} />
+          <DateRangePicker
+            value={date}
+            onValueChange={setDate}
+            defaultValue={{ selectValue: '' }}
+          />
         </div>
         <ExpensesPerCategory date={selectedDate} />
         <CategoryChart date={selectedDate} />

@@ -9,10 +9,10 @@ import {
 import Label from '../../ui/Label';
 import { HiXMark } from 'react-icons/hi2';
 import { useForm } from 'react-hook-form';
-import { useSearchParams } from 'react-router-dom';
 import { formatDate } from '../../utils/helpers';
 import { categories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
+import { useFilter } from './useFilter';
 
 type Props = {
   onFilter?: () => void;
@@ -20,79 +20,48 @@ type Props = {
 };
 
 function Filter({ onFilter, loading }: Props) {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const currentFrom = searchParams.get('from') || '';
-  const currentTo = searchParams.get('to') || '';
+  const { filter, setFilter, clearFilter } = useFilter([
+    'from',
+    'to',
+    'search',
+    'min-amount',
+    'max-amount',
+    'category',
+    'tag',
+  ]);
 
   const currentDate: DateRangePickerValue = {
-    from: currentFrom ? new Date(currentFrom) : undefined,
-    to: currentTo ? new Date(currentTo) : undefined,
+    from: filter['from'] ? new Date(filter['from']) : undefined,
+    to: filter['to'] ? new Date(filter['to']) : undefined,
   };
-  const currentSearch = searchParams.get('search') || '';
-  const currentMinAmount = searchParams.get('min-amount') || '';
-  const currentMaxAmount = searchParams.get('max-amount') || '';
-  const currentCategory = searchParams.get('category') || '';
-  const currentTag = searchParams.get('tag') || '';
 
-  const { register, getValues, setValue, handleSubmit, reset } = useForm({
+  const { register, watch, setValue, handleSubmit, reset } = useForm({
     defaultValues: {
       date: currentDate,
-      search: currentSearch,
-      minAmount: currentMinAmount,
-      maxAmount: currentMaxAmount,
-      category: currentCategory,
-      tag: currentTag,
+      search: filter['search'],
+      minAmount: filter['min-amount'],
+      maxAmount: filter['max-amount'],
+      category: filter['category'],
+      tag: filter['tag'],
     },
   });
 
-  const handleClearFilters = () => {
-    setSearchParams('');
-    reset();
-    onFilter && onFilter();
-  };
-
   const onSubmit = handleSubmit(
     ({ date, search, minAmount, maxAmount, category, tag }) => {
-      if (date.from) {
-        searchParams.set('from', formatDate(date.from));
-      } else {
-        searchParams.delete('from');
-      }
-      if (date.to) {
-        searchParams.set('to', formatDate(date.to));
-      } else {
-        searchParams.delete('to');
-      }
-      if (search) {
-        searchParams.set('search', search);
-      } else {
-        searchParams.delete('search');
-      }
-      if (minAmount) {
-        searchParams.set('min-amount', minAmount);
-      } else {
-        searchParams.delete('min-amount');
-      }
-      if (maxAmount) {
-        searchParams.set('max-amount', maxAmount);
-      } else {
-        searchParams.delete('max-amount');
-      }
-      if (category) {
-        searchParams.set('category', category);
-      } else {
-        searchParams.delete('category');
-      }
-      if (tag) {
-        searchParams.set('tag', tag);
-      } else {
-        searchParams.delete('tag');
-      }
-
-      setSearchParams(searchParams);
+      setFilter({
+        from: formatDate(date.from),
+        to: formatDate(date.to),
+        search,
+        'min-amount': minAmount,
+        'max-amount': maxAmount,
+        category,
+        tag,
+      });
       onFilter && onFilter();
     }
   );
+
+  const isFiltered = Object.entries(filter).some(([_, value]) => value);
 
   return (
     <section className="max-w-[450px]">
@@ -101,21 +70,27 @@ function Filter({ onFilter, loading }: Props) {
           <Button color="blue" size="xs">
             Filter
           </Button>
-          <Button
-            type="button"
-            variant="light"
-            icon={HiXMark}
-            size="xs"
-            onClick={handleClearFilters}
-          >
-            clear
-          </Button>
+          {isFiltered && (
+            <Button
+              type="button"
+              variant="light"
+              icon={HiXMark}
+              size="xs"
+              onClick={() => {
+                clearFilter();
+                reset();
+              }}
+            >
+              clear
+            </Button>
+          )}
         </div>
         <div>
           <Label>Date</Label>
           <DateRangePicker
-            defaultValue={getValues('date')}
+            value={watch('date')}
             onValueChange={value => setValue('date', value)}
+            defaultValue={{ selectValue: '' }}
             disabled={loading}
           />
         </div>
@@ -135,11 +110,8 @@ function Filter({ onFilter, loading }: Props) {
           <Label>Category</Label>
           <Select
             id="category"
-            defaultValue={getValues('category')}
-            onValueChange={category => {
-              console.log(category);
-              setValue('category', category);
-            }}
+            value={watch('category')}
+            onValueChange={category => setValue('category', category)}
             disabled={loading}
           >
             {categories.map(category => {
