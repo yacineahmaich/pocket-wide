@@ -1,8 +1,7 @@
 import { categories } from '../utils/constants';
 import {
   formatCurrency,
-  formatDate,
-  getDateFromStartDate,
+  formatDate
 } from '../utils/helpers';
 import supabase from './supabase';
 
@@ -77,15 +76,20 @@ export const getStats = async () => {
   };
 };
 
-export const getPerformance = async (): Promise<
-  { date: string; expenses: number; incomes: number }[]
-> => {
-  const date = formatDate(getDateFromStartDate(new Date()));
+export const getPerformance = async (dateRange: {
+  from: string;
+  to: string;
+}): Promise<{ date: string; expenses: number; incomes: number }[]> => {
+  const from = dateRange.from
+    ? formatDate(dateRange.from)
+    : formatDate(new Date('01,01,2023'));
+  const to = dateRange.to ? formatDate(dateRange.to) : formatDate(new Date());
 
   const { data: expensesData, error: expensesError } = await supabase
     .from('expenses')
     .select('*')
-    .gte('date', date);
+    .gte('date', from)
+    .lte('date', to);
 
   if (expensesError) {
     throw new Error(expensesError.message);
@@ -93,7 +97,8 @@ export const getPerformance = async (): Promise<
   const { data: incomesData, error: incomesError } = await supabase
     .from('incomes')
     .select('*')
-    .gte('date', date);
+    .gte('date', from)
+    .lte('date', to);
 
   if (incomesError) {
     throw new Error(incomesError.message);
@@ -128,20 +133,28 @@ export const getPerformance = async (): Promise<
   return x;
 };
 
-export const getCategoriesOverview = async () => {
-  const date = new Date();
-  date.setDate(1);
+export const getCategoriesOverview = async (dateRange: {
+  from: string;
+  to: string;
+}) => {
+  const from = dateRange.from
+    ? formatDate(dateRange.from)
+    : formatDate(new Date('01,01,2023'));
+  const to = dateRange.to ? formatDate(dateRange.to) : formatDate(new Date());
+
   const { data: expenses, error: expensesError } = await supabase
     .from('expenses')
     .select<'*', Expense>('*')
-    .gte('date', formatDate(date));
+    .gte('date', from)
+    .lte('date', to);
 
   if (expensesError) throw new Error(expensesError.message);
 
   const { data: incomes, error: incomesError } = await supabase
     .from('incomes')
     .select<'*', Income>('*')
-    .gte('date', formatDate(date));
+    .gte('date', from)
+    .lte('date', to);
 
   if (incomesError) throw new Error(incomesError.message);
 
@@ -158,9 +171,6 @@ export const getCategoriesOverview = async () => {
       : inc.amount;
     return acc;
   }, {} as { [key: string]: number });
-
-  console.log(expensesPerCategory);
-  console.log(incomesPerCategory);
 
   const transformedExpenses = Object.entries(expensesPerCategory).map(
     ([name, value]) => ({

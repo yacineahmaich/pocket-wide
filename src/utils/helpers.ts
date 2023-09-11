@@ -7,10 +7,11 @@ export const formatCurrency = (price: number, currency = 'USD') => {
   }).format(price);
 };
 
-export const formatDate = (date?: string | Date) => {
+export const formatDate = (date?: string | Date, format = 'short') => {
   if (!date) return;
 
-  return new Date(date).toLocaleDateString('en-CA');
+  // @ts-ignore
+  return new Date(date).toLocaleDateString('en-CA', { dateStyle: format });
 };
 
 export const getDateFromStartDate = (date: Date | string) => {

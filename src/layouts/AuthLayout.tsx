@@ -26,7 +26,6 @@ function AuthLayout() {
             </Button>
             <Button
               icon={FaGithub}
-              variant="primary"
               color="gray"
               className="w-full"
               onClick={() => signinWithGithub()}

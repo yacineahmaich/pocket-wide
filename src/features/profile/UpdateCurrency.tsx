@@ -4,9 +4,7 @@ import { useCurrencies } from './useCurrencies';
 import { useUpdateCurrency } from './useUpdateCurrency';
 import { useUser } from '../auth/useUser';
 
-type UpdateCurrencyProps = {};
-
-const UpdateCurrency: React.FC<UpdateCurrencyProps> = () => {
+const UpdateCurrency: React.FC = () => {
   const { user } = useUser();
   const [currency, setCurrency] = React.useState<string>(
     user?.user_metadata.currency

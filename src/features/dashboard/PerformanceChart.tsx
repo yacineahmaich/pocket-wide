@@ -1,11 +1,13 @@
 import { useMemo } from 'react';
-import { formatCurrency } from '../../utils/helpers';
+import { formatCurrency, formatDate } from '../../utils/helpers';
 import { AreaChart, Card, Text, Title } from '@tremor/react';
 import { usePerformance } from './usePerformance';
 import animationData from '../../assets/lottie/chart.json';
 import Lottie from 'lottie-react';
+import { useFilter } from '../shared/useFilter';
 
 function PerformanceChart() {
+  const { filter } = useFilter(['from', 'to']);
   const { data, isLoading } = usePerformance();
 
   const sortedData = useMemo(() => {
@@ -14,9 +16,12 @@ function PerformanceChart() {
     );
   }, [data]);
 
+  const from = filter.from ? `from ${formatDate(filter.from, 'medium')}` : '';
+  const to = filter.to ? `to ${formatDate(filter.to, 'medium')}` : '';
+
   return (
     <Card className="md:col-span-2">
-      <Title>Current Month</Title>
+      <Title>{from || to ? `${from} ${to}` : 'All time'}</Title>
       <Text>Expense / income</Text>
       {isLoading ? (
         <Lottie animationData={animationData} />
