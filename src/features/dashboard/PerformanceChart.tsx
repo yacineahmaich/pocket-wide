@@ -5,8 +5,10 @@ import { usePerformance } from './usePerformance';
 import animationData from '../../assets/lottie/chart.json';
 import Lottie from 'lottie-react';
 import { useFilter } from '../shared/useFilter';
+import { useUser } from '../auth/useUser';
 
 function PerformanceChart() {
+  const { user } = useUser();
   const { filter } = useFilter(['from', 'to']);
   const { data, isLoading } = usePerformance();
 
@@ -20,7 +22,7 @@ function PerformanceChart() {
   const to = filter.to ? `to ${formatDate(filter.to, 'medium')}` : '';
 
   return (
-    <Card className="md:col-span-2">
+    <Card className="md:col-span-2 h-fit">
       <Title>{from || to ? `${from} ${to}` : 'All time'}</Title>
       <Text>Expense / income</Text>
       {isLoading ? (
@@ -32,7 +34,9 @@ function PerformanceChart() {
           index="date"
           categories={['expenses', 'incomes']}
           colors={['indigo', 'rose']}
-          valueFormatter={value => formatCurrency(value, 'USD')}
+          valueFormatter={value =>
+            formatCurrency(value, user?.user_metadata.currency)
+          }
         />
       )}
     </Card>

@@ -1,8 +1,5 @@
 import { categories } from '../utils/constants';
-import {
-  formatCurrency,
-  formatDate
-} from '../utils/helpers';
+import { formatCurrency, formatDate } from '../utils/helpers';
 import supabase from './supabase';
 
 export const getStats = async () => {
@@ -133,28 +130,31 @@ export const getPerformance = async (dateRange: {
   return x;
 };
 
-export const getCategoriesOverview = async (dateRange: {
+export const getCategoriesOverview = async ({
+  from,
+  to,
+  currency,
+}: {
   from: string;
   to: string;
+  currency: string;
 }) => {
-  const from = dateRange.from
-    ? formatDate(dateRange.from)
-    : formatDate(new Date('01,01,2023'));
-  const to = dateRange.to ? formatDate(dateRange.to) : formatDate(new Date());
+  const startDate = from ? formatDate(from) : formatDate(new Date("01,01,2023"));
+  const endDate = to ? formatDate(to) : formatDate(new Date());
 
   const { data: expenses, error: expensesError } = await supabase
     .from('expenses')
     .select<'*', Expense>('*')
-    .gte('date', from)
-    .lte('date', to);
+    .gte('date', startDate)
+    .lte('date', endDate);
 
   if (expensesError) throw new Error(expensesError.message);
 
   const { data: incomes, error: incomesError } = await supabase
     .from('incomes')
     .select<'*', Income>('*')
-    .gte('date', from)
-    .lte('date', to);
+    .gte('date', startDate)
+    .lte('date', endDate);
 
   if (incomesError) throw new Error(incomesError.message);
 
@@ -175,14 +175,14 @@ export const getCategoriesOverview = async (dateRange: {
   const transformedExpenses = Object.entries(expensesPerCategory).map(
     ([name, value]) => ({
       name,
-      value: formatCurrency(value, 'USD'),
+      value: formatCurrency(value, currency ?? 'USD'),
       icon: categories.find(c => c.key === name)?.Icon,
     })
   );
   const transformedIncomes = Object.entries(incomesPerCategory).map(
     ([name, value]) => ({
       name,
-      value: formatCurrency(value, 'USD'),
+      value: formatCurrency(value, currency ?? 'USD'),
       icon: categories.find(c => c.key === name)?.Icon,
     })
   );
