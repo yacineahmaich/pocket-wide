@@ -14,6 +14,10 @@ function LoginForm() {
     formState: { errors },
     reset,
   } = useForm<Login>({
+    defaultValues: {
+      email: 'demo@example.com',
+      password: 'demodemo@',
+    },
     resolver: yupResolver(loginSchema),
   });
 

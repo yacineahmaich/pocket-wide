@@ -1,6 +1,5 @@
 import * as Avatar from '@radix-ui/react-avatar';
 import { useUser } from '../features/auth/useUser';
-import userAlt from '../assets/user-alt.jpg';
 
 type Props = {
   size?: number;
@@ -22,7 +21,15 @@ function UserAvatar({ size = 45 }: Props) {
         alt="Colm Tuite"
       />
       <Avatar.Fallback className="h-full w-full bg-gray-50" delayMs={600}>
-        <img src={userAlt} className="w-full h-full" />
+        <img
+          src={`https://ui-avatars.com/api/?background=fff&color=#000&name=${
+            user?.user_metadata.name ||
+            user?.user_metadata.full_name ||
+            user?.user_metadata.user_name ||
+            user?.email?.split('@')?.at(0)
+          }`}
+          className="w-full h-full"
+        />
       </Avatar.Fallback>
     </Avatar.Root>
   );

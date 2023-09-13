@@ -3,7 +3,6 @@ import { Button, Card, Icon, Text } from '@tremor/react';
 import { MdEdit } from 'react-icons/md';
 import { useUser } from '../auth/useUser';
 import { useUpdateProfile } from './useUpdateProfile';
-import userAlt from '../../assets/user-alt.jpg';
 import { useRemoveProfile } from './useRemoveProfile';
 
 const UpadateProfile: React.FC = () => {
@@ -12,6 +11,12 @@ const UpadateProfile: React.FC = () => {
   const { mutate: updateProfile, isLoading } = useUpdateProfile();
   const { mutate: removeProfile, isLoading: isRemoving } = useRemoveProfile();
 
+  const userProfile = `https://ui-avatars.com/api/?background=f5f5f5&color=#000&name=${
+    user?.user_metadata.name ||
+    user?.user_metadata.full_name ||
+    user?.user_metadata.user_name ||
+    user?.email?.split('@')?.at(0)
+  }`;
   const profilePreview = profile ? URL.createObjectURL(profile) : null;
 
   return (
@@ -22,7 +27,9 @@ const UpadateProfile: React.FC = () => {
       <div className="p-4">
         <div className="relative w-fit rounded-full">
           <img
-            src={profilePreview || user?.user_metadata.avatar_url || userAlt}
+            src={
+              profilePreview || user?.user_metadata.avatar_url || userProfile
+            }
             className="rounded-full w-28 h-28 object-cover mb-4 bg-gray-100"
           />
           <label
