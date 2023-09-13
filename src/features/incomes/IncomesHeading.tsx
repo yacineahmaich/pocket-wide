@@ -13,7 +13,7 @@ function IncomesHeading() {
       <div>
         <Button
           variant="light"
-          className="mr-3 md:hidden"
+          className="mr-3 lg:hidden"
           onClick={() => setOpen(true)}
         >
           <Icon
@@ -31,7 +31,7 @@ function IncomesHeading() {
             variant="light"
             size="xs"
             icon={FaArrowUp}
-            className="hidden md:flex"
+            className="hidden lg:flex"
           >
             Add Income
           </Button>
@@ -39,7 +39,7 @@ function IncomesHeading() {
             icon={FaPen}
             color="blue"
             variant="solid"
-            className="md:hidden"
+            className="lg:hidden"
             size="xs"
           />
         </Link>
