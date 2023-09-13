@@ -13,12 +13,17 @@ import CreateIncome from './pages/CreateIncome';
 import EditExpense from './pages/EditExpense';
 import EditIncome from './pages/EditIncome';
 import Profile from './pages/Profile';
+import Landing from './pages/Langing';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     children: [
+      {
+        path: '/welcome',
+        element: <Landing />,
+      },
       // Auth
       {
         element: <AuthLayout />,
