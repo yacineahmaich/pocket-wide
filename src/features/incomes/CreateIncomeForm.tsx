@@ -10,7 +10,7 @@ import {
 import DatePicker from '../../ui/DatePicker';
 import FieldError from '../../ui/FieldError';
 import CategoryIcon from '../../ui/CategorySelect';
-import { categories } from '../../utils/constants';
+import { incomeCategories } from '../../utils/constants';
 import TextArea from '../../ui/TextArea';
 import { useForm } from 'react-hook-form';
 import { incomeSchema } from '../../utils/validation/income';
@@ -95,8 +95,10 @@ function CreateIncomeForm() {
               }}
               disabled={isLoading}
             >
-              {categories.map(category => {
-                const CIcon = () => <CategoryIcon categoryKey={category.key} />;
+              {incomeCategories.map(category => {
+                const CIcon = () => (
+                  <CategoryIcon categoryKey={category.key} type="income" />
+                );
 
                 return (
                   <SelectItem

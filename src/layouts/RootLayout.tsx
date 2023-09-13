@@ -7,7 +7,7 @@ function RootLayout() {
   return isLoading ? null : (
     <>
       <Outlet />
-      <ScrollRestoration getKey={location => location.pathname} />
+      <ScrollRestoration getKey={location => location.key} />
     </>
   );
 }

@@ -95,7 +95,9 @@ const EditIncomeForm: FC<Props> = () => {
               disabled={isUpdating}
             >
               {categories.map(category => {
-                const CIcon = () => <CategoryIcon categoryKey={category.key} />;
+                const CIcon = () => (
+                  <CategoryIcon categoryKey={category.key} type="income" />
+                );
 
                 return (
                   <SelectItem

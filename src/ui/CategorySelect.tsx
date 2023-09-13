@@ -1,14 +1,19 @@
-import { categories } from '../utils/constants';
+import { categories, incomeCategories } from '../utils/constants';
 
 interface Props {
   categoryKey: string;
   variant?: 'categorySelect' | 'category';
+  type?: 'expense' | 'income';
 }
 
 const CategoryIcon = (props: Props) => {
-  const { categoryKey, variant = 'categorySelect' } = props;
+  const { categoryKey, variant = 'categorySelect', type = 'expense' } = props;
 
-  const category = categories.find(category => category.key === categoryKey);
+  const categoriesList = type === 'expense' ? categories : incomeCategories;
+
+  const category = categoriesList.find(
+    category => category.key === categoryKey
+  );
 
   if (!category) return null;
 

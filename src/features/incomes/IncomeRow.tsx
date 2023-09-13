@@ -32,7 +32,7 @@ const IncomeRow: FC<Props> = ({ item }) => {
     <TableRow key={item.title}>
       <TableCell className="hidden sm:table-cell">
         <Text>
-          <CategoryIcon categoryKey={item.category} />
+          <CategoryIcon categoryKey={item.category} type="income" />
         </Text>
       </TableCell>
       <TableCell>{item.title}</TableCell>
