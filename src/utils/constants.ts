@@ -1,24 +1,24 @@
-import {
-  AcademicCapIcon,
-  AdjustmentsIcon,
-  BriefcaseIcon,
-  ChartBarIcon,
-  CurrencyDollarIcon,
-  FilmIcon,
-  GlobeIcon,
-  HomeIcon,
-  LibraryIcon,
-  PlusIcon,
-  ShoppingBagIcon,
-  TruckIcon,
-  UserCircleIcon,
-} from '@heroicons/react/solid';
 import { AiOutlineGift } from 'react-icons/ai';
 import { BiBadgeCheck } from 'react-icons/bi';
 import { BsGraphUpArrow, BsLaptop } from 'react-icons/bs';
 import { CgMathPercent } from 'react-icons/cg';
 import { CiBadgeDollar } from 'react-icons/ci';
 import { HiOutlineHomeModern } from 'react-icons/hi2';
+import {
+  HiAcademicCap,
+  HiAdjustments,
+  HiBriefcase,
+  HiChartBar,
+  HiCurrencyDollar,
+  HiFilm,
+  HiGlobe,
+  HiHome,
+  HiLibrary,
+  HiPlus,
+  HiShoppingBag,
+  HiTruck,
+  HiUserCircle,
+} from 'react-icons/hi';
 import {
   MdMiscellaneousServices,
   MdOutlineElderlyWoman,
@@ -64,7 +64,7 @@ export const categories = [
     key: 'food',
     description:
       'Expenses related to groceries, dining out, or food delivery services',
-    Icon: ShoppingBagIcon,
+    Icon: HiShoppingBag,
     className: 'bg-teal-500 text-teal-500',
   },
   {
@@ -73,7 +73,7 @@ export const categories = [
     key: 'entertainment',
     description:
       'Expenses related to activities or events for enjoyment or leisure, such as concerts, movies, or amusement parks',
-    Icon: FilmIcon,
+    Icon: HiFilm,
     className: 'bg-yellow-500 text-yellow-500',
   },
   {
@@ -82,7 +82,7 @@ export const categories = [
     key: 'housing',
     description:
       'Expenses related to housing, such as rent or mortgage payments, property taxes, or home insurance',
-    Icon: HomeIcon,
+    Icon: HiHome,
     className: 'bg-orange-500 text-orange-500',
   },
   {
@@ -91,7 +91,7 @@ export const categories = [
     key: 'transportation',
     description:
       'Expenses related to transportation, such as gas, maintenance, or public transportation fees',
-    Icon: TruckIcon,
+    Icon: HiTruck,
     className: 'bg-indigo-500 text-indigo-500',
   },
   {
@@ -100,7 +100,7 @@ export const categories = [
     key: 'healthcare',
     description:
       'Expenses related to healthcare, such as doctor visits, prescriptions, or health insurance premiums',
-    Icon: PlusIcon,
+    Icon: HiPlus,
     className: 'bg-green-500 text-green-500',
   },
   {
@@ -109,7 +109,7 @@ export const categories = [
     key: 'travel',
     description:
       'Expenses related to travel, such as airfare, lodging, or rental cars',
-    Icon: GlobeIcon,
+    Icon: HiGlobe,
     className: 'bg-purple-500 text-purple-500',
   },
   {
@@ -118,7 +118,7 @@ export const categories = [
     key: 'education',
     description:
       'Expenses related to education, such as tuition, books, or school supplies',
-    Icon: AcademicCapIcon,
+    Icon: HiAcademicCap,
     className: 'bg-emerald-500 text-emerald-500',
   },
   {
@@ -127,7 +127,7 @@ export const categories = [
     key: 'personal',
     description:
       'Expenses related to personal grooming, hygiene and purchases.',
-    Icon: UserCircleIcon,
+    Icon: HiUserCircle,
     className: 'bg-pink-300 text-pink-300',
   },
   {
@@ -136,7 +136,7 @@ export const categories = [
     key: 'insurance',
     description:
       'Expenses related to insurance, such as car insurance, health insurance, or life insurance',
-    Icon: CurrencyDollarIcon,
+    Icon: HiCurrencyDollar,
     className: 'bg-sky-500 text-sky-500',
   },
   {
@@ -145,7 +145,7 @@ export const categories = [
     key: 'savings',
     description:
       'Expenses related to savings, such as contributions to a savings account or retirement account',
-    Icon: LibraryIcon,
+    Icon: HiLibrary,
     className: 'bg-cyan-500 text-cyan-500',
   },
   {
@@ -154,7 +154,7 @@ export const categories = [
     key: 'investments',
     description:
       'Expenses related to investments, such as contributions to a 401(k) or IRA',
-    Icon: ChartBarIcon,
+    Icon: HiChartBar,
     className: 'bg-sky-500 text-sky-500',
   },
   {
@@ -163,7 +163,7 @@ export const categories = [
     key: 'utilities',
     description:
       'Expenses related to utilities, such as electricity, gas, or water',
-    Icon: AdjustmentsIcon,
+    Icon: HiAdjustments,
     className: 'bg-red-500 text-red-500',
   },
   {
@@ -172,7 +172,7 @@ export const categories = [
     key: 'business',
     description:
       'Expenses related to running a business, such as rent, utilities, or employee salaries',
-    Icon: BriefcaseIcon,
+    Icon: HiBriefcase,
     className: 'bg-blue-600 text-blue-600',
   },
   {
@@ -183,7 +183,7 @@ export const categories = [
     Icon: MdMiscellaneousServices,
     className: 'bg-red-500 text-red-500',
   },
-] as const;
+];
 
 export const incomeCategories = [
   {
@@ -221,7 +221,7 @@ export const incomeCategories = [
   },
   {
     id: 5,
-    Icon: BriefcaseIcon,
+    Icon: HiBriefcase,
     key: 'business',
     category: 'Business Income',
     className: 'bg-blue-500 text-blue-500',
@@ -280,4 +280,4 @@ export const incomeCategories = [
     description:
       'A general category to cover any income source that does not fit into the predefined categories.',
   },
-] as const;
+];
