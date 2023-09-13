@@ -1,8 +1,0 @@
-![dashboard-chart](https://github.com/yacineahmaich/pocket-wide/assets/122209403/3ae6adbc-f723-42aa-8497-70248aab8f56)
-![category](https://github.com/yacineahmaich/pocket-wide/assets/122209403/28f3e368-2e40-4f80-9fa7-b9683b6f2f37)
-![table](https://github.com/yacineahmaich/pocket-wide/assets/122209403/0733b8d1-f882-4437-874e-c4f13b4be758)
-![profile](https://github.com/yacineahmaich/pocket-wide/assets/122209403/6f85e5f9-fb04-4eb0-911d-1aacd0895f7e)
-![login](https://github.com/yacineahmaich/pocket-wide/assets/122209403/292d77a7-2a5e-4cd9-b442-2dd78a15e846)
-![dashboard-stats](https://github.com/yacineahmaich/pocket-wide/assets/122209403/f07a5920-ad6a-4797-886b-a1d4f8ded670)
-![dashboard-loading](https://github.com/yacineahmaich/pocket-wide/assets/122209403/b4f10f13-b6dd-40d6-bb98-def5bd53fce8)
-![data-loading](https://github.com/yacineahmaich/pocket-wide/assets/122209403/138a60ed-89fb-48cd-b5d1-63061ba25fcd)
