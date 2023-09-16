@@ -1,17 +1,51 @@
 import { Button } from '@tremor/react';
 import Logo from '../../ui/Logo';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../auth/useUser';
 
 function Header() {
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useUser();
+
   return (
-    <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 h-16">
+    <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 h-16 bg-transparent">
       <Logo className="h-8" />
       <div className="flex items-center gap-2">
-        <Button size="xs" variant="light" color="gray" className="px-10">
-          Log In
-        </Button>
-        <Button size="xs" variant="secondary" className="px-10" color="gray">
-          Sign Up
-        </Button>
+        {user && isAuthenticated ? (
+          <Button
+            role="link"
+            size="xs"
+            variant="secondary"
+            color="gray"
+            className="px-10 rounded-full"
+            onClick={() => navigate('/')}
+          >
+            Go to dashboard
+          </Button>
+        ) : (
+          <>
+            <Button
+              role="link"
+              size="xs"
+              variant="light"
+              color="gray"
+              className="px-10"
+              onClick={() => navigate('/login')}
+            >
+              Log In
+            </Button>
+            <Button
+              role="link"
+              size="xs"
+              variant="secondary"
+              color="gray"
+              className="px-10"
+              onClick={() => navigate('/signup')}
+            >
+              Sign Up
+            </Button>
+          </>
+        )}
       </div>
     </header>
   );

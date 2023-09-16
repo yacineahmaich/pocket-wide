@@ -2,6 +2,7 @@ import { Card, Icon, Text, Title } from '@tremor/react';
 import { BiSolidCategoryAlt } from 'react-icons/bi';
 import { BsClipboardCheck, BsCurrencyExchange } from 'react-icons/bs';
 import { TbPigMoney } from 'react-icons/tb';
+import SectionLayout from '../../layouts/SectionLayout';
 
 const features = [
   {
@@ -28,10 +29,11 @@ const features = [
 
 function Features() {
   return (
-    <div className="flex flex-col items-center mb-60">
-      <Title className="text-xl">Features</Title>
-      <Text className="mt-2">Unlock the Power of Financial Management</Text>
-      <div className="grid grid-cols-2 max-w-4xl gap-8 mt-10">
+    <SectionLayout
+      title="Features"
+      subTitle="Unlock the Power of Financial Management"
+    >
+      <div className="grid grid-cols-2 gap-8">
         {features.map(feature => (
           <Card key={feature.heading} className="bg-transparent">
             <Icon icon={feature.icon} color="blue" size="lg" />
@@ -40,7 +42,7 @@ function Features() {
           </Card>
         ))}
       </div>
-    </div>
+    </SectionLayout>
   );
 }
 
