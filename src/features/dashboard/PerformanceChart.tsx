@@ -1,16 +1,20 @@
 import { useMemo } from 'react';
 import { formatCurrency, formatDate } from '../../utils/helpers';
-import { AreaChart, Card, Text, Title } from '@tremor/react';
+import {
+  AreaChart,
+  Card,
+  DateRangePickerValue,
+  Text,
+  Title,
+} from '@tremor/react';
 import { usePerformance } from './usePerformance';
 import animationData from '../../assets/lottie/chart.json';
 import Lottie from 'lottie-react';
-import { useFilter } from '../shared/useFilter';
 import { useUser } from '../auth/useUser';
 
-function PerformanceChart() {
+function PerformanceChart({ dateRange }: { dateRange: DateRangePickerValue }) {
   const { user } = useUser();
-  const { filter } = useFilter(['from', 'to']);
-  const { data, isLoading } = usePerformance();
+  const { data, isLoading } = usePerformance(dateRange);
 
   const sortedData = useMemo(() => {
     return data?.sort(
@@ -18,15 +22,17 @@ function PerformanceChart() {
     );
   }, [data]);
 
-  const from = filter.from ? `from ${formatDate(filter.from, 'medium')}` : '';
-  const to = filter.to ? `to ${formatDate(filter.to, 'medium')}` : '';
+  const from = dateRange.from
+    ? `from ${formatDate(dateRange.from, 'medium')}`
+    : '';
+  const to = dateRange.to ? `to ${formatDate(dateRange.to, 'medium')}` : '';
 
   return (
     <Card className="md:col-span-2 h-fit">
       <Title>{from || to ? `${from} ${to}` : 'All time'}</Title>
       <Text>Expense / income</Text>
       {isLoading ? (
-        <Lottie animationData={animationData} />
+        <Lottie animationData={animationData} className='h-[400px]' />
       ) : (
         <AreaChart
           className="h-96"

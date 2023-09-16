@@ -2,6 +2,7 @@ import {
   BarList,
   Bold,
   Card,
+  DateRangePickerValue,
   Flex,
   Tab,
   TabGroup,
@@ -14,11 +15,14 @@ import { useState } from 'react';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import OverviewSkeleton from './OverviewSkeleton';
 
-function Overview() {
+function Overview({ dateRange }: { dateRange: DateRangePickerValue }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const selectedCategory = selectedIndex === 0 ? 'expenses' : 'incomes';
+  const selected = selectedIndex === 0 ? 'expenses' : 'incomes';
 
-  const { data, isLoading } = useCategoryOverview();
+  const { data, isLoading } = useCategoryOverview({
+    type: selected,
+    dateRange,
+  });
 
   return (
     <Card>
@@ -54,7 +58,7 @@ function Overview() {
           <BarList
             // eslint-disable-next-line
             //@ts-ignore
-            data={data ? data?.[selectedCategory] : []}
+            data={data ? data?.[selected] : []}
             showAnimation={false}
             className="mt-4"
           />

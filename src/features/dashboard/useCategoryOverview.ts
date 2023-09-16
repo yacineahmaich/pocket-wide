@@ -1,19 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCategoriesOverview } from '../../services/dashboard';
-import { useFilter } from '../shared/useFilter';
 import { useUser } from '../auth/useUser';
+import { DateRangePickerValue } from '@tremor/react';
 
-export const useCategoryOverview = () => {
+export const useCategoryOverview = ({
+  type = 'expenses',
+  dateRange,
+}: {
+  type: 'expenses' | 'incomes';
+  dateRange: DateRangePickerValue;
+}) => {
   const { user } = useUser();
-  const { filter } = useFilter(['from', 'to']);
 
   return useQuery({
-    queryKey: ['category-overview', { filter }],
+    queryKey: ['category-overview', { dateRange, type }],
     queryFn: () =>
       getCategoriesOverview({
-        from: filter['from'],
-        to: filter['to'],
+        dateRange,
         currency: user?.user_metadata.currency,
+        type,
       }),
+    keepPreviousData: true,
   });
 };

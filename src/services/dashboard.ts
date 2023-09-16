@@ -1,4 +1,5 @@
-import { categories } from '../utils/constants';
+import { DateRangePickerValue } from '@tremor/react';
+import { categories, incomeCategories } from '../utils/constants';
 import { formatCurrency, formatDate } from '../utils/helpers';
 import supabase from './supabase';
 
@@ -73,10 +74,9 @@ export const getStats = async () => {
   };
 };
 
-export const getPerformance = async (dateRange: {
-  from: string;
-  to: string;
-}): Promise<{ date: string; expenses: number; incomes: number }[]> => {
+export const getPerformance = async (
+  dateRange: DateRangePickerValue
+): Promise<{ date: string; expenses: number; incomes: number }[]> => {
   const from = dateRange.from
     ? formatDate(dateRange.from)
     : formatDate(new Date('01,01,2023'));
@@ -131,16 +131,20 @@ export const getPerformance = async (dateRange: {
 };
 
 export const getCategoriesOverview = async ({
-  from,
-  to,
+  dateRange,
   currency,
+  type,
 }: {
-  from: string;
-  to: string;
+  dateRange: DateRangePickerValue;
   currency: string;
+  type: 'incomes' | 'expenses';
 }) => {
-  const startDate = from ? formatDate(from) : formatDate(new Date("01,01,2023"));
-  const endDate = to ? formatDate(to) : formatDate(new Date());
+  const startDate = dateRange.from
+    ? formatDate(dateRange.from)
+    : formatDate(new Date('01,01,2023'));
+  const endDate = dateRange.to
+    ? formatDate(dateRange.to)
+    : formatDate(new Date());
 
   const { data: expenses, error: expensesError } = await supabase
     .from('expenses')
@@ -172,18 +176,19 @@ export const getCategoriesOverview = async ({
     return acc;
   }, {} as { [key: string]: number });
 
+  const categoriesList = type === 'expenses' ? categories : incomeCategories;
   const transformedExpenses = Object.entries(expensesPerCategory).map(
     ([name, value]) => ({
       name,
       value: formatCurrency(value, currency ?? 'USD'),
-      icon: categories.find(c => c.key === name)?.Icon,
+      icon: categoriesList.find(c => c.key === name)?.Icon,
     })
   );
   const transformedIncomes = Object.entries(incomesPerCategory).map(
     ([name, value]) => ({
       name,
       value: formatCurrency(value, currency ?? 'USD'),
-      icon: categories.find(c => c.key === name)?.Icon,
+      icon: categoriesList.find(c => c.key === name)?.Icon,
     })
   );
 

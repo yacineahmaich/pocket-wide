@@ -1,16 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPerformance } from '../../services/dashboard';
-import { useFilter } from '../shared/useFilter';
+import { DateRangePickerValue } from '@tremor/react';
 
-export const usePerformance = () => {
-  const { filter } = useFilter(['from', 'to']);
-
-  return useQuery({
-    queryKey: ['performance', { filter }],
-    queryFn: () =>
-      getPerformance({
-        from: filter['from'],
-        to: filter['to'],
-      }),
+export const usePerformance = (dateRange: DateRangePickerValue) =>
+  useQuery({
+    queryKey: ['performance', { dateRange }],
+    queryFn: () => getPerformance(dateRange),
+    keepPreviousData: true,
   });
-};
