@@ -10,16 +10,17 @@ import Label from '../../ui/Label';
 import { HiXMark } from 'react-icons/hi2';
 import { useForm } from 'react-hook-form';
 import { formatDate } from '../../utils/helpers';
-import { categories } from '../../utils/constants';
+import { categories, incomeCategories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
 import { useFilter } from './useFilter';
 
 type Props = {
   onFilter?: () => void;
   loading?: boolean;
+  type?: 'expense' | 'income';
 };
 
-function Filter({ onFilter, loading }: Props) {
+function Filter({ onFilter, loading, type = 'expense' }: Props) {
   const { filter, setFilter, clearFilter } = useFilter([
     'from',
     'to',
@@ -62,6 +63,7 @@ function Filter({ onFilter, loading }: Props) {
   );
 
   const isFiltered = Object.entries(filter).some(field => field[1]);
+  const categoryList = type === 'expense' ? categories : incomeCategories;
 
   return (
     <section className="max-w-[450px]">
@@ -121,8 +123,10 @@ function Filter({ onFilter, loading }: Props) {
             onValueChange={category => setValue('category', category)}
             disabled={loading}
           >
-            {categories.map(category => {
-              const CIcon = () => <CategoryIcon categoryKey={category.key} />;
+            {categoryList.map(category => {
+              const CIcon = () => (
+                <CategoryIcon categoryKey={category.key} type="income" />
+              );
 
               return (
                 <SelectItem key={category.id} value={category.key} icon={CIcon}>

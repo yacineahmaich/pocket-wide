@@ -12,7 +12,7 @@ function Expenses() {
       <Helmet title="Pocket Wide | Incomes" />
       <div className="flex divide-gray-100 lg:divide-x">
         <div className="hidden w-1/3 p-8 lg:block">
-          <Filter loading={isFetching} />
+          <Filter loading={isFetching} type="income" />
         </div>
         <section className="flex-1 min-h-screen ">
           <IncomesHeading />
