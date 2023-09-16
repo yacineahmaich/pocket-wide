@@ -18,7 +18,9 @@ const UserDropdown: React.FC = () => {
         <button className="flex items-center px-2 py-1 bg-gray-100 rounded-full">
           <UserAvatar size={30} />
           <Text className="px-3">
-            {user?.user_metadata.full_name || user?.user_metadata.user_name}
+            {user?.user_metadata.full_name ||
+              user?.user_metadata.user_name ||
+              user?.email?.split('@')[0]}
           </Text>
           <Icon icon={HiOutlineBars3BottomRight} color="gray" />
         </button>
