@@ -35,6 +35,7 @@ function LoginForm() {
         <div className="space-y-1">
           <Text>Email Address</Text>
           <TextInput
+          className='bg-transparent border-gray-300'
             {...register('email', { required: 'email is required' })}
             placeholder="Your email"
             error={!!errors.email}
@@ -44,6 +45,7 @@ function LoginForm() {
         <div className="space-y-1">
           <Text>Passworrd</Text>
           <TextInput
+          className='bg-transparent border-gray-300'
             {...register('password')}
             type="password"
             placeholder="Your Password"

@@ -2,7 +2,6 @@ import { createBrowserRouter } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import AuthLayout from './layouts/AuthLayout';
 import DashboardLayout from './layouts/DashboardLayout';
 import Dashboard from './pages/Dashboard';
 import Incomes from './pages/Incomes';
@@ -14,19 +13,19 @@ import EditExpense from './pages/EditExpense';
 import EditIncome from './pages/EditIncome';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
+import GuestLayout from './layouts/GuestLayout';
 
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
       {
-        path: '/',
-        element: <Landing />,
-      },
-      // Auth
-      {
-        element: <AuthLayout />,
+        element: <GuestLayout />,
         children: [
+          {
+            path: '/',
+            element: <Landing />,
+          },
           {
             path: 'login',
             element: <Login />,

@@ -1,7 +1,7 @@
 import { Button } from '@tremor/react';
 import Logo from '../../ui/Logo';
 import { Link, useNavigate } from 'react-router-dom';
-import { useUser } from '../auth/useUser';
+import { useUser } from '../../features/auth/useUser';
 
 function Header() {
   const navigate = useNavigate();

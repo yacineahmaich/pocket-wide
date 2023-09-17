@@ -23,17 +23,19 @@ function SignupForm() {
     <>
       <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-1">
-          <div className="space-y-1">
-            <Text>Username</Text>
-            <TextInput
-              {...register('username')}
-              error={!!errors.username}
-              errorMessage={errors.username?.message}
-              placeholder="Your Username"
-            />
-          </div>
+          <Text>Username</Text>
+          <TextInput
+            className="bg-transparent border-gray-300"
+            {...register('username')}
+            error={!!errors.username}
+            errorMessage={errors.username?.message}
+            placeholder="Your Username"
+          />
+        </div>
+        <div className="space-y-1">
           <Text>Email Address</Text>
           <TextInput
+            className="bg-transparent border-gray-300"
             {...register('email')}
             error={!!errors.email}
             errorMessage={errors.email?.message}
@@ -43,6 +45,7 @@ function SignupForm() {
         <div className="space-y-1">
           <Text>Passworrd</Text>
           <TextInput
+            className="bg-transparent border-gray-300"
             {...register('password')}
             error={!!errors.password}
             errorMessage={errors.password?.message}
@@ -53,6 +56,7 @@ function SignupForm() {
         <div className="space-y-1">
           <Text>Confirm Password</Text>
           <TextInput
+            className="bg-transparent border-gray-300"
             {...register('passwordConfirmation')}
             error={!!errors.passwordConfirmation}
             errorMessage={errors.passwordConfirmation?.message}
