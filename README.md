@@ -26,15 +26,9 @@ A Finance tracking web app where users can track their expenses and incomes in o
 
 1. Clone the repository
 2. Navigate to the project's directory.
-3. ```zsh
-   npm install
-   ```
-4. ```zsh
-   cp .env.example .env.local
-   ```
-5. ```zsh
-   npm run dev
-   ```
+3. `npm install`
+4. `cp .env.example .env.local`
+5. `npm run dev`
 
 ## License
 
