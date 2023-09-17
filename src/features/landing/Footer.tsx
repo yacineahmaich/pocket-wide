@@ -6,7 +6,7 @@ function Footer() {
     <footer className="py-20 text-center">
       <Logo className="w-10 h-10 mx-auto" />
       <Text className="mt-4">
-        © 2023 Your Company Name. All Rights Reserved.
+        © 2023 Pocket Wide. All Rights Reserved.
       </Text>
 
       <ul className='flex items-center justify-center gap-4 mt-4 text-gray-600'>

@@ -19,7 +19,7 @@ function Header() {
             size="xs"
             variant="secondary"
             color="gray"
-            className="px-10 rounded-full"
+            className="px-6 md:px-10 rounded-full transition-colors"
             onClick={() => navigate('/dashboard')}
           >
             Go to dashboard
@@ -31,7 +31,7 @@ function Header() {
               size="xs"
               variant="light"
               color="gray"
-              className="px-10"
+              className="px-6 md:px-10 transition-colors"
               onClick={() => navigate('/login')}
             >
               Log In
@@ -41,7 +41,7 @@ function Header() {
               size="xs"
               variant="secondary"
               color="gray"
-              className="px-10"
+              className="px-6 md:px-10 transition-colors"
               onClick={() => navigate('/signup')}
             >
               Sign Up
