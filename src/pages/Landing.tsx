@@ -11,7 +11,7 @@ function Landing() {
       className="bg-fixed bg-gray-50 bg-cover pt-16"
       style={{ backgroundImage: 'url(/landing-bg.jpg)' }}
     >
-      <div className="container mx-auto">
+      <div className="container px-3 mx-auto">
         <Header />
         <Hero />
         <Features />

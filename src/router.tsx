@@ -13,7 +13,7 @@ import CreateIncome from './pages/CreateIncome';
 import EditExpense from './pages/EditExpense';
 import EditIncome from './pages/EditIncome';
 import Profile from './pages/Profile';
-import Landing from './pages/Langing';
+import Landing from './pages/Landing';
 
 const router = createBrowserRouter([
   {

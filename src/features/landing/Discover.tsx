@@ -29,13 +29,13 @@ function Discover() {
     <SectionLayout title="Discover" subTitle="Journey into Financial Clarity">
       <div className="mt-10 flex flex-col gap-28">
         {content.map((item, idx) => (
-          <div className="flex gap-20 justify-between">
+          <div className="flex flex-col md:flex-row gap-20 justify-between">
             <img
               src={item.imgPath}
               width={400}
               className={`
               shadow-2xl ring-4 ring-gray-600 rounded-lg
-              ${idx % 2 === 0 ? '-rotate-6' : 'rotate-6 order-2'}
+              ${idx % 2 === 0 ? '-rotate-6' : 'rotate-6 md:order-2'}
               `}
             />
             <div>

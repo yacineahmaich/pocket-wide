@@ -33,7 +33,7 @@ function Features() {
       title="Features"
       subTitle="Unlock the Power of Financial Management"
     >
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-8">
         {features.map(feature => (
           <Card key={feature.heading} className="bg-transparent">
             <Icon icon={feature.icon} color="blue" size="lg" />
