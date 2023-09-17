@@ -29,7 +29,10 @@ function Discover() {
     <SectionLayout title="Discover" subTitle="Journey into Financial Clarity">
       <div className="mt-10 flex flex-col gap-28">
         {content.map((item, idx) => (
-          <div className="flex flex-col md:flex-row gap-20 justify-between">
+          <div
+            key={item.heading}
+            className="flex flex-col md:flex-row gap-20 justify-between"
+          >
             <img
               src={item.imgPath}
               width={400}

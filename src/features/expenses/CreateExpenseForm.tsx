@@ -71,7 +71,9 @@ function CreateExpenseForm() {
             <TextInput
               id="amount"
               icon={() => (
-                <Text className="p-2">{user?.user_metadata.currency}</Text>
+                <Text className="p-2">
+                  {user?.user_metadata.currency || 'USD'}
+                </Text>
               )}
               {...register('amount')}
               error={!!errors.amount}

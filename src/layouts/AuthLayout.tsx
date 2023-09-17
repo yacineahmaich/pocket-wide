@@ -8,7 +8,7 @@ import { signinWithGithub, signinWithGoogle } from '../services/auth';
 function AuthLayout() {
   const { user, isAuthenticated } = useUser();
 
-  if (user && isAuthenticated) return <Navigate to="/" />;
+  if (user && isAuthenticated) return <Navigate to="/dashboard" />;
 
   return (
     <div className="relative flex min-h-screen">

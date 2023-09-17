@@ -48,7 +48,7 @@ const EditExpenseForm: FC<Props> = () => {
     });
   });
 
-  if (!expenseData) return <Navigate to="/expenses" />;
+  if (!expenseData) return <Navigate to="/dashboard/expenses" />;
 
   return (
     <section className="overflow-y-auto">
@@ -69,7 +69,9 @@ const EditExpenseForm: FC<Props> = () => {
             <TextInput
               id="amount"
               icon={() => (
-                <Text className="p-2">{user?.user_metadata.currency}</Text>
+                <Text className="p-2">
+                  {user?.user_metadata.currency || 'USD'}
+                </Text>
               )}
               {...register('amount')}
               error={!!errors.amount}

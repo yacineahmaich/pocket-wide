@@ -71,7 +71,7 @@ function MobileNavigation() {
               color="gray"
               size="xs"
               className="w-full"
-              onClick={() => navigate('/profile')}
+              onClick={() => navigate('/dashboard/profile')}
             >
               Profile
             </Button>

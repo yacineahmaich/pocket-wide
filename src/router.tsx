@@ -17,11 +17,10 @@ import Landing from './pages/Landing';
 
 const router = createBrowserRouter([
   {
-    path: '/',
     element: <RootLayout />,
     children: [
       {
-        path: '/welcome',
+        path: '/',
         element: <Landing />,
       },
       // Auth
@@ -41,7 +40,7 @@ const router = createBrowserRouter([
 
       // DASHBOARD
       {
-        path: '/',
+        path: '/dashboard',
         element: <DashboardLayout />,
         children: [
           {

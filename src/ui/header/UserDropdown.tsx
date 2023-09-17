@@ -32,7 +32,7 @@ const UserDropdown: React.FC = () => {
         >
           <DropdownMenu.Item asChild>
             <Link
-              to="/profile"
+              to="/dashboard/profile"
               className="flex gap-1 items-center p-1 data-[highlighted]:bg-gray-100 outline-none rounded-xl"
             >
               <Icon icon={HiUser} className="text-gray-600" />

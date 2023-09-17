@@ -11,7 +11,7 @@ export const useUpdateIncome = () => {
     mutationFn: updateIncome,
     onSuccess: () => {
       queryClient.invalidateQueries(['incomes']);
-      navigate('/incomes');
+      navigate('/dashboard/incomes');
       toast.success('income updated succefully');
     },
   });

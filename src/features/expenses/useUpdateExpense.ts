@@ -11,7 +11,7 @@ export const useUpdateExpense = () => {
     mutationFn: updateExpense,
     onSuccess: () => {
       queryClient.invalidateQueries(['expenses']);
-      navigate('/expenses');
+      navigate('/dashboard/expenses');
       toast.success('expense updated succefully');
     },
   });

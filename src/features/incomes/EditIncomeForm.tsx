@@ -50,7 +50,7 @@ const EditIncomeForm: FC<Props> = () => {
     });
   });
 
-  if (!incomeData) return <Navigate to="/incomes" />;
+  if (!incomeData) return <Navigate to="/dashboard/incomes" />;
 
   return (
     <section className="overflow-y-auto">
@@ -71,7 +71,9 @@ const EditIncomeForm: FC<Props> = () => {
             <TextInput
               id="amount"
               icon={() => (
-                <Text className="p-2">{user?.user_metadata.currency}</Text>
+                <Text className="p-2">
+                  {user?.user_metadata.currency || 'USD'}
+                </Text>
               )}
               {...register('amount')}
               error={!!errors.amount}

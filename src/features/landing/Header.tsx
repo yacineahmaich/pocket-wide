@@ -1,6 +1,6 @@
 import { Button } from '@tremor/react';
 import Logo from '../../ui/Logo';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../auth/useUser';
 
 function Header() {
@@ -8,8 +8,10 @@ function Header() {
   const { user, isAuthenticated } = useUser();
 
   return (
-    <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 h-16 bg-transparent">
-      <Logo className="h-8" />
+    <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 h-16 bg-transparent z-10">
+      <Link to="/">
+        <Logo className="h-8" />
+      </Link>
       <div className="flex items-center gap-2">
         {user && isAuthenticated ? (
           <Button
@@ -18,7 +20,7 @@ function Header() {
             variant="secondary"
             color="gray"
             className="px-10 rounded-full"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/dashboard')}
           >
             Go to dashboard
           </Button>

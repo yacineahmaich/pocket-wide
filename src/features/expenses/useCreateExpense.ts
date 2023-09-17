@@ -12,7 +12,7 @@ export const useCreateExpense = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(['expenses']);
       toast.success('Expense create successflly');
-      navigate('/expenses');
+      navigate('/dashboard/expenses');
     },
     onError: () => {
       toast.error('Could not create expense!');

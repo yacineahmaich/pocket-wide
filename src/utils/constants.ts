@@ -40,19 +40,19 @@ export const BRAND_QUOTES = [
 
 export const NAVIGATION = [
   {
-    to: '',
+    to: '/dashboard',
     label: 'Dashboard',
   },
   {
-    to: '/expenses',
+    to: '/dashboard/expenses',
     label: 'Expenses',
   },
   {
-    to: '/incomes',
+    to: '/dashboard/incomes',
     label: 'Incomes',
   },
   {
-    to: '/category',
+    to: '/dashboard/category',
     label: 'Category',
   },
 ];

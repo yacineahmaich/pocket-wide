@@ -12,7 +12,7 @@ export const useCreateIncome = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(['icomes']);
       toast.success('Income create successflly');
-      navigate('/incomes');
+      navigate('/dashboard/incomes');
     },
     onError: () => {
       toast.error('Could not create income!');
