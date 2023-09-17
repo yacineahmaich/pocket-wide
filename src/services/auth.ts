@@ -53,7 +53,7 @@ export const signinWithGoogle = () => {
   supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: 'http://localhost:5173/dashboard',
+      redirectTo: import.meta.env.VITE_SUPABASE_OAUTH_REDIRECT,
     },
   });
 };
@@ -61,7 +61,7 @@ export const signinWithGithub = () => {
   supabase.auth.signInWithOAuth({
     provider: 'github',
     options: {
-      redirectTo: 'http://localhost:5173/dashboard',
+      redirectTo: import.meta.env.VITE_SUPABASE_OAUTH_REDIRECT,
     },
   });
 };
