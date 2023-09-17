@@ -1,5 +1,6 @@
 import { Title, Text } from '@tremor/react';
 import SectionLayout from '../../layouts/SectionLayout';
+import { motion } from 'framer-motion';
 
 const content = [
   {
@@ -24,6 +25,13 @@ const content = [
   },
 ];
 
+const transition = (n: number) => ({
+  delay: 0.1 * n,
+  duration: 0.4,
+  type: 'spring',
+  stiffness: 40,
+});
+
 function Discover() {
   return (
     <SectionLayout title="Discover" subTitle="Journey into Financial Clarity">
@@ -33,7 +41,15 @@ function Discover() {
             key={item.heading}
             className="flex flex-col md:flex-row gap-20 justify-between"
           >
-            <img
+            <motion.img
+              initial={{ opacity: 0, x: -100, rotate: 0 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                rotate: (idx + 1) % 2 === 0 ? -6 : 6,
+              }}
+              transition={transition(idx + 1)}
+              viewport={{ once: true }}
               src={item.imgPath}
               width={400}
               className={`
@@ -41,10 +57,15 @@ function Discover() {
               ${idx % 2 === 0 ? '-rotate-6' : 'rotate-6 md:order-2'}
               `}
             />
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={transition(idx + 1)}
+              viewport={{ once: true }}
+            >
               <Title className="mb-2">{item.heading}</Title>
               <Text>{item.text}</Text>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>
