@@ -3,6 +3,7 @@ import Header from '../features/landing/Header';
 import Hero from '../features/landing/Hero';
 import Discover from '../features/landing/Discover';
 import Cta from '../features/landing/Cta';
+import Footer from '../features/landing/Footer';
 
 function Landing() {
   return (
@@ -16,6 +17,7 @@ function Landing() {
         <Features />
         <Discover />
         <Cta />
+        <Footer />
       </div>
     </div>
   );
