@@ -8,7 +8,6 @@ export const useUser = () => {
     staleTime: Infinity,
     retry: false,
     onSuccess: () => {
-      document.body.style.overflow = 'auto';
       document.querySelector('.loader')?.remove();
     },
   });
