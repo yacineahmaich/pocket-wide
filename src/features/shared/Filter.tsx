@@ -125,7 +125,7 @@ function Filter({ onFilter, loading, type = 'expense' }: Props) {
           >
             {categoryList.map(category => {
               const CIcon = () => (
-                <CategoryIcon categoryKey={category.key} type="income" />
+                <CategoryIcon categoryKey={category.key} type={type} />
               );
 
               return (

@@ -13,7 +13,7 @@ function Hero() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-screen flex-col justify-center">
+    <div className="flex min-h-screen flex-col justify-center">
       <main className="relative flex flex-col items-center gap-10 md:flex-row md:items-start md:justify-evenly">
         <motion.div className="text-center md:mt-[100px] md:text-left">
           <MotionTitle
