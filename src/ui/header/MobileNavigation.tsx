@@ -31,7 +31,7 @@ function MobileNavigation() {
       <Dialog.Portal className="sm:hidden">
         <Dialog.Overlay className="fixed inset-0 z-[9999] bg-black/20 animate-in duration-300 data-[state=open]:fade-in-0 sm:hidden" />
         <Dialog.Content className="fixed inset-y-0 right-0 top-0 z-[9999] flex w-[280px] max-w-full flex-col bg-white animate-in data-[state=open]:slide-in-from-right sm:hidden">
-          <Dialog.Close className="absolute right-full top-2 mr-2">
+          <Dialog.Close className="absolute right-full top-2 mr-2" asChild>
             <button className="rounded-full bg-white shadow-lg active:scale-95">
               <Icon icon={HiXMark} color="gray" />
             </button>
