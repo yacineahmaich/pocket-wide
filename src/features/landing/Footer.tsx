@@ -3,7 +3,7 @@ import Logo from '../../ui/Logo';
 
 function Footer() {
   return (
-    <footer className="py-20 text-center">
+    <footer className="mt-20 p-4 text-center">
       <Logo className="mx-auto h-10 w-10" />
       <Text className="mt-4">© 2023 Pocket Wide. All Rights Reserved.</Text>
 

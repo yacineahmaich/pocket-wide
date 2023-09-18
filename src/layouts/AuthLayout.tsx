@@ -17,13 +17,15 @@ function AuthLayout({
 
   return (
     <div className="relative -mt-16 flex h-screen flex-col items-center pt-32">
-      <div className="mt-0 flex max-w-2xl items-center justify-between border-0 bg-transparent p-6">
+      <div className="mt-0 flex max-w-2xl flex-col items-center justify-between border-0 bg-transparent p-6 sm:flex-row">
         <div className="flex-1 space-y-4">
           <Title>{heading}</Title>
           {children}
         </div>
-        <div className="mx-4 h-20 w-px bg-gray-300" />
-        <div className="flex flex-col gap-2">
+
+        <div className="my-4 h-px w-20 bg-gray-300 sm:mx-4 sm:h-20 sm:w-px" />
+
+        <div className="flex w-full flex-col gap-2 sm:w-auto">
           <Button
             icon={FaGoogle}
             variant="secondary"
