@@ -14,7 +14,7 @@ function Dashboard() {
   return (
     <div className="py-3">
       <Helmet title="Pocket Wide | Dashboard" />
-      <Title className="text-center text-gray-400 mb-8">
+      <Title className="mb-8 text-center text-gray-400">
         Monthly Performance Dashboard
       </Title>
       <Stats />

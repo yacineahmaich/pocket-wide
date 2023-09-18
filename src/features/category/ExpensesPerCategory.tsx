@@ -23,17 +23,20 @@ function ExpensesPerCategory({ date }: Props) {
         })
       : data;
 
-  const expensesPerCategory = filteredData?.reduce((acc, expense) => {
-    acc[expense.category] = acc[expense.category]
-      ? acc[expense.category] + expense.amount
-      : expense.amount;
+  const expensesPerCategory = filteredData?.reduce(
+    (acc, expense) => {
+      acc[expense.category] = acc[expense.category]
+        ? acc[expense.category] + expense.amount
+        : expense.amount;
 
-    return acc;
-  }, {} as { [key: string]: number });
+      return acc;
+    },
+    {} as { [key: string]: number },
+  );
 
   return (
     <section className="mb-10">
-      <div className="grid gap-4 my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="my-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {isLoading
           ? Array.from({ length: 4 }, (_, idx) => (
               <CategoryCardSekeleton key={idx} />
@@ -49,7 +52,7 @@ function ExpensesPerCategory({ date }: Props) {
                       {expensesPerCategory?.[category.key] &&
                         formatCurrency(
                           expensesPerCategory?.[category.key],
-                          'USD'
+                          'USD',
                         )}
                     </span>
                   </div>

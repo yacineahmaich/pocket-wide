@@ -11,7 +11,7 @@ function UserAvatar({ size = 45 }: Props) {
   return (
     <Avatar.Root
       className="
-    bg-black/20 inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle
+    inline-flex select-none items-center justify-center overflow-hidden rounded-full bg-black/20 align-middle
     "
       style={{ width: `${size}px`, height: `${size}px` }}
     >
@@ -28,7 +28,7 @@ function UserAvatar({ size = 45 }: Props) {
             user?.user_metadata.user_name ||
             user?.email?.split('@')?.at(0)
           }`}
-          className="w-full h-full"
+          className="h-full w-full"
         />
       </Avatar.Fallback>
     </Avatar.Root>

@@ -12,7 +12,7 @@ const CategoryIcon = (props: Props) => {
   const categoriesList = type === 'expense' ? categories : incomeCategories;
 
   const category = categoriesList.find(
-    category => category.key === categoryKey
+    category => category.key === categoryKey,
   );
 
   if (!category) return null;
@@ -20,16 +20,16 @@ const CategoryIcon = (props: Props) => {
   return (
     <span
       className={`
-        mr-2 p-1 rounded-full aspect-square bg-opacity-25 flex items-center justify-center rounded-full',
+        rounded-full', mr-2 flex aspect-square items-center justify-center rounded-full bg-opacity-25 p-1
         ${category.className}
-        ${variant === 'categorySelect' && 'w-8 h-8'}
-        ${variant === 'category' && 'w-14 h-14'}
+        ${variant === 'categorySelect' && 'h-8 w-8'}
+        ${variant === 'category' && 'h-14 w-14'}
       `}
     >
       <category.Icon
         className={`
-        ${variant === 'categorySelect' && 'w-10 h-10'}
-        ${variant === 'category' && 'w-8 h-8'}
+        ${variant === 'categorySelect' && 'h-10 w-10'}
+        ${variant === 'category' && 'h-8 w-8'}
         `}
       />
     </span>

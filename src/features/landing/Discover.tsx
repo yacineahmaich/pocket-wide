@@ -39,7 +39,7 @@ function Discover() {
         {content.map((item, idx) => (
           <div
             key={item.heading}
-            className="flex flex-col md:flex-row gap-20 justify-between"
+            className="flex flex-col justify-between gap-20 md:flex-row"
           >
             <motion.img
               initial={{ opacity: 0, x: -100, rotate: 0 }}
@@ -53,7 +53,7 @@ function Discover() {
               src={item.imgPath}
               width={400}
               className={`
-              shadow-2xl ring-4 ring-gray-600 rounded-lg
+              rounded-lg shadow-2xl ring-4 ring-gray-600
               ${idx % 2 === 0 ? '-rotate-6' : 'rotate-6 md:order-2'}
               `}
             />

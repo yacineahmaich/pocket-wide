@@ -8,8 +8,8 @@ function Profile() {
   return (
     <>
       <Helmet title="Pocket Wide | Profile" />
-      <div className="max-w-2xl mx-auto">
-        <Title className="mx-auto text-center text-gray-400 mb-5">
+      <div className="mx-auto max-w-2xl">
+        <Title className="mx-auto mb-5 text-center text-gray-400">
           My Profile
         </Title>
 

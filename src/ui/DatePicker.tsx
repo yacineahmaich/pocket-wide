@@ -5,10 +5,10 @@ interface Props extends HTMLProps<HTMLInputElement> {
 }
 const DatePicker = forwardRef<RefCallBack, Props>((props, ref) => {
   return (
-    <div className="tremor-TextInput-root relative w-full flex items-center min-w-[10rem] outline-none rounded-tremor-default shadow-tremor-input dark:shadow-dark-tremor-input bg-tremor-background dark:bg-dark-tremor-background hover:bg-tremor-background-muted dark:hover:bg-dark-tremor-background-muted text-tremor-content dark:text-dark-tremor-content border-tremor-border dark:border-dark-tremor-border border">
+    <div className="tremor-TextInput-root relative flex w-full min-w-[10rem] items-center rounded-tremor-default border border-tremor-border bg-tremor-background text-tremor-content shadow-tremor-input outline-none hover:bg-tremor-background-muted dark:border-dark-tremor-border dark:bg-dark-tremor-background dark:text-dark-tremor-content dark:shadow-dark-tremor-input dark:hover:bg-dark-tremor-background-muted">
       <input
         ref={ref as LegacyRef<HTMLInputElement>}
-        className="w-full py-2 pl-4 pr-4 bg-transparent border-none tremor-TextInput-input focus:outline-none focus:ring-0 text-tremor-default text-tremor-content-emphasis dark:text-dark-tremor-content-emphasis placeholder:text-tremor-content dark:placeholder:text-dark-tremor-content"
+        className="tremor-TextInput-input w-full border-none bg-transparent py-2 pl-4 pr-4 text-tremor-default text-tremor-content-emphasis placeholder:text-tremor-content focus:outline-none focus:ring-0 dark:text-dark-tremor-content-emphasis dark:placeholder:text-dark-tremor-content"
         type="date"
         {...props}
       />

@@ -15,7 +15,7 @@ function Expenses() {
         <div className="hidden w-1/3 p-8 lg:block">
           <Filter loading={isFetching} />
         </div>
-        <section className="flex-1 min-h-screen">
+        <section className="min-h-screen flex-1">
           <ExpensesHeading />
           <ExpensesTable />
         </section>

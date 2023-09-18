@@ -12,7 +12,7 @@ export const signupSchema = Yup.object({
     .min(6)
     .matches(
       /^[0-9A-Za-z]*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?][0-9a-zA-Z]*$/,
-      'password should have at least one special character'
+      'password should have at least one special character',
     )
     .required(),
   passwordConfirmation: Yup.string()
@@ -20,12 +20,12 @@ export const signupSchema = Yup.object({
     .oneOf([Yup.ref('password')], 'passwords must match'),
 });
 
-export const updatePasswordSchema = Yup.object({  
+export const updatePasswordSchema = Yup.object({
   newPassword: Yup.string()
     .min(6)
     .matches(
       /^[0-9A-Za-z]*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?][0-9a-zA-Z]*$/,
-      'password should have at least one special character'
+      'password should have at least one special character',
     )
     .required(),
   newPasswordConfirmation: Yup.string()

@@ -38,7 +38,7 @@ function CategoryChart({ date }: Props) {
 
   const validCategories = [...new Set(data?.map(exp => exp.category))];
   const filteredCategories = categories.filter(c =>
-    validCategories.includes(c.key)
+    validCategories.includes(c.key),
   );
 
   return (
@@ -65,7 +65,7 @@ function CategoryChart({ date }: Props) {
         </Select>
       </div>
 
-      <div className="min-h-[400px] my-6">
+      <div className="my-6 min-h-[400px]">
         {selectedCategory ? (
           <LineChart
             className="mt-6"
@@ -79,7 +79,7 @@ function CategoryChart({ date }: Props) {
         ) : (
           <div className="mt-20 space-y-3 text-center">
             <Title>Select a category</Title>
-            <Text className="max-w-sm mx-auto">
+            <Text className="mx-auto max-w-sm">
               No category selected. Please choose a category from the dropdown
               to view the corresponding chart.
             </Text>

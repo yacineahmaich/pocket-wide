@@ -36,7 +36,7 @@ function Features() {
       title="Features"
       subTitle="Unlock the Power of Financial Management"
     >
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid gap-8 md:grid-cols-2">
         {features.map((feature, idx) => (
           <MotionCard
             key={feature.heading}

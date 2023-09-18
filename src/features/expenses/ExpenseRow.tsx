@@ -24,7 +24,7 @@ const ExpenseRow: FC<Props> = ({ item }) => {
         onSuccess: () => {
           setOpen(false);
         },
-      }
+      },
     );
   };
 

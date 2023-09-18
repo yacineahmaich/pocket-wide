@@ -8,7 +8,7 @@ export const useRemoveProfile = () => {
   return useMutation({
     mutationFn: removeProfile,
     onError: () => {
-      toast.error('Could not remove profile')
+      toast.error('Could not remove profile');
     },
     onSuccess: user => {
       if (!user) return;

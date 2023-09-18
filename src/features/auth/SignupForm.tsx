@@ -25,7 +25,7 @@ function SignupForm() {
         <div className="space-y-1">
           <Text>Username</Text>
           <TextInput
-            className="bg-transparent border-gray-300"
+            className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('username')}
             error={!!errors.username}
             errorMessage={errors.username?.message}
@@ -35,7 +35,7 @@ function SignupForm() {
         <div className="space-y-1">
           <Text>Email Address</Text>
           <TextInput
-            className="bg-transparent border-gray-300"
+            className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('email')}
             error={!!errors.email}
             errorMessage={errors.email?.message}
@@ -45,7 +45,7 @@ function SignupForm() {
         <div className="space-y-1">
           <Text>Passworrd</Text>
           <TextInput
-            className="bg-transparent border-gray-300"
+            className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('password')}
             error={!!errors.password}
             errorMessage={errors.password?.message}
@@ -56,7 +56,7 @@ function SignupForm() {
         <div className="space-y-1">
           <Text>Confirm Password</Text>
           <TextInput
-            className="bg-transparent border-gray-300"
+            className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('passwordConfirmation')}
             error={!!errors.passwordConfirmation}
             errorMessage={errors.passwordConfirmation?.message}
@@ -68,7 +68,7 @@ function SignupForm() {
           Signup
         </Button>
       </form>
-      <Text className="inline-block mt-3">You already have an account?</Text>
+      <Text className="mt-3 inline-block">You already have an account?</Text>
       <Link to="/login" className="ml-1 text-sm font-medium">
         Login
       </Link>

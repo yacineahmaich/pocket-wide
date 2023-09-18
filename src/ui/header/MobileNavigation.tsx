@@ -16,7 +16,6 @@ function MobileNavigation() {
   const { user } = useUser();
   const { mutate: logout, isLoading } = useLogout();
 
-
   const navigate = (to: string) => {
     _navigate(to);
     setOpen(false);
@@ -30,18 +29,18 @@ function MobileNavigation() {
         </button>
       </Dialog.Trigger>
       <Dialog.Portal className="sm:hidden">
-        <Dialog.Overlay className="fixed inset-0 bg-black/20 sm:hidden animate-in data-[state=open]:fade-in-0 duration-300 z-[9999]" />
-        <Dialog.Content className="fixed inset-y-0 z-[9999] w-[280px] max-w-full right-0 top-0 bg-white sm:hidden flex flex-col animate-in data-[state=open]:slide-in-from-right">
-          <Dialog.Close className="absolute mr-2 top-2 right-full">
-            <button className="bg-white rounded-full shadow-lg active:scale-95">
+        <Dialog.Overlay className="fixed inset-0 z-[9999] bg-black/20 animate-in duration-300 data-[state=open]:fade-in-0 sm:hidden" />
+        <Dialog.Content className="fixed inset-y-0 right-0 top-0 z-[9999] flex w-[280px] max-w-full flex-col bg-white animate-in data-[state=open]:slide-in-from-right sm:hidden">
+          <Dialog.Close className="absolute right-full top-2 mr-2">
+            <button className="rounded-full bg-white shadow-lg active:scale-95">
               <Icon icon={HiXMark} color="gray" />
             </button>
           </Dialog.Close>
 
           <div className="flex-1">
-            <div className="flex p-4 bg-gray-100">
+            <div className="flex bg-gray-100 p-4">
               <UserAvatar />
-              <div className="flex flex-col ml-3">
+              <div className="ml-3 flex flex-col">
                 <span className="font-medium capitalize">
                   {user?.user_metadata.username ??
                     user?.user_metadata.full_name}
@@ -65,7 +64,7 @@ function MobileNavigation() {
             </nav>
           </div>
 
-          <div className="flex flex-col items-center px-4 py-2 space-y-2 mt-auto border-t border-gray-200">
+          <div className="mt-auto flex flex-col items-center space-y-2 border-t border-gray-200 px-4 py-2">
             <Button
               icon={HiUser}
               color="gray"

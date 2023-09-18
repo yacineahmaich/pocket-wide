@@ -24,5 +24,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ReactQueryDevtools />
     </QueryClientProvider>
     <Toaster richColors closeButton expand />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

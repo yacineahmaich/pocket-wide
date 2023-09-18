@@ -4,12 +4,10 @@ import Logo from '../../ui/Logo';
 function Footer() {
   return (
     <footer className="py-20 text-center">
-      <Logo className="w-10 h-10 mx-auto" />
-      <Text className="mt-4">
-        © 2023 Pocket Wide. All Rights Reserved.
-      </Text>
+      <Logo className="mx-auto h-10 w-10" />
+      <Text className="mt-4">© 2023 Pocket Wide. All Rights Reserved.</Text>
 
-      <ul className='flex items-center justify-center gap-4 mt-4 text-gray-600'>
+      <ul className="mt-4 flex items-center justify-center gap-4 text-gray-600">
         <li>
           <a href="#">Policy</a>
         </li>

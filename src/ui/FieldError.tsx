@@ -4,7 +4,7 @@ type Props = {
 };
 const FieldError: FC<Props> = ({ msg }) => {
   return (
-    <p className="mt-1 text-sm tremor-TextInput-errorMessage text-rose-500">
+    <p className="tremor-TextInput-errorMessage mt-1 text-sm text-rose-500">
       {msg}
     </p>
   );

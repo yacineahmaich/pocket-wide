@@ -18,7 +18,7 @@ function PerformanceChart({ dateRange }: { dateRange: DateRangePickerValue }) {
 
   const sortedData = useMemo(() => {
     return data?.sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
     );
   }, [data]);
 
@@ -28,11 +28,11 @@ function PerformanceChart({ dateRange }: { dateRange: DateRangePickerValue }) {
   const to = dateRange.to ? `to ${formatDate(dateRange.to, 'medium')}` : '';
 
   return (
-    <Card className="md:col-span-2 h-fit">
+    <Card className="h-fit md:col-span-2">
       <Title>{from || to ? `${from} ${to}` : 'All time'}</Title>
       <Text>Expense / income</Text>
       {isLoading ? (
-        <Lottie animationData={animationData} className='h-[400px]' />
+        <Lottie animationData={animationData} className="h-[400px]" />
       ) : (
         <AreaChart
           className="h-96"

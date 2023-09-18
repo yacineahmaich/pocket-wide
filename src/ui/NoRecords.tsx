@@ -7,8 +7,8 @@ type Props = {
 };
 const NoRecords: FC<Props> = ({ resource }) => {
   return (
-    <div className="flex flex-col items-center justify-center w-full">
-      <Lottie animationData={animationData} className="h-[300px] mx-auto" />
+    <div className="flex w-full flex-col items-center justify-center">
+      <Lottie animationData={animationData} className="mx-auto h-[300px]" />
       <p className="text-lg font-semibold text-gray-500">
         No {resource} found!
       </p>

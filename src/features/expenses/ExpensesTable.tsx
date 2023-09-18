@@ -36,9 +36,7 @@ function ExpensesTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data?.data?.map(item => (
-            <ExpenseRow key={item.title} item={item} />
-          ))}
+          {data?.data?.map(item => <ExpenseRow key={item.title} item={item} />)}
         </TableBody>
       </Table>
       <Pagination count={data?.count as number} />

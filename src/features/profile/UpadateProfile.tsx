@@ -21,7 +21,7 @@ const UpadateProfile: React.FC = () => {
 
   return (
     <Card className="border-gray-300 p-1">
-      <div className="bg-gray-100 p-3 rounded">
+      <div className="rounded bg-gray-100 p-3">
         <Text className="font-medium">Update Profile</Text>
       </div>
       <div className="p-4">
@@ -30,11 +30,11 @@ const UpadateProfile: React.FC = () => {
             src={
               profilePreview || user?.user_metadata.avatar_url || userProfile
             }
-            className="rounded-full w-28 h-28 object-cover mb-4 bg-gray-100"
+            className="mb-4 h-28 w-28 rounded-full bg-gray-100 object-cover"
           />
           <label
             htmlFor="image"
-            className="absolute  bottom-0 right-0 bg-gray-100 border rounded-full cursor-pointer"
+            className="absolute  bottom-0 right-0 cursor-pointer rounded-full border bg-gray-100"
           >
             <Icon icon={MdEdit} size="xs" color="gray" />
             <input
@@ -54,7 +54,7 @@ const UpadateProfile: React.FC = () => {
 
               updateProfile(
                 { profile, userId: user?.id! },
-                { onSuccess: () => setProfile(undefined) }
+                { onSuccess: () => setProfile(undefined) },
               );
             }}
             disabled={isLoading || isRemoving}

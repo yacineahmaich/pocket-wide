@@ -8,7 +8,7 @@ function Header() {
   const { user, isAuthenticated } = useUser();
 
   return (
-    <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 h-16 bg-transparent z-10">
+    <header className="fixed left-0 top-0 z-10 flex h-16 w-full items-center justify-between bg-transparent px-6">
       <Link to="/">
         <Logo className="h-8" />
       </Link>
@@ -19,7 +19,7 @@ function Header() {
             size="xs"
             variant="secondary"
             color="gray"
-            className="px-6 md:px-10 rounded-full transition-colors"
+            className="rounded-full px-6 transition-colors md:px-10"
             onClick={() => navigate('/dashboard')}
           >
             Go to dashboard
@@ -31,7 +31,7 @@ function Header() {
               size="xs"
               variant="light"
               color="gray"
-              className="px-6 md:px-10 transition-colors"
+              className="px-6 transition-colors md:px-10"
               onClick={() => navigate('/login')}
             >
               Log In
@@ -41,7 +41,7 @@ function Header() {
               size="xs"
               variant="secondary"
               color="gray"
-              className="px-6 md:px-10 transition-colors"
+              className="px-6 transition-colors md:px-10"
               onClick={() => navigate('/signup')}
             >
               Sign Up

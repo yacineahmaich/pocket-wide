@@ -59,7 +59,7 @@ function Filter({ onFilter, loading, type = 'expense' }: Props) {
         tag,
       });
       onFilter && onFilter();
-    }
+    },
   );
 
   const isFiltered = Object.entries(filter).some(field => field[1]);

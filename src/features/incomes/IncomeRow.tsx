@@ -24,7 +24,7 @@ const IncomeRow: FC<Props> = ({ item }) => {
         onSuccess: () => {
           setOpen(false);
         },
-      }
+      },
     );
   };
 

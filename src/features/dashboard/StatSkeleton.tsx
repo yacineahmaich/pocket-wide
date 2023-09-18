@@ -1,13 +1,13 @@
 import { Card } from '@tremor/react';
 const StatSkeleton = () => {
   return (
-    <Card className="space-y-5 animate-pulse">
-      <span className="block w-12 h-3 bg-gray-100 rounded-full"></span>
-      <span className="block w-32 h-6 bg-gray-100 rounded-full"></span>
+    <Card className="animate-pulse space-y-5">
+      <span className="block h-3 w-12 rounded-full bg-gray-100"></span>
+      <span className="block h-6 w-32 rounded-full bg-gray-100"></span>
 
       <div className="flex items-center gap-4">
-        <span className="w-12 h-3 bg-gray-100 rounded-full"></span>
-        <span className="h-3 bg-gray-100 rounded-full w-28"></span>
+        <span className="h-3 w-12 rounded-full bg-gray-100"></span>
+        <span className="h-3 w-28 rounded-full bg-gray-100"></span>
       </div>
     </Card>
   );

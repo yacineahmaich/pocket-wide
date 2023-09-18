@@ -30,7 +30,7 @@ function Category() {
       <Helmet title="Pocket Wide | Catgegory" />
       <div>
         <Title className="text-center text-gray-400">Category</Title>
-        <div className="flex items-center justify-between mt-10">
+        <div className="mt-10 flex items-center justify-between">
           <Text>Expenses Per Category</Text>
           <DateRangePicker
             value={date}

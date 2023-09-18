@@ -8,7 +8,7 @@ function IncomesHeading() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-between p-3 mb-4 lg:p-6">
+    <div className="mb-4 flex items-center justify-between p-3 lg:p-6">
       <Title className="text-gray-400">Incomes</Title>
       <div>
         <Button

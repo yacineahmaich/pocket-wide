@@ -129,7 +129,7 @@ function CreateIncomeForm() {
             <Label htmlFor="attachements">Attachements</Label>
             <Card
               {...getRootProps()}
-              className="max-w-full p-6 text-sm font-semibold text-center border-x-2 sm:p-10 text-tremor-brand"
+              className="max-w-full border-x-2 p-6 text-center text-sm font-semibold text-tremor-brand sm:p-10"
               color="gray"
             >
               <input type="text" {...getInputProps()} disabled={isLoading} />
@@ -155,7 +155,7 @@ function CreateIncomeForm() {
             />
           </div>
 
-          <Button className="w-full mt-auto h-fit" loading={isLoading}>
+          <Button className="mt-auto h-fit w-full" loading={isLoading}>
             Create
           </Button>
         </div>

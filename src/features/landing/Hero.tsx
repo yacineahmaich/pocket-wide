@@ -13,17 +13,17 @@ function Hero() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex flex-col justify-center">
-      <main className="flex flex-col md:flex-row gap-10 items-center md:items-start md:justify-evenly relative">
-        <motion.div className="md:mt-[100px] text-center md:text-left">
+    <div className="flex h-screen flex-col justify-center">
+      <main className="relative flex flex-col items-center gap-10 md:flex-row md:items-start md:justify-evenly">
+        <motion.div className="text-center md:mt-[100px] md:text-left">
           <MotionTitle
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
               delay: 0.1,
-              duration: .6,
+              duration: 0.6,
             }}
-            className="text-4xl mb-3"
+            className="mb-3 text-4xl"
           >
             Pocket <span className="text-tremor-brand">Wide</span>
           </MotionTitle>
@@ -32,7 +32,7 @@ function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{
               delay: 0.3,
-              duration: .6,
+              duration: 0.6,
             }}
           >
             Effortlessly Manage Your Expenses with Pocket Wide
@@ -42,7 +42,7 @@ function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{
               delay: 0.5,
-              duration: .6,
+              duration: 0.6,
             }}
             role="link"
             className="mt-6 md:mt-10"
@@ -72,7 +72,7 @@ function Hero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="flex justify-center mb-10"
+        className="mb-10 flex justify-center"
       >
         <Icon
           icon={BiDownArrow}

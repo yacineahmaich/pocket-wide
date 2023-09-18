@@ -8,12 +8,12 @@ export const getStats = async () => {
   const firstDayOfPrevMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth() - 1,
-    1
+    1,
   ).toLocaleDateString('en-CA');
   const firstDayOfCurMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth(),
-    1
+    1,
   ).toLocaleDateString('en-CA');
 
   const { data: expensesCurMonth, error: expensesCurMonthError } =
@@ -47,19 +47,19 @@ export const getStats = async () => {
 
   const expensesTotalCurrentMonth = expensesCurMonth.reduce(
     (total, exp) => total + exp.amount,
-    0
+    0,
   );
   const expensesTotalPrevMonth = expensesPrevMonth.reduce(
     (total, exp) => total + exp.amount,
-    0
+    0,
   );
   const incomesTotalCurrentMonth = incomesCurMonth.reduce(
     (total, exp) => total + exp.amount,
-    0
+    0,
   );
   const incomesTotalPrevMonth = incomesPrevMonth.reduce(
     (total, exp) => total + exp.amount,
-    0
+    0,
   );
 
   return {
@@ -75,7 +75,7 @@ export const getStats = async () => {
 };
 
 export const getPerformance = async (
-  dateRange: DateRangePickerValue
+  dateRange: DateRangePickerValue,
 ): Promise<{ date: string; expenses: number; incomes: number }[]> => {
   const from = dateRange.from
     ? formatDate(dateRange.from)
@@ -124,7 +124,7 @@ export const getPerformance = async (
       ...acc,
       { date, expenses: expenses ?? 0, incomes: incomes ?? 0 },
     ],
-    [] as { date: string; expenses: number; incomes: number }[]
+    [] as { date: string; expenses: number; incomes: number }[],
   );
 
   return x;
@@ -162,19 +162,25 @@ export const getCategoriesOverview = async ({
 
   if (incomesError) throw new Error(incomesError.message);
 
-  const expensesPerCategory = expenses.reduce((acc, exp) => {
-    acc[exp.category] = acc[exp.category]
-      ? acc[exp.category] + exp.amount
-      : exp.amount;
-    return acc;
-  }, {} as { [key: string]: number });
+  const expensesPerCategory = expenses.reduce(
+    (acc, exp) => {
+      acc[exp.category] = acc[exp.category]
+        ? acc[exp.category] + exp.amount
+        : exp.amount;
+      return acc;
+    },
+    {} as { [key: string]: number },
+  );
 
-  const incomesPerCategory = incomes.reduce((acc, inc) => {
-    acc[inc.category] = acc[inc.category]
-      ? acc[inc.category] + inc.amount
-      : inc.amount;
-    return acc;
-  }, {} as { [key: string]: number });
+  const incomesPerCategory = incomes.reduce(
+    (acc, inc) => {
+      acc[inc.category] = acc[inc.category]
+        ? acc[inc.category] + inc.amount
+        : inc.amount;
+      return acc;
+    },
+    {} as { [key: string]: number },
+  );
 
   const categoriesList = type === 'expenses' ? categories : incomeCategories;
   const transformedExpenses = Object.entries(expensesPerCategory).map(
@@ -182,14 +188,14 @@ export const getCategoriesOverview = async ({
       name,
       value: formatCurrency(value, currency ?? 'USD'),
       icon: categoriesList.find(c => c.key === name)?.Icon,
-    })
+    }),
   );
   const transformedIncomes = Object.entries(incomesPerCategory).map(
     ([name, value]) => ({
       name,
       value: formatCurrency(value, currency ?? 'USD'),
       icon: categoriesList.find(c => c.key === name)?.Icon,
-    })
+    }),
   );
 
   return {

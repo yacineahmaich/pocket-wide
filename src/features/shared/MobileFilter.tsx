@@ -10,8 +10,8 @@ type Props = {
 const MobileFilter: FC<Props> = ({ open, setOpen }) => (
   <AlertDialog.Root open={open} onOpenChange={setOpen}>
     <AlertDialog.Portal className="lg:hidden">
-      <AlertDialog.Overlay className="fixed inset-0 bg-black/20 lg:hidden animate-in data-[state=open]:fade-in-0 duration-300 z-[9999]" />
-      <AlertDialog.Content className="fixed top-[50%] z-[9999] left-[50%] translate-x-[-50%] translate-y-[-50%]  bg-white lg:hidden p-8 rounded-xl">
+      <AlertDialog.Overlay className="fixed inset-0 z-[9999] bg-black/20 animate-in duration-300 data-[state=open]:fade-in-0 lg:hidden" />
+      <AlertDialog.Content className="fixed left-[50%] top-[50%] z-[9999] translate-x-[-50%] translate-y-[-50%]  rounded-xl bg-white p-8 lg:hidden">
         <Filter onFilter={() => setOpen(false)} />
       </AlertDialog.Content>
     </AlertDialog.Portal>

@@ -8,7 +8,7 @@ type Props = {
 
 function SectionLayout({ title, subTitle, children }: Props) {
   return (
-    <div className="flex flex-col items-center pb-32 max-w-4xl mx-auto">
+    <div className="mx-auto flex max-w-4xl flex-col items-center pb-32">
       <Title className="text-xl">{title}</Title>
       <Text className="mt-2">{subTitle}</Text>
       <div className="mt-10">{children}</div>

@@ -34,9 +34,7 @@ function IncomesTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data?.data?.map(item => (
-            <IncomeRow key={item.id} item={item} />
-          ))}
+          {data?.data?.map(item => <IncomeRow key={item.id} item={item} />)}
         </TableBody>
       </Table>
       <Pagination count={data?.count as number} />

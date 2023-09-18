@@ -30,12 +30,12 @@ function LoginForm() {
   };
 
   return (
-    <>
+    <div>
       <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-1">
           <Text>Email Address</Text>
           <TextInput
-          className='bg-transparent border-gray-300'
+            className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('email', { required: 'email is required' })}
             placeholder="Your email"
             error={!!errors.email}
@@ -45,7 +45,7 @@ function LoginForm() {
         <div className="space-y-1">
           <Text>Passworrd</Text>
           <TextInput
-          className='bg-transparent border-gray-300'
+            className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('password')}
             type="password"
             placeholder="Your Password"
@@ -57,11 +57,11 @@ function LoginForm() {
           Login
         </Button>
       </form>
-      <Text className="inline-block mt-3">You don't have an account yet?</Text>
+      <Text className="mt-3 inline-block">You don't have an account yet?</Text>
       <Link to="/signup" className="ml-1 text-sm font-medium">
         Signup
       </Link>
-    </>
+    </div>
   );
 }
 

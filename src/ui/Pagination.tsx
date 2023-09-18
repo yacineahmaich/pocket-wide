@@ -30,7 +30,7 @@ function Pagination({ count }: Props) {
   if (!hasMore && currentPage === 1) return null;
 
   return (
-    <div className="flex items-center justify-center gap-3 mt-4">
+    <div className="mt-4 flex items-center justify-center gap-3">
       <Button
         size="xs"
         color="blue"

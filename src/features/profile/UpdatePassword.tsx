@@ -28,7 +28,7 @@ const UpdatePassword: React.FC = () => {
 
   return (
     <Card className="border-gray-300 p-1">
-      <div className="bg-gray-100 p-3 rounded">
+      <div className="rounded bg-gray-100 p-3">
         <Text className="font-medium">Update Password</Text>
       </div>
       <div className="p-4">

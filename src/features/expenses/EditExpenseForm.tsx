@@ -132,7 +132,7 @@ const EditExpenseForm: FC<Props> = () => {
             />
           </div>
 
-          <Button className="w-full mt-auto h-fit" loading={isUpdating}>
+          <Button className="mt-auto h-fit w-full" loading={isUpdating}>
             Save changes
           </Button>
         </form>

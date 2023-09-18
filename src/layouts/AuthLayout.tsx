@@ -1,4 +1,4 @@
-import { Button, Divider, Flex, Title } from '@tremor/react';
+import { Button, Title } from '@tremor/react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Navigate } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
@@ -16,33 +16,31 @@ function AuthLayout({
   if (user && isAuthenticated) return <Navigate to="/dashboard" />;
 
   return (
-    <div className="relative flex flex-col items-center mt-16">
-      <Title>{heading}</Title>
-      <Flex alignItems="center" justifyContent="center" className="p-6">
-        <div className="max-w-sm h-fit bg-transparent mt-0">
-          <div className="space-y-2">
-            <Button
-              icon={FaGoogle}
-              variant="secondary"
-              color="gray"
-              className="w-full"
-              onClick={() => signinWithGoogle()}
-            >
-              Continue with Google
-            </Button>
-            <Button
-              icon={FaGithub}
-              color="gray"
-              className="w-full"
-              onClick={() => signinWithGithub()}
-            >
-              Continue with Github
-            </Button>
-          </div>
-          <Divider className="bg-gray-200" />
+    <div className="relative -mt-16 flex h-screen flex-col items-center pt-32">
+      <div className="mt-0 flex max-w-2xl items-center justify-between border-0 bg-transparent p-6">
+        <div className="flex-1 space-y-4">
+          <Title>{heading}</Title>
           {children}
         </div>
-      </Flex>
+        <div className="mx-4 h-20 w-px bg-gray-300" />
+        <div className="flex flex-col gap-2">
+          <Button
+            icon={FaGoogle}
+            variant="secondary"
+            color="gray"
+            onClick={() => signinWithGoogle()}
+          >
+            Continue with Google
+          </Button>
+          <Button
+            icon={FaGithub}
+            color="gray"
+            onClick={() => signinWithGithub()}
+          >
+            Continue with Github
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
