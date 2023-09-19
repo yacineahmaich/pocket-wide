@@ -1,29 +1,7 @@
 import { Title, Text } from '@tremor/react';
 import SectionLayout from '../../layouts/SectionLayout';
 import { motion } from 'framer-motion';
-
-const content = [
-  {
-    imgPath: '/monthly-performance-dashboard.png',
-    heading: 'Monthly Performance Dashboard',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
-  },
-  {
-    imgPath: '/tracking.png',
-    heading: 'Track Expenses / incomes',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
-  },
-  {
-    imgPath: '/category-spending.png',
-    heading: 'Category Spending',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
-  },
-  {
-    imgPath: '/currency-profile.png',
-    heading: 'Currency conversion & profile',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const transition = (n: number) => ({
   delay: 0.1 * n,
@@ -33,6 +11,31 @@ const transition = (n: number) => ({
 });
 
 function Discover() {
+  const { t } = useTranslation();
+
+  const content = [
+    {
+      imgPath: '/monthly-performance-dashboard.png',
+      heading: t('monthly-performance-dashboard'),
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+    },
+    {
+      imgPath: '/tracking.png',
+      heading: t('track-expenses-incomes'),
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+    },
+    {
+      imgPath: '/category-spending.png',
+      heading: t('category-spending'),
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+    },
+    {
+      imgPath: '/currency-profile.png',
+      heading: t('currency-conversion'),
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+    },
+  ];
+
   return (
     <SectionLayout title="Discover" subTitle="Journey into Financial Clarity">
       <div className="mt-10 flex flex-col gap-28">
@@ -53,7 +56,7 @@ function Discover() {
               src={item.imgPath}
               width={400}
               className={`
-              rounded-lg shadow-2xl ring-4 ring-gray-600 bg-gray-50
+              rounded-lg bg-gray-50 shadow-2xl ring-4 ring-gray-600
               ${idx % 2 === 0 ? '-rotate-6' : 'rotate-6 md:order-2'}
               `}
             />

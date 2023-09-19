@@ -4,6 +4,7 @@ import { BiBoltCircle, BiDownArrow } from 'react-icons/bi';
 import animationData from '../../assets/lottie/cta.json';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const MotionTitle = motion(Title);
 const MotionText = motion(Text);
@@ -11,6 +12,7 @@ const MotionButton = motion(Button);
 
 function Hero() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div className="flex min-h-screen flex-col justify-center">
@@ -35,7 +37,7 @@ function Hero() {
               duration: 0.6,
             }}
           >
-            Effortlessly Manage Your Expenses with Pocket Wide
+            {t('hero-subtitle')}
           </MotionText>
           <MotionButton
             initial={{ opacity: 0, x: -20 }}
@@ -50,7 +52,7 @@ function Hero() {
             icon={BiBoltCircle}
             onClick={() => navigate('/login')}
           >
-            Get Started Now
+            {t('get-started-now')}
           </MotionButton>
         </motion.div>
         <motion.div

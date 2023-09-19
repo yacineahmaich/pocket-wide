@@ -4,38 +4,38 @@ import { BsClipboardCheck, BsCurrencyExchange } from 'react-icons/bs';
 import { TbPigMoney } from 'react-icons/tb';
 import SectionLayout from '../../layouts/SectionLayout';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const MotionCard = motion(Card);
 
-const features = [
-  {
-    heading: 'Expense Tracking',
-    text: 'Stay in control of your spending with our intuitive expense tracking tools. Easily categorize and monitor your expenses, making it simple to identify where your money is going.',
-    icon: BsClipboardCheck,
-  },
-  {
-    heading: 'Income Management',
-    text: 'Track and manage your income sources efficiently. Keep a close eye on your earnings and gain insights into your cash flow.',
-    icon: TbPigMoney,
-  },
-  {
-    heading: 'Currency Conversion',
-    text: 'Manage finances across borders with ease. Convert currencies and keep track of expenses in multiple currencies effortlessly.',
-    icon: BsCurrencyExchange,
-  },
-  {
-    heading: 'Category Spending Insights',
-    text: 'Gain deeper insights into your spending habits with our Category Spending Insights feature.',
-    icon: BiSolidCategoryAlt,
-  },
-];
-
 function Features() {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      heading: t('feature-expense'),
+      text: t('feature-expense-text'),
+      icon: BsClipboardCheck,
+    },
+    {
+      heading: t('feature-income'),
+      text: t('feature-income-text'),
+      icon: TbPigMoney,
+    },
+    {
+      heading: t('feature-currency'),
+      text: t('feature-currency-text'),
+      icon: BsCurrencyExchange,
+    },
+    {
+      heading: t('feature-category'),
+      text: t('feature-category-text'),
+      icon: BiSolidCategoryAlt,
+    },
+  ];
+
   return (
-    <SectionLayout
-      title="Features"
-      subTitle="Unlock the Power of Financial Management"
-    >
+    <SectionLayout title={t('features')} subTitle={t('features-subheading')}>
       <div className="grid gap-8 md:grid-cols-2">
         {features.map((feature, idx) => (
           <MotionCard

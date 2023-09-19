@@ -3,9 +3,11 @@ import Logo from '../../ui/Logo';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../../features/auth/useUser';
 import LangSwitcher from '../../features/shared/LangSwitcher';
+import { useTranslation } from 'react-i18next';
 
 function Header() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user, isAuthenticated } = useUser();
 
   return (
@@ -23,7 +25,7 @@ function Header() {
             className="rounded-full px-6 transition-colors md:px-10"
             onClick={() => navigate('/dashboard')}
           >
-            Go to dashboard
+            {t('go-to-dashboard')}
           </Button>
         ) : (
           <>
@@ -35,7 +37,7 @@ function Header() {
               className="px-6 transition-colors md:px-10"
               onClick={() => navigate('/login')}
             >
-              Log In
+              {t('login')}
             </Button>
             <Button
               role="link"
@@ -45,7 +47,7 @@ function Header() {
               className="px-6 transition-colors md:px-10"
               onClick={() => navigate('/signup')}
             >
-              Sign Up
+              {t('signup')}
             </Button>
           </>
         )}

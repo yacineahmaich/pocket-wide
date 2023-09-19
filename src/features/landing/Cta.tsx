@@ -1,5 +1,6 @@
 import { Button, Card, Text, Title } from '@tremor/react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { BiBoltCircle } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,6 +8,7 @@ const MotionCard = motion(Card);
 
 function Cta() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <MotionCard
@@ -16,19 +18,14 @@ function Cta() {
       viewport={{ once: true }}
       className="bg-transparent text-center"
     >
-      <Title className="mb-2 md:text-2xl">
-        Ready to Take Control of Your Finances?
-      </Title>
-      <Text className="mx-auto mb-4 max-w-md">
-        Explore the power of financial management with our feature-rich web app.
-        Get started today to secure your financial future.
-      </Text>
+      <Title className="mb-2 md:text-2xl">{t('cta-heading')}</Title>
+      <Text className="mx-auto mb-4 max-w-md">{t('cta-subheading')}</Text>
       <Button
         icon={BiBoltCircle}
         color="blue"
         onClick={() => navigate('/login')}
       >
-        GET STARTED
+        {t('get-started')}
       </Button>
     </MotionCard>
   );
