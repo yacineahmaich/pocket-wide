@@ -3,13 +3,15 @@ import { FaSlidersH, FaArrowUp, FaPen } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import MobileFilter from '../shared/MobileFilter';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function IncomesHeading() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   return (
     <div className="mb-4 flex items-center justify-between p-3 lg:p-6">
-      <Title className="text-gray-400">Incomes</Title>
+      <Title className="text-gray-400">{t('incomes')}</Title>
       <div>
         <Button
           variant="light"
@@ -33,7 +35,7 @@ function IncomesHeading() {
             icon={FaArrowUp}
             className="hidden lg:flex"
           >
-            Add Income
+            {t('add-income')}
           </Button>
           <Icon
             icon={FaPen}

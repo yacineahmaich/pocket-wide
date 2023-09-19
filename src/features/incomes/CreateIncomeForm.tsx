@@ -18,9 +18,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDropzone } from 'react-dropzone';
 import { useCreateIncome } from './useCreateIncome';
 import { useUser } from '../auth/useUser';
+import { useTranslation } from 'react-i18next';
 
 function CreateIncomeForm() {
   const { user } = useUser();
+  const { t } = useTranslation();
 
   const {
     register,
@@ -58,7 +60,7 @@ function CreateIncomeForm() {
       <form onSubmit={onSubmit}>
         <div className="space-y-4">
           <div className="space-y-1">
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="title">{t('title')}</Label>
             <TextInput
               id="title"
               {...register('title')}
@@ -68,7 +70,7 @@ function CreateIncomeForm() {
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="amount">Amount</Label>
+            <Label htmlFor="amount">{t('amount')}</Label>
             <TextInput
               id="amount"
               icon={() => (
@@ -83,12 +85,12 @@ function CreateIncomeForm() {
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="date">Date</Label>
+            <Label htmlFor="date">{t('date')}</Label>
             <DatePicker id="date" {...register('date')} disabled={isLoading} />
             {!!errors.date && <FieldError msg={errors.date.message} />}
           </div>
           <div className="space-y-1">
-            <Label htmlFor="category">Category</Label>
+            <Label htmlFor="category">{t('category')}</Label>
             <Select
               id="category"
               defaultValue={getValues().category}
@@ -116,7 +118,7 @@ function CreateIncomeForm() {
             {!!errors.category && <FieldError msg={errors.category.message} />}
           </div>
           <div className="space-y-1">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">{t('description')}</Label>
             <TextArea
               id="description"
               rows={5}
@@ -126,7 +128,7 @@ function CreateIncomeForm() {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="attachements">Attachements</Label>
+            <Label htmlFor="attachements">{t('attachments')}</Label>
             <Card
               {...getRootProps()}
               className="max-w-full border-x-2 p-6 text-center text-sm font-semibold text-tremor-brand sm:p-10"
@@ -144,7 +146,7 @@ function CreateIncomeForm() {
             </Card>
           </div>
           <div className="space-y-1">
-            <Label htmlFor="tags">Tags</Label>
+            <Label htmlFor="tags">{t('tags')}</Label>
             <TextInput
               id="tags"
               placeholder="comma sperated, e.g tag-1,tag-2 ..."
@@ -156,7 +158,7 @@ function CreateIncomeForm() {
           </div>
 
           <Button className="mt-auto h-fit w-full" loading={isLoading}>
-            Create
+            {t('create')}
           </Button>
         </div>
       </form>

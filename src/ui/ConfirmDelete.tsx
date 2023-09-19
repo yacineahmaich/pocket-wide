@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Button, Icon, Text } from '@tremor/react';
 import { FaExclamationCircle } from 'react-icons/fa';
 import { HiXMark } from 'react-icons/hi2';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   open: boolean;
@@ -18,6 +19,8 @@ const ConfirmDelete: FC<Props> = ({
   onConfirm,
   isLoading = false,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
@@ -32,12 +35,14 @@ const ConfirmDelete: FC<Props> = ({
             <Icon icon={FaExclamationCircle} size="lg" />
           </div>
           <Dialog.Description className="my-4 text-center">
-            <Text>Are you sure you want to delete this {resource} ?</Text>
+            <Text>
+              {t('delete-resource-warning', { resource: t(resource) })}
+            </Text>
           </Dialog.Description>
           <div className="flex justify-center gap-4">
             <Dialog.Close asChild>
               <Button color="gray" size="xs" variant="secondary">
-                No, Cancel
+                {t('cancel')}
               </Button>
             </Dialog.Close>
             <Button
@@ -46,7 +51,7 @@ const ConfirmDelete: FC<Props> = ({
               onClick={onConfirm}
               loading={isLoading}
             >
-              Yes, I'm sure
+              {t('sure')}
             </Button>
           </div>
         </Dialog.Content>

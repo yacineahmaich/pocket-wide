@@ -43,7 +43,9 @@
   "logout": "Déconnexion",
   "saving": "Économies",
   "incomes": "Revenus",
+  "income": "Revenu",
   "expenses": "Dépenses",
+  "expense": "Dépense",
   "from": "de",
   "to": "à",
   "overview": "Vue d'ensemble",
@@ -60,6 +62,7 @@
   "tag": "Étiquette",
   "add-expense": "Ajouter une dépense",
   "create-expense": "Créer une dépense",
+  "edit-expense": "Modifier la dépense",
   "title": "Titre",
   "amount": "Montant",
   "actions": "Actions",
@@ -68,5 +71,12 @@
   "attachments": "Pièces jointes",
   "create": "Créer",
   "tags-placeholder": "séparées par des virgules, par exemple, tag1,tag2...",
-  "tags": "Étiquettes"
+  "tags": "Étiquettes",
+  "add-income": "Ajouter un revenu",
+  "create-income": "Créer un revenu",
+  "edit-income": "Modifier le revenu",
+  "save-changes": "Enregistrer les modifications",
+  "delete-resource-warning": "Êtes-vous sûr de vouloir supprimer cette {{resource}} ?",
+  "cancel": "Non, Annuler",
+  "sure": "Oui, Je suis sûr"
 }

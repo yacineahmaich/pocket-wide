@@ -12,12 +12,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { expenseSchema } from '../../utils/validation/expense';
 import { useUpdateExpense } from './useUpdateExpense';
 import { useUser } from '../auth/useUser';
+import { useTranslation } from 'react-i18next';
 type Props = {
   children?: React.ReactNode;
 };
 const EditExpenseForm: FC<Props> = () => {
-  const location = useLocation();
   const { user } = useUser();
+  const { t } = useTranslation();
+  const location = useLocation();
 
   const expenseData = location?.state as Income | null;
 
@@ -55,7 +57,7 @@ const EditExpenseForm: FC<Props> = () => {
       <div>
         <form action="" className="space-y-4" onSubmit={onSubmit}>
           <div className="space-y-1">
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="title">{t('title')}</Label>
             <TextInput
               id="title"
               {...register('title')}
@@ -65,7 +67,7 @@ const EditExpenseForm: FC<Props> = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="amount">Amount</Label>
+            <Label htmlFor="amount">{t('amount')}</Label>
             <TextInput
               id="amount"
               icon={() => (
@@ -80,12 +82,12 @@ const EditExpenseForm: FC<Props> = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="date">Date</Label>
+            <Label htmlFor="date">{t('date')}</Label>
             <DatePicker id="date" {...register('date')} disabled={isUpdating} />
             {!!errors.date && <FieldError msg={errors.date.message} />}
           </div>
           <div className="space-y-1">
-            <Label htmlFor="category">Category</Label>
+            <Label htmlFor="category">{t('category')}</Label>
             <Select
               id="category"
               defaultValue={getValues().category}
@@ -111,7 +113,7 @@ const EditExpenseForm: FC<Props> = () => {
             {!!errors.category && <FieldError msg={errors.category.message} />}
           </div>
           <div className="space-y-1">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">{t('description')}</Label>
             <TextArea
               id="description"
               rows={5}
@@ -121,7 +123,7 @@ const EditExpenseForm: FC<Props> = () => {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="tags">Tags</Label>
+            <Label htmlFor="tags">{t('tags')}</Label>
             <TextInput
               id="tags"
               placeholder="comma sperated, e.g tag-1,tag-2 ..."
@@ -133,7 +135,7 @@ const EditExpenseForm: FC<Props> = () => {
           </div>
 
           <Button className="mt-auto h-fit w-full" loading={isUpdating}>
-            Save changes
+            {t('save-changes')}
           </Button>
         </form>
       </div>

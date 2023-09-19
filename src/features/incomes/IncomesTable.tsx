@@ -11,8 +11,10 @@ import IncomeRow from './IncomeRow';
 import NoRecords from '../../ui/NoRecords';
 import LoadingAnimation from '../../ui/LoadingAnimation';
 import ErrorMessage from '../../ui/ErrorMessage';
+import { useTranslation } from 'react-i18next';
 
 function IncomesTable() {
+  const { t } = useTranslation();
   const { data, isLoading, isError, error, refetch } = useIncomes();
 
   if (isError) return <ErrorMessage error={error} retry={refetch} />;
@@ -24,13 +26,13 @@ function IncomesTable() {
       <Table className="mt-3">
         <TableHead>
           <TableRow>
-            <TableHeaderCell className="hidden sm:table-cell"></TableHeaderCell>
-            <TableHeaderCell>Title</TableHeaderCell>
+            <TableHeaderCell className="hidden sm:table-cell" />
+            <TableHeaderCell>{t('title')}</TableHeaderCell>
             <TableHeaderCell className="hidden sm:table-cell">
-              Date
+              {t('date')}
             </TableHeaderCell>
-            <TableHeaderCell>Amount</TableHeaderCell>
-            <TableHeaderCell>Actions</TableHeaderCell>
+            <TableHeaderCell>{t('amount')}</TableHeaderCell>
+            <TableHeaderCell>{t('actions')}</TableHeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>

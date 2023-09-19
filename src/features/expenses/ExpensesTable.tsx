@@ -28,10 +28,10 @@ function ExpensesTable() {
       <Table className="mt-3">
         <TableHead>
           <TableRow>
-            <TableHeaderCell className="hidden sm:table-cell"></TableHeaderCell>
+            <TableHeaderCell className="hidden sm:table-cell" />
             <TableHeaderCell>{t('title')}</TableHeaderCell>
             <TableHeaderCell className="hidden sm:table-cell">
-            {t('date')}
+              {t('date')}
             </TableHeaderCell>
             <TableHeaderCell>{t('amount')}</TableHeaderCell>
             <TableHeaderCell>{t('actions')}</TableHeaderCell>

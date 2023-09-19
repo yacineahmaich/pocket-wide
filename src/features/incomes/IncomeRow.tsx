@@ -47,7 +47,7 @@ const IncomeRow: FC<Props> = ({ item }) => {
         <ConfirmDelete
           open={open}
           setOpen={setOpen}
-          resource="expense"
+          resource="income"
           onConfirm={handleDeleteIncome}
           isLoading={isLoading}
         />
