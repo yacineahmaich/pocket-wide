@@ -1,7 +1,7 @@
 {
   "login": "Connexion",
   "signup": "S'inscrire",
-  "go(to-dashboard": "Accéder au tableau de bord",
+  "go-to-dashboard": "Accéder au tableau de bord",
   "hero-subtitle": "Gérez vos dépenses sans effort avec Pocket Wide",
   "get-started-now": "Commencer maintenant",
   "get-started": "Commencer",
@@ -26,5 +26,15 @@
   "copyright": "© 2023 Pocket Wide. Tous droits réservés.",
   "policy": "Politique",
   "terms-of-services": "Conditions d'utilisation",
-  "contact-us": "Contactez-nous"
+  "contact-us": "Contactez-nous",
+  "login-form-title": "Connectez-vous à votre compte.",
+  "signup-form-title": "Créez votre compte gratuitement.",
+  "email": "Adresse e-mail",
+  "password": "Mot de passe",
+  "confirm-password": "Confirmez le mot de passe",
+  "username": "Nom d'utilisateur",
+  "do-not-have-account": "Vous n'avez pas encore de compte ?",
+  "already-have-account": "Vous avez déjà un compte ?",
+  "continue-with-google": "Continuer avec Google",
+  "continue-with-github": "Continuer avec GitHub"
 }

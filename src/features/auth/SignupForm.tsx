@@ -4,8 +4,10 @@ import { signupSchema } from '../../utils/validation/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useSignup } from './useSignup';
+import { useTranslation } from 'react-i18next';
 
 function SignupForm() {
+  const { t } = useTranslation();
   const { mutate: signup, isLoading } = useSignup();
 
   const {
@@ -23,54 +25,54 @@ function SignupForm() {
     <>
       <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-1">
-          <Text>Username</Text>
+          <Text>{t('username')}</Text>
           <TextInput
             className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('username')}
             error={!!errors.username}
             errorMessage={errors.username?.message}
-            placeholder="Your Username"
+            placeholder={t('username')}
           />
         </div>
         <div className="space-y-1">
-          <Text>Email Address</Text>
+          <Text>{t('email')}</Text>
           <TextInput
             className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('email')}
             error={!!errors.email}
             errorMessage={errors.email?.message}
-            placeholder="Your Email"
+            placeholder={t('email')}
           />
         </div>
         <div className="space-y-1">
-          <Text>Passworrd</Text>
+          <Text>{t('password')}</Text>
           <TextInput
             className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('password')}
             error={!!errors.password}
             errorMessage={errors.password?.message}
             type="password"
-            placeholder="Your Password"
+            placeholder={t('password')}
           />
         </div>
         <div className="space-y-1">
-          <Text>Confirm Password</Text>
+          <Text>{t('confirm-password')}</Text>
           <TextInput
             className="border-gray-300 bg-transparent hover:bg-transparent"
             {...register('passwordConfirmation')}
             error={!!errors.passwordConfirmation}
             errorMessage={errors.passwordConfirmation?.message}
             type="password"
-            placeholder="Confirm Your Password"
+            placeholder={t('confirm-password')}
           />
         </div>
         <Button size="md" className="w-full" loading={isLoading}>
-          Signup
+          {t('signup')}
         </Button>
       </form>
-      <Text className="mt-3 inline-block">You already have an account?</Text>
+      <Text className="mt-3 inline-block">{t('already-have-account')}</Text>
       <Link to="/login" className="ml-1 text-sm font-medium">
-        Login
+        {t('login')}
       </Link>
     </>
   );

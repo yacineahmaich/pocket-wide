@@ -1,7 +1,7 @@
 {
   "login": "Login",
   "signup": "Sign Up",
-  "go(to-dashboard": "Go to Dashboard",
+  "go-to-dashboard": "Go to Dashboard",
   "hero-subtitle": "Effortlessly Manage Your Expenses with Pocket Wide",
   "get-started-now": "Get Started Now",
   "get-started": "Get Started",
@@ -26,5 +26,15 @@
   "copyright": "© 2023 Pocket Wide. All Rights Reserved.",
   "policy": "Policy",
   "terms-of-services": "Terms of Services",
-  "contact-us": "Contact Us"
+  "contact-us": "Contact Us",
+  "login-form-title": "Log In to your account.",
+  "signup-form-title": "Create your account for free.",
+  "email": "Email Address",
+  "password": "Password",
+  "confirm-password": "Confirm Password",
+  "username": "Username",
+  "do-not-have-account": "You don't have an account yet?",
+  "already-have-account": "You already have an account?",
+  "continue-with-google": "Continue with Google",
+  "continue-with-github": "Continue with github"
 }

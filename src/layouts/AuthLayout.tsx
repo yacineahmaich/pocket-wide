@@ -1,26 +1,28 @@
 import { Button, Title } from '@tremor/react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useUser } from '../features/auth/useUser';
 import { signinWithGithub, signinWithGoogle } from '../services/auth';
+import { useTranslation } from 'react-i18next';
 
-function AuthLayout({
-  children,
-  heading,
-}: {
-  children: React.ReactNode;
-  heading: string;
-}) {
+function AuthLayout() {
+  const location = useLocation();
   const { user, isAuthenticated } = useUser();
+  const { t } = useTranslation();
 
   if (user && isAuthenticated) return <Navigate to="/dashboard" />;
+
+  const heading =
+    location.pathname === '/login'
+      ? t('login-form-title')
+      : t('signup-form-title');
 
   return (
     <div className="relative -mt-16 flex h-screen flex-col items-center pt-32">
       <div className="mt-0 flex max-w-2xl flex-col items-center justify-between border-0 bg-transparent p-6 sm:flex-row">
         <div className="flex-1 space-y-4">
           <Title>{heading}</Title>
-          {children}
+          <Outlet />
         </div>
 
         <div className="my-4 h-px w-20 bg-gray-300 sm:mx-4 sm:h-20 sm:w-px" />
@@ -32,14 +34,14 @@ function AuthLayout({
             color="gray"
             onClick={() => signinWithGoogle()}
           >
-            Continue with Google
+            {t('continue-with-google')}
           </Button>
           <Button
             icon={FaGithub}
             color="gray"
             onClick={() => signinWithGithub()}
           >
-            Continue with Github
+            {t('continue-with-github')}
           </Button>
         </div>
       </div>

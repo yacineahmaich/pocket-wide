@@ -14,6 +14,7 @@ import EditIncome from './pages/EditIncome';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
 import GuestLayout from './layouts/GuestLayout';
+import AuthLayout from './layouts/AuthLayout';
 
 const router = createBrowserRouter([
   {
@@ -27,12 +28,17 @@ const router = createBrowserRouter([
             element: <Landing />,
           },
           {
-            path: 'login',
-            element: <Login />,
-          },
-          {
-            path: 'signup',
-            element: <Signup />,
+            element: <AuthLayout />,
+            children: [
+              {
+                path: 'login',
+                element: <Login />,
+              },
+              {
+                path: 'signup',
+                element: <Signup />,
+              },
+            ],
           },
         ],
       },
