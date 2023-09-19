@@ -11,10 +11,12 @@ import { usePerformance } from './usePerformance';
 import animationData from '../../assets/lottie/chart.json';
 import Lottie from 'lottie-react';
 import { useUser } from '../auth/useUser';
+import { useTranslation } from 'react-i18next';
 
 function PerformanceChart({ dateRange }: { dateRange: DateRangePickerValue }) {
   const { user } = useUser();
   const { data, isLoading } = usePerformance(dateRange);
+  const { t } = useTranslation();
 
   const sortedData = useMemo(() => {
     return data?.sort(
@@ -23,13 +25,15 @@ function PerformanceChart({ dateRange }: { dateRange: DateRangePickerValue }) {
   }, [data]);
 
   const from = dateRange.from
-    ? `from ${formatDate(dateRange.from, 'medium')}`
+    ? `${t('from')} ${formatDate(dateRange.from, 'medium')}`
     : '';
-  const to = dateRange.to ? `to ${formatDate(dateRange.to, 'medium')}` : '';
+  const to = dateRange.to
+    ? `${t('to')} ${formatDate(dateRange.to, 'medium')}`
+    : '';
 
   return (
     <Card className="h-fit md:col-span-2">
-      <Title>{from || to ? `${from} ${to}` : 'All time'}</Title>
+      <Title>{from || to ? `${from} ${to}` : t('all-time')}</Title>
       <Text>Expense / income</Text>
       {isLoading ? (
         <Lottie animationData={animationData} className="h-[400px]" />

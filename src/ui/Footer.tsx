@@ -1,11 +1,12 @@
 import { Text } from '@tremor/react';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="mb-6 mt-12 flex flex-col items-center justify-between gap-6 rounded-xl border border-gray-300 px-6 py-10 sm:flex-row">
-      <Text className="text-center">
-        © 2023 Pocket Wide, Inc. All rights reserved.
-      </Text>
+      <Text className="text-center">{t('copyright')}</Text>
 
       <ul className="flex items-center gap-4">
         <li>

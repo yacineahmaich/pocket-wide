@@ -14,9 +14,15 @@ import { useCategoryOverview } from './useCategoryOverview';
 import { useState } from 'react';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import OverviewSkeleton from './OverviewSkeleton';
+import { useTranslation } from 'react-i18next';
+import { formatCurrency } from '../../utils/helpers';
+import { useUser } from '../auth/useUser';
 
 function Overview({ dateRange }: { dateRange: DateRangePickerValue }) {
+  const { user } = useUser();
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const { t } = useTranslation();
+
   const selected = selectedIndex === 0 ? 'expenses' : 'incomes';
 
   const { data, isLoading } = useCategoryOverview({
@@ -26,8 +32,8 @@ function Overview({ dateRange }: { dateRange: DateRangePickerValue }) {
 
   return (
     <Card>
-      <Title>Overview</Title>
-      <Text>Category</Text>
+      <Title>{t('overview')}</Title>
+      <Text>{t('category')}</Text>
 
       {isLoading ? (
         <OverviewSkeleton />
@@ -40,27 +46,28 @@ function Overview({ dateRange }: { dateRange: DateRangePickerValue }) {
           >
             <TabList>
               <Tab value="expenses" icon={FaArrowUp}>
-                Expenses
+                {t('expenses')}
               </Tab>
               <Tab value="incomes" icon={FaArrowDown}>
-                Incomes
+                {t('incomes')}
               </Tab>
             </TabList>
           </TabGroup>
           <Flex className="mt-6">
             <Text>
-              <Bold>Category</Bold>
+              <Bold>{t('category')}</Bold>
             </Text>
             <Text>
-              <Bold>Total</Bold>
+              <Bold>{t('total')}</Bold>
             </Text>
           </Flex>
           <BarList
-            // eslint-disable-next-line
-            //@ts-ignore
-            data={data ? data?.[selected] : []}
+            data={data?.[selected] ?? []}
             showAnimation={false}
             className="mt-4"
+            valueFormatter={value =>
+              formatCurrency(value, user?.user_metadata.currency)
+            }
           />
         </>
       )}

@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { formatCurrency } from '../../utils/helpers';
 import { HiArrowTrendingDown, HiArrowTrendingUp } from 'react-icons/hi2';
 import { useUser } from '../auth/useUser';
+import { useTranslation } from 'react-i18next';
 type Props = {
   label: string;
   current: number;
@@ -10,6 +11,7 @@ type Props = {
 };
 const Stat: FC<Props> = ({ current, prev, label }) => {
   const { user } = useUser();
+  const { t } = useTranslation();
 
   const diff = current - prev;
   const currency = user?.user_metadata.currency;
@@ -30,7 +32,7 @@ const Stat: FC<Props> = ({ current, prev, label }) => {
           <span className={diff > 0 ? 'text-green-500' : 'text-red-500'}>
             {formatCurrency(Math.abs(diff), currency)}
           </span>{' '}
-          to previous month
+          {t('to-previous-month')}
         </small>
       </div>
     </Card>

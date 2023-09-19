@@ -36,5 +36,19 @@
   "do-not-have-account": "Vous n'avez pas encore de compte ?",
   "already-have-account": "Vous avez déjà un compte ?",
   "continue-with-google": "Continuer avec Google",
-  "continue-with-github": "Continuer avec GitHub"
+  "continue-with-github": "Continuer avec GitHub",
+
+  "dashboard": "Tableau de bord",
+  "profile": "Profil",
+  "logout": "Déconnexion",
+  "saving": "Économies",
+  "incomes": "Revenus",
+  "expenses": "Dépenses",
+  "from": "de",
+  "to": "à",
+  "overview": "Vue d'ensemble",
+  "category": "Catégorie",
+  "total": "Total",
+  "to-previous-month": "au mois précédent",
+  "all-time": "Tout le temps"
 }

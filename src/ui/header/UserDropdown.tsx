@@ -7,9 +7,11 @@ import { BiLogOutCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { useLogout } from '../../features/auth/useLogout';
 import Dropdown from '../Dropdown';
+import { useTranslation } from 'react-i18next';
 
 const UserDropdown: React.FC = () => {
   const { user } = useUser();
+  const { t } = useTranslation();
   const { mutate: logout } = useLogout();
 
   return (
@@ -32,7 +34,7 @@ const UserDropdown: React.FC = () => {
             className="flex items-center gap-1 p-1 "
           >
             <Icon icon={HiUser} className="text-gray-600" />
-            <span className="text-sm text-gray-600">Profile</span>
+            <span className="text-sm text-gray-600">{t('profile')}</span>
           </Link>
         </Dropdown.Item>
         <Dropdown.Item>
@@ -41,7 +43,7 @@ const UserDropdown: React.FC = () => {
             onClick={() => logout()}
           >
             <Icon icon={BiLogOutCircle} className="text-gray-600" />
-            <span className="text-sm text-gray-600">Log Out</span>
+            <span className="text-sm text-gray-600">{t('logout')}</span>
           </button>
         </Dropdown.Item>
       </Dropdown.Menu>

@@ -1,6 +1,6 @@
 import { DateRangePickerValue } from '@tremor/react';
 import { categories, incomeCategories } from '../utils/constants';
-import { formatCurrency, formatDate } from '../utils/helpers';
+import { formatDate } from '../utils/helpers';
 import supabase from '../lib/supabase';
 
 export const getStats = async () => {
@@ -132,11 +132,9 @@ export const getPerformance = async (
 
 export const getCategoriesOverview = async ({
   dateRange,
-  currency,
   type,
 }: {
   dateRange: DateRangePickerValue;
-  currency: string;
   type: 'incomes' | 'expenses';
 }) => {
   const startDate = dateRange.from
@@ -186,14 +184,14 @@ export const getCategoriesOverview = async ({
   const transformedExpenses = Object.entries(expensesPerCategory).map(
     ([name, value]) => ({
       name,
-      value: formatCurrency(value, currency ?? 'USD'),
+      value,
       icon: categoriesList.find(c => c.key === name)?.Icon,
     }),
   );
   const transformedIncomes = Object.entries(incomesPerCategory).map(
     ([name, value]) => ({
       name,
-      value: formatCurrency(value, currency ?? 'USD'),
+      value,
       icon: categoriesList.find(c => c.key === name)?.Icon,
     }),
   );

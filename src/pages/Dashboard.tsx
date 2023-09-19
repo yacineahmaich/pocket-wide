@@ -4,8 +4,10 @@ import Overview from '../features/dashboard/Overview';
 import PerformanceChart from '../features/dashboard/PerformanceChart';
 import Stats from '../features/dashboard/Stats';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Dashboard() {
+  const { t } = useTranslation();
   const [dateRange, setDateRange] = useState<DateRangePickerValue>({
     from: new Date('01, 01, 2023'),
     to: new Date(),
@@ -15,7 +17,7 @@ function Dashboard() {
     <div className="py-3">
       <Helmet title="Pocket Wide | Dashboard" />
       <Title className="mb-8 text-center text-gray-400">
-        Monthly Performance Dashboard
+        {t('monthly-performance-dashboard')}
       </Title>
       <Stats />
 
