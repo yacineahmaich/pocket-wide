@@ -3,6 +3,7 @@ import Logo from '../Logo';
 import MainNavigation from './MainNavigation';
 import MobileNavigation from './MobileNavigation';
 import UserDropdown from './UserDropdown';
+import LangSwitcher from '../../features/shared/LangSwitcher';
 
 function Header() {
   return (
@@ -10,11 +11,14 @@ function Header() {
       <Link to="/dashboard">
         <Logo className="h-7 w-7 sm:h-10 sm:w-10" />
       </Link>
-      <nav className="hidden items-center gap-3 sm:flex">
-        <MainNavigation />
-        <UserDropdown />
+      <nav className="flex items-center gap-3">
+        <div className="hidden gap-3 sm:flex">
+          <MainNavigation />
+          <UserDropdown />
+        </div>
+        <LangSwitcher dashboard />
+        <MobileNavigation />
       </nav>
-      <MobileNavigation />
     </header>
   );
 }

@@ -1,4 +1,4 @@
-import supabase from './supabase';
+import supabase from '../lib/supabase';
 
 export const updateCurrency = async ({ currency }: { currency: string }) => {
   const { data, error } = await supabase.auth.updateUser({

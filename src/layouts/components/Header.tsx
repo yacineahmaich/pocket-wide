@@ -2,6 +2,7 @@ import { Button } from '@tremor/react';
 import Logo from '../../ui/Logo';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../../features/auth/useUser';
+import LangSwitcher from '../../features/shared/LangSwitcher';
 
 function Header() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function Header() {
             </Button>
           </>
         )}
+        <LangSwitcher />
       </div>
     </header>
   );

@@ -1,5 +1,5 @@
 import { formatDate } from '../utils/helpers';
-import supabase from './supabase';
+import supabase from '../lib/supabase';
 
 type Params = {
   pagination: { from: number; to: number };

@@ -1,7 +1,7 @@
 import { DateRangePickerValue } from '@tremor/react';
 import { categories, incomeCategories } from '../utils/constants';
 import { formatCurrency, formatDate } from '../utils/helpers';
-import supabase from './supabase';
+import supabase from '../lib/supabase';
 
 export const getStats = async () => {
   const currentDate = new Date();
