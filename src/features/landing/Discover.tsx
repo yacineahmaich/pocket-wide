@@ -37,7 +37,7 @@ function Discover() {
   ];
 
   return (
-    <SectionLayout title="Discover" subTitle="Journey into Financial Clarity">
+    <SectionLayout title={t('discover')} subTitle={t('discover-subheading')}>
       <div className="mt-10 flex flex-col gap-28">
         {content.map((item, idx) => (
           <div
