@@ -13,6 +13,7 @@ import { formatDate } from '../../utils/helpers';
 import { categories, incomeCategories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
 import { useFilter } from './useFilter';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   onFilter?: () => void;
@@ -21,6 +22,7 @@ type Props = {
 };
 
 function Filter({ onFilter, loading, type = 'expense' }: Props) {
+  const { t } = useTranslation();
   const { filter, setFilter, clearFilter } = useFilter([
     'from',
     'to',
@@ -70,7 +72,7 @@ function Filter({ onFilter, loading, type = 'expense' }: Props) {
       <form action="" className="space-y-2 lg:space-y-4" onSubmit={onSubmit}>
         <div className="flex items-center justify-between">
           <Button color="blue" size="xs">
-            Filter
+            {t('filter')}
           </Button>
           {isFiltered && (
             <Button
@@ -90,12 +92,12 @@ function Filter({ onFilter, loading, type = 'expense' }: Props) {
                 });
               }}
             >
-              clear
+              {t('clear')}
             </Button>
           )}
         </div>
         <div>
-          <Label>Date</Label>
+          <Label>{t('date')}</Label>
           <DateRangePicker
             value={watch('date')}
             onValueChange={value => setValue('date', value)}
@@ -104,19 +106,19 @@ function Filter({ onFilter, loading, type = 'expense' }: Props) {
           />
         </div>
         <div>
-          <Label>Seacrh</Label>
+          <Label>{t('search')}</Label>
           <TextInput {...register('search')} disabled={loading} />
         </div>
         <div>
-          <Label>Min Amount</Label>
+          <Label>{t('min-amount')}</Label>
           <TextInput {...register('minAmount')} disabled={loading} />
         </div>
         <div>
-          <Label>Max Amount</Label>
+          <Label>{t('max-amount')}</Label>
           <TextInput {...register('maxAmount')} disabled={loading} />
         </div>
         <div>
-          <Label>Category</Label>
+          <Label>{t('category')}</Label>
           <Select
             id="category"
             value={watch('category')}
@@ -137,7 +139,7 @@ function Filter({ onFilter, loading, type = 'expense' }: Props) {
           </Select>
         </div>
         <div>
-          <Label>Tag</Label>
+          <Label>{t('tag')}</Label>
           <TextInput {...register('tag')} disabled={loading} />
         </div>
       </form>

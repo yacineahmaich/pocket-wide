@@ -3,6 +3,7 @@ import { Title, Button } from '@tremor/react';
 import Logo from '../ui/Logo';
 import { FaAngleLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   children?: React.ReactNode;
@@ -10,6 +11,7 @@ type Props = {
 };
 const FormLayout: FC<Props> = ({ children, title }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div className="px-3 lg:px-6">
@@ -23,7 +25,7 @@ const FormLayout: FC<Props> = ({ children, title }) => {
           color="blue"
           onClick={() => navigate('..')}
         >
-          Back
+          {t('back')}
         </Button>
       </div>
 
