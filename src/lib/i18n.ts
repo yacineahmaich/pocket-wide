@@ -13,5 +13,8 @@ i18next
     interpolation: {
       escapeValue: false,
     },
+    react: {
+      useSuspense: false,
+    },
     debug: true,
   });
