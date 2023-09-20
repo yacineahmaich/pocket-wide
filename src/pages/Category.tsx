@@ -8,8 +8,10 @@ import ExpensesPerCategory from '../features/category/ExpensesPerCategory';
 import CategoryChart from '../features/category/CategoryChart';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 function Category() {
+  const { t } = useTranslation();
   const [date, setDate] = useState<DateRangePickerValue>();
 
   const to = new Date(date?.to!);
@@ -29,9 +31,9 @@ function Category() {
     <>
       <Helmet title="Pocket Wide | Catgegory" />
       <div>
-        <Title className="text-center text-gray-400">Category</Title>
+        <Title className="text-center text-gray-400">{t('category')}</Title>
         <div className="mt-10 flex items-center justify-between">
-          <Text>Expenses Per Category</Text>
+          <Text>{t('expenses-per-category')}</Text>
           <DateRangePicker
             value={date}
             onValueChange={setDate}

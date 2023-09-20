@@ -11,12 +11,16 @@ import { categories } from '../../utils/constants';
 import { useState } from 'react';
 import { useAllExpenses } from './useAllExpenses';
 import { formatCurrency } from '../../utils/helpers';
+import { useTranslation } from 'react-i18next';
+import { useUser } from '../auth/useUser';
 
 type Props = {
   date: DateRangePickerValue | undefined;
 };
 
 function CategoryChart({ date }: Props) {
+  const { user } = useUser();
+  const { t } = useTranslation();
   const [selected, setSelected] = useState('');
 
   const selectedCategory = categories.find(c => c.key === selected);
@@ -44,7 +48,7 @@ function CategoryChart({ date }: Props) {
   return (
     <section>
       <div className="flex items-center justify-between">
-        <Text>Select Category</Text>
+        <Text>{t('select-category')}</Text>
 
         <Select
           id="category"
@@ -73,15 +77,16 @@ function CategoryChart({ date }: Props) {
             index="date"
             categories={['value']}
             colors={['blue']}
-            valueFormatter={value => formatCurrency(value, 'USD')}
+            valueFormatter={value =>
+              formatCurrency(value, user?.user_metadata.currency || 'USD')
+            }
             yAxisWidth={40}
           />
         ) : (
           <div className="mt-20 space-y-3 text-center">
-            <Title>Select a category</Title>
+            <Title>{t('select-category')}</Title>
             <Text className="mx-auto max-w-sm">
-              No category selected. Please choose a category from the dropdown
-              to view the corresponding chart.
+              {t('no-category-selected')}
             </Text>
           </div>
         )}

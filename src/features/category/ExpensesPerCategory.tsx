@@ -4,12 +4,14 @@ import { categories } from '../../utils/constants';
 import CategoryIcon from '../../ui/CategorySelect';
 import { formatCurrency } from '../../utils/helpers';
 import CategoryCardSekeleton from './CategoryCardSekeleton';
+import { useUser } from '../auth/useUser';
 
 type Props = {
   date: DateRangePickerValue | undefined;
 };
 
 function ExpensesPerCategory({ date }: Props) {
+  const { user } = useUser();
   const { data, isLoading } = useAllExpenses();
 
   // calculte total  expenses per each category
@@ -52,7 +54,7 @@ function ExpensesPerCategory({ date }: Props) {
                       {expensesPerCategory?.[category.key] &&
                         formatCurrency(
                           expensesPerCategory?.[category.key],
-                          'USD',
+                          user?.user_metadata.currency || 'USD',
                         )}
                     </span>
                   </div>

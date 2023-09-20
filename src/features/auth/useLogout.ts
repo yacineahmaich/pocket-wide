@@ -2,8 +2,10 @@ import { logout } from '../../services/auth';
 import { toast } from 'sonner';
 import { useMutation } from '@tanstack/react-query';
 import { useQueryClient } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 
 export const useLogout = () => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -14,7 +16,7 @@ export const useLogout = () => {
       queryClient.removeQueries();
     },
     onError: () => {
-      toast.error('Could not logout!');
+      toast.error(t('action-error', { action: t('logout') }));
     },
   });
 };

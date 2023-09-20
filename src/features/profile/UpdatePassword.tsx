@@ -4,8 +4,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { updatePasswordSchema } from '../../utils/validation/auth';
 import { useUpdatePassword } from './useUpdatePassword';
+import { useTranslation } from 'react-i18next';
 
 const UpdatePassword: React.FC = () => {
+  const { t } = useTranslation();
   const { mutate: updatePassword, isLoading } = useUpdatePassword();
 
   const {
@@ -29,7 +31,7 @@ const UpdatePassword: React.FC = () => {
   return (
     <Card className="border-gray-300 p-1">
       <div className="rounded bg-gray-100 p-3">
-        <Text className="font-medium">Update Password</Text>
+        <Text className="font-medium">{t('update-password')}</Text>
       </div>
       <div className="p-4">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +42,7 @@ const UpdatePassword: React.FC = () => {
                 error={!!errors.newPassword}
                 errorMessage={errors.newPassword?.message}
                 type="password"
-                placeholder="New password"
+                placeholder={t('new-password')}
               />
             </div>
             <div className="space-y-1">
@@ -49,7 +51,7 @@ const UpdatePassword: React.FC = () => {
                 error={!!errors.newPasswordConfirmation}
                 errorMessage={errors.newPasswordConfirmation?.message}
                 type="password"
-                placeholder="Confirm new password"
+                placeholder={t('confirm-new-password')}
               />
             </div>
             <Button
@@ -59,7 +61,7 @@ const UpdatePassword: React.FC = () => {
               disabled={isLoading}
               loading={isLoading}
             >
-              Update Profile
+              {t('update-password')}
             </Button>
           </div>
         </form>

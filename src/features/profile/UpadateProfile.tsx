@@ -4,10 +4,12 @@ import { MdEdit } from 'react-icons/md';
 import { useUser } from '../auth/useUser';
 import { useUpdateProfile } from './useUpdateProfile';
 import { useRemoveProfile } from './useRemoveProfile';
+import { useTranslation } from 'react-i18next';
 
 const UpadateProfile: React.FC = () => {
   const [profile, setProfile] = useState<File>();
   const { user } = useUser();
+  const { t } = useTranslation();
   const { mutate: updateProfile, isLoading } = useUpdateProfile();
   const { mutate: removeProfile, isLoading: isRemoving } = useRemoveProfile();
 
@@ -22,7 +24,7 @@ const UpadateProfile: React.FC = () => {
   return (
     <Card className="border-gray-300 p-1">
       <div className="rounded bg-gray-100 p-3">
-        <Text className="font-medium">Update Profile</Text>
+        <Text className="font-medium">{t('update-profile')}</Text>
       </div>
       <div className="p-4">
         <div className="relative w-fit rounded-full">
@@ -60,7 +62,7 @@ const UpadateProfile: React.FC = () => {
             disabled={isLoading || isRemoving}
             loading={isLoading}
           >
-            Update Profile
+            {t('update-profile')}
           </Button>
           {user?.user_metadata.avatar_url && (
             <Button
@@ -71,7 +73,7 @@ const UpadateProfile: React.FC = () => {
               disabled={isLoading || isRemoving}
               loading={isRemoving}
             >
-              remove Profile
+              {t('remove-profile')}
             </Button>
           )}
         </div>

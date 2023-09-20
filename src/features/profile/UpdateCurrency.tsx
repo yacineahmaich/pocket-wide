@@ -3,8 +3,10 @@ import { Button, Card, Select, SelectItem, Text } from '@tremor/react';
 import { useCurrencies } from './useCurrencies';
 import { useUpdateCurrency } from './useUpdateCurrency';
 import { useUser } from '../auth/useUser';
+import { useTranslation } from 'react-i18next';
 
 const UpdateCurrency: React.FC = () => {
+  const { t } = useTranslation();
   const { user } = useUser();
   const [currency, setCurrency] = React.useState<string>(
     user?.user_metadata.currency,
@@ -15,14 +17,13 @@ const UpdateCurrency: React.FC = () => {
   return (
     <Card className="border-gray-300 p-1">
       <div className="rounded bg-gray-100 p-3">
-        <Text className="font-medium">Update Currency</Text>
+        <Text className="font-medium">{t('update-currency')}</Text>
       </div>
       <div className="space-y-4 p-4">
         <Select
-          placeholder="Currency"
+          placeholder={t('currency')}
           value={currency}
           onValueChange={value => {
-            console.log(value);
             setCurrency(value);
           }}
         >
@@ -42,7 +43,7 @@ const UpdateCurrency: React.FC = () => {
           }}
           loading={isLoading}
         >
-          Update Currency
+          {t('update-currency')}
         </Button>
       </div>
     </Card>
