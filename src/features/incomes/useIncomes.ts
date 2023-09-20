@@ -14,8 +14,8 @@ export const useIncomes = () => {
     'from',
     'to',
     'search',
-    'minAmount',
-    'maxAmount',
+    'min-amount',
+    'max-amount',
     'category',
     'tag',
   ]);

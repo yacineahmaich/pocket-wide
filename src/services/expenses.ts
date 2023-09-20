@@ -21,11 +21,11 @@ export const getExpenses = async ({
   if (filter.search) {
     query = query.ilike('title', `%${filter.search}%`);
   }
-  if (filter.minAmount) {
-    query = query.gte('amount', filter.minAmount);
+  if (filter['min-amount']) {
+    query = query.gte('amount', filter['min-amount']);
   }
-  if (filter.maxAmount) {
-    query = query.lte('amount', filter.maxAmount);
+  if (filter['max-amount']) {
+    query = query.lte('amount', filter['max-amount']);
   }
   if (filter.category) {
     query = query.eq('category', filter.category);
