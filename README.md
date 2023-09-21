@@ -20,7 +20,9 @@ A Finance tracking web app where users can track their expenses and incomes in o
 - Typescript
 - Tailwindcss
 - Radix-ui
-- supabase
+- Supabase
+- i18next
+- Framer motion
 
 ## Installation
 
