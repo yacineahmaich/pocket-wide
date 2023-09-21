@@ -8,9 +8,8 @@ i18next
   .use(HttpApi)
   .use(lngDetector)
   .init({
-    // lng: 'en',
     fallbackLng: 'en',
-    supportedLngs: ['en', 'fr'],
+    supportedLngs: ['en', 'fr', 'ar'],
     nonExplicitSupportedLngs: true,
     load: 'languageOnly',
     interpolation: {

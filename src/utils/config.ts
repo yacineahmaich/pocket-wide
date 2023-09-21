@@ -9,4 +9,8 @@ export const SUPPORTED_LANGS = [
     key: 'fr',
     flag: '/fr.svg',
   },
+  {
+    key: 'ar',
+    flag: '/ar.svg',
+  },
 ];
