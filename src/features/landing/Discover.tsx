@@ -17,22 +17,22 @@ function Discover() {
     {
       imgPath: '/images/monthly-performance-dashboard.png',
       heading: t('monthly-performance-dashboard'),
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+      text: t('monthly-performance-dashboard-text'),
     },
     {
       imgPath: '/images/tracking.png',
       heading: t('track-expenses-incomes'),
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+      text: t('track-expenses-incomes-text'),
     },
     {
       imgPath: '/images/category-spending.png',
       heading: t('category-spending'),
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+      text: t('category-spending-text'),
     },
     {
       imgPath: '/images/currency-profile.png',
       heading: t('currency-conversion'),
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ratione sunt ea doloremque officia quae minus non, fugiat rem at illum aliquid voluptatem? Magnam iste accusamus, natus impedit sunt obcaecati.',
+      text: t('currency-conversion-text'),
     },
   ];
 
