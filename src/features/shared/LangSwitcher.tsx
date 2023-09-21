@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Dropdown from '../../ui/Dropdown';
 import { Button } from '@tremor/react';
 import { SUPPORTED_LANGS } from '../../utils/config';
+import { useEffect } from 'react';
 
 function LangSwitcher({ dashboard = false }: { dashboard?: boolean }) {
   const { i18n } = useTranslation();
@@ -9,6 +10,14 @@ function LangSwitcher({ dashboard = false }: { dashboard?: boolean }) {
   const currentLang =
     SUPPORTED_LANGS.find(lang => lang.key === i18n.language) ??
     SUPPORTED_LANGS[0];
+
+  // Preload lang flag
+  useEffect(() => {
+    SUPPORTED_LANGS.forEach(lang => {
+      const img = new Image();
+      img.src = lang.flag;
+    });
+  }, []);
 
   return (
     <Dropdown>
