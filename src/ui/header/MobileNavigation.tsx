@@ -4,13 +4,14 @@ import { Button, Icon } from '@tremor/react';
 import { HiUser, HiXMark } from 'react-icons/hi2';
 import UserAvatar from '../UserAvatar';
 import { useUser } from '../../features/auth/useUser';
-import { NAVIGATION } from '../../utils/constants';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { useLogout } from '../../features/auth/useLogout';
+import { useTranslation } from 'react-i18next';
 
 function MobileNavigation() {
+  const { t } = useTranslation();
   const _navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const { user } = useUser();
@@ -21,10 +22,29 @@ function MobileNavigation() {
     setOpen(false);
   };
 
+  const navigation = [
+    {
+      to: '/dashboard',
+      label: t('dashboard'),
+    },
+    {
+      to: '/dashboard/expenses',
+      label: t('expenses'),
+    },
+    {
+      to: '/dashboard/incomes',
+      label: t('incomes'),
+    },
+    {
+      to: '/dashboard/category',
+      label: t('category'),
+    },
+  ];
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="sm:hidden" asChild>
-        <button className='bg-gray-50 rounded-full'>
+        <button className="rounded-full bg-gray-50">
           <Icon icon={MenuAlt3Icon} color="gray" />
         </button>
       </Dialog.Trigger>
@@ -53,7 +73,7 @@ function MobileNavigation() {
 
             <nav className="p-4">
               <ul className="space-y-4 text-sm font-medium text-gray-400">
-                {NAVIGATION.map(item => (
+                {navigation.map(item => (
                   <li key={item.label}>
                     <a role="button" onClick={() => navigate(item.to)}>
                       {item.label}

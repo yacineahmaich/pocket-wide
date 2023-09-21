@@ -22,6 +22,7 @@
     "@tremor/react": "^3.2.3",
     "framer-motion": "^10.16.4",
     "i18next": "^23.5.1",
+    "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.2.2",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",

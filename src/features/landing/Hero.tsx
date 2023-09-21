@@ -1,7 +1,7 @@
 import { Title, Button, Icon, Text } from '@tremor/react';
 import Lottie from 'lottie-react';
 import { BiBoltCircle, BiDownArrow } from 'react-icons/bi';
-import animationData from '../../assets/lottie/cta.json';
+import animationData from '../../assets/lottie/hero.json';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';

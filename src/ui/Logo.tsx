@@ -1,6 +1,4 @@
 import { FC, useState } from 'react';
-import logoGradient from '../assets/logo-gradient.svg';
-import logo from '../assets/logo.svg';
 import { HTMLMotionProps, motion } from 'framer-motion';
 
 interface Props extends HTMLMotionProps<'img'> {
@@ -12,7 +10,7 @@ const Logo: FC<Props> = ({ gradient, ...props }) => {
     <motion.img
       initial={{ opacity: 0, y: -5 }}
       animate={loaded ? { opacity: 1, y: 0 } : undefined}
-      src={gradient ? logoGradient : logo}
+      src={gradient ? '/logo-gradient.svg' : '/logo.svg'}
       onLoad={() => setLoaded(true)}
       {...props}
     />

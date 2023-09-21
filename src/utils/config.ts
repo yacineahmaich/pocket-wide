@@ -1,3 +1,12 @@
 export const PAGE_SIZE = 8;
 
-export const REQUIRE_CURRENCY_PAGES = ['/incomes/create', '/expenses/create'];
+export const SUPPORTED_LANGS = [
+  {
+    key: 'en',
+    flag: '/en.svg',
+  },
+  {
+    key: 'fr',
+    flag: '/fr.svg',
+  },
+];

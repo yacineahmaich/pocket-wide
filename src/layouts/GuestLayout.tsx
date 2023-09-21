@@ -6,7 +6,7 @@ function GuestLayout() {
   return (
     <div
       className="bg-gray-50 bg-cover bg-fixed pt-16"
-      style={{ backgroundImage: 'url(/landing-bg.jpg)' }}
+      style={{ backgroundImage: 'url(/images/landing-bg.jpg)' }}
     >
       <div className="container mx-auto px-3">
         <Header />

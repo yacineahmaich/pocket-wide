@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import Dropdown from '../../ui/Dropdown';
 import { Button } from '@tremor/react';
-
-const flags = {
-  en: 'https://flagicons.lipis.dev/flags/4x3/um.svg',
-  fr: 'https://flagicons.lipis.dev/flags/4x3/fr.svg',
-};
+import { SUPPORTED_LANGS } from '../../utils/config';
 
 function LangSwitcher({ dashboard = false }: { dashboard?: boolean }) {
   const { i18n } = useTranslation();
+
+  const currentLang =
+    SUPPORTED_LANGS.find(lang => lang.key === i18n.language) ??
+    SUPPORTED_LANGS[0];
 
   return (
     <Dropdown>
@@ -20,34 +20,23 @@ function LangSwitcher({ dashboard = false }: { dashboard?: boolean }) {
           className="transition-colors"
         >
           <div className="flex gap-1">
-            <img
-              src={flags[i18n.language as keyof typeof flags]}
-              alt={i18n.language}
-              className="w-4"
-            />
-            <span>{i18n.language}</span>
+            <img src={currentLang.flag} alt={currentLang.key} className="w-4" />
+            <span>{currentLang.key}</span>
           </div>
         </Button>
       </Dropdown.Trigger>
       <Dropdown.Menu>
-        <Dropdown.Item>
-          <button
-            className="flex   w-full items-center gap-1 px-2 py-1"
-            onClick={() => i18n.changeLanguage('en')}
-          >
-            <img src={flags.en} alt="en" className="w-4" />
-            <span>en</span>
-          </button>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <button
-            className="flex   w-full items-center gap-1 px-2 py-1"
-            onClick={() => i18n.changeLanguage('fr')}
-          >
-            <img src={flags.fr} alt="fr" className="w-4" />
-            <span>fr</span>
-          </button>
-        </Dropdown.Item>
+        {SUPPORTED_LANGS.map(lang => (
+          <Dropdown.Item key={lang.key}>
+            <button
+              className="flex   w-full items-center gap-1 px-2 py-1"
+              onClick={() => i18n.changeLanguage(lang.key)}
+            >
+              <img src={lang.flag} alt="en" className="w-4" />
+              <span>{lang.key}</span>
+            </button>
+          </Dropdown.Item>
+        ))}
       </Dropdown.Menu>
     </Dropdown>
   );
