@@ -4,10 +4,7 @@ import Header from './components/Header';
 
 function GuestLayout() {
   return (
-    <div
-      className="bg-gray-50 bg-cover bg-fixed pt-16"
-      style={{ backgroundImage: 'url(/images/landing-bg.jpg)' }}
-    >
+    <div className="bg-gray-50 bg-cover pt-16 sm:bg-[url(/images/landing-bg.jpg)] sm:bg-fixed">
       <div className="container mx-auto px-3">
         <Header />
         <Outlet />

@@ -38,7 +38,7 @@ function LoginForm() {
           <Text>{t('email')}</Text>
           <TextInput
             className="border-gray-300 bg-transparent hover:bg-transparent"
-            {...register('email', { required: 'email is required' })}
+            {...register('email')}
             placeholder={t('email')}
             error={!!errors.email}
             errorMessage={errors.email?.message}

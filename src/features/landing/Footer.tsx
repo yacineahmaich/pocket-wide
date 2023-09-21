@@ -10,7 +10,7 @@ function Footer() {
       <Logo className="mx-auto h-10 w-10" />
       <Text className="mt-4">{t('copyright')}</Text>
 
-      <ul className="mt-4 flex items-center justify-center gap-4 text-gray-600">
+      <ul className="mt-4 flex items-center justify-center gap-4 text-sm text-gray-600">
         <li>
           <a href="#">{t('policy')}</a>
         </li>
