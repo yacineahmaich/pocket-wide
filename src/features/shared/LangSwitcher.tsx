@@ -1,8 +1,18 @@
 import { useTranslation } from 'react-i18next';
 import Dropdown from '../../ui/Dropdown';
 import { Button } from '@tremor/react';
-import { SUPPORTED_LANGS } from '../../utils/config';
 import { useEffect } from 'react';
+
+const SUPPORTED_LANGS = [
+  {
+    key: 'en',
+    flag: '/en.svg',
+  },
+  {
+    key: 'fr',
+    flag: '/fr.svg',
+  },
+];
 
 function LangSwitcher({ dashboard = false }: { dashboard?: boolean }) {
   const { i18n } = useTranslation();
