@@ -25,7 +25,7 @@ module.exports = {
           background: {
             muted: '#f9fafb', // gray-50
             subtle: '#f3f4f6', // gray-100
-            DEFAULT: '#ffffff', // white
+            DEFAULT: '#f9fafb', // white
             emphasis: '#374151', // gray-700
           },
           border: {
