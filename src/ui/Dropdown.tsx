@@ -25,7 +25,10 @@ function Menu({ children }: { children: React.ReactNode }) {
 
 function Item({ children }: { children: React.ReactNode }) {
   return (
-    <DropdownMenu.Item className="w-full rounded-lg outline-none data-[highlighted]:bg-gray-100">
+    <DropdownMenu.Item
+      asChild
+      className="w-full rounded-lg outline-none data-[highlighted]:bg-gray-100"
+    >
       {children}
     </DropdownMenu.Item>
   );

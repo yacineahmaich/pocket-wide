@@ -47,6 +47,7 @@ function PerformanceChart({ dateRange }: { dateRange: DateRangePickerValue }) {
           valueFormatter={value =>
             formatCurrency(value, user?.user_metadata.currency)
           }
+          noDataText={t('no-expenses')}
         />
       )}
     </Card>

@@ -21,7 +21,7 @@ function ExpensesTable() {
 
   if (isLoading) return <LoadingAnimation />;
 
-  if (data?.data.length === 0) return <NoRecords resource="expenses" />;
+  if (data?.data.length === 0) return <NoRecords message={t('no-expenses')} />;
 
   return (
     <>

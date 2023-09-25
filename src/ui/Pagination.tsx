@@ -2,11 +2,13 @@ import { Button } from '@tremor/react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { useSearchParams } from 'react-router-dom';
 import { PAGE_SIZE } from '../utils/config';
+import { useTranslation } from 'react-i18next';
 
 type Props = { count: number };
 
 function Pagination({ count }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
 
   // get current page
   const currentPage = Number(searchParams.get('page')) || 1;
@@ -39,7 +41,7 @@ function Pagination({ count }: Props) {
         onClick={prevPage}
         disabled={currentPage === 1}
       >
-        Prev
+        {t('prev')}
       </Button>
       <Button
         size="xs"
@@ -50,7 +52,7 @@ function Pagination({ count }: Props) {
         onClick={nextPage}
         disabled={!hasMore}
       >
-        Next
+        {t('next')}
       </Button>
     </div>
   );

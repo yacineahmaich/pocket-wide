@@ -19,7 +19,7 @@ function IncomesTable() {
 
   if (isError) return <ErrorMessage error={error} retry={refetch} />;
   if (isLoading) return <LoadingAnimation />;
-  if (data?.data.length === 0) return <NoRecords resource="incomes" />;
+  if (data?.data.length === 0) return <NoRecords message={t('no-incomes')} />;
 
   return (
     <>
