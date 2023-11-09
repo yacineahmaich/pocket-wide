@@ -59,9 +59,17 @@ function LoginForm() {
           {t('login')}
         </Button>
       </form>
-      <Text className="mt-3 inline-block">{t('do-not-have-account')}</Text>
-      <Link to="/signup" className="ml-1 text-sm font-medium">
-        {t('signup')}
+      <div>
+        <Text className="mt-3 inline-block">{t('do-not-have-account')}</Text>
+        <Link to="/signup" className="ml-1 text-sm font-medium">
+          {t('signup')}
+        </Link>
+      </div>
+      <Link
+        to="/reset-password"
+        className="mt-1 inline-block text-sm hover:underline"
+      >
+        <Text className="">{t('forgot-password')}</Text>
       </Link>
     </div>
   );

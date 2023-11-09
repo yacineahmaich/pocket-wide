@@ -15,6 +15,7 @@ import Profile from './pages/Profile';
 import Landing from './pages/Landing';
 import GuestLayout from './layouts/GuestLayout';
 import AuthLayout from './layouts/AuthLayout';
+import ResetPassword from './pages/ResetPassword';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
               {
                 path: 'signup',
                 element: <Signup />,
+              },
+              {
+                path: 'reset-password',
+                element: <ResetPassword />,
               },
             ],
           },

@@ -105,5 +105,11 @@
   "confirm-new-password": "Confirm new password",
   "action-error": "Could not {{action}} {{resource}}!",
   "action-success": "{{resource}} {{action}}!",
-  "login-error": "Provided email or password are incorrect"
+  "login-error": "Provided email or password are incorrect",
+  "forgot-password": "Forgot your password?",
+  "reset-password-form-title": "Reset your password",
+  "send-password-reset-email": "Send password reset email",
+  "password-reset-success": "Password reset email sent",
+  "password-reset-success-text": "We send an email to reset your password, Click the link and follow instructions to reset your password",
+  "password-reset-fail": "Password reset fail"
 }

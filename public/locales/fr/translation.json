@@ -105,5 +105,11 @@
   "confirm-new-password": "Confirmer le nouveau mot de passe",
   "action-error": "Impossible de {{action}} {{resource}} !",
   "action-success": "{{resource}} {{action}} !",
-  "login-error": "L'adresse e-mail ou le mot de passe fourni est incorrect"
+  "login-error": "L'adresse e-mail ou le mot de passe fourni est incorrect",
+  "forgot-password": "Mot de passe oublié ?",
+  "reset-password-form-title": "Réinitialisez votre mot de passe",
+  "send-password-reset-email": "Envoyer un e-mail de réinitialisation de mot de passe",
+  "password-reset-success": "E-mail de réinitialisation de mot de passe envoyé",
+  "password-reset-success-text": "Nous avons envoyé un e-mail pour réinitialiser votre mot de passe. Cliquez sur le lien et suivez les instructions pour réinitialiser votre mot de passe",
+  "password-reset-fail": "Échec de la réinitialisation du mot de passe"
 }
