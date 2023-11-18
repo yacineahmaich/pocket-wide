@@ -10,7 +10,7 @@ function Profile() {
 
   return (
     <>
-      <Helmet title="Pocket Wide | Profile" />
+      <Helmet title={`Pocket Wide | ${t('profile-page-title')}`} />
       <div className="mx-auto max-w-2xl">
         <Title className="mx-auto mb-5 text-center text-gray-400">
           {t('my-profile')}

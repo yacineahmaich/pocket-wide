@@ -43,7 +43,7 @@ function ResetPassword() {
 
   return (
     <>
-      <Helmet title="Pocket Wide | Reset password" />
+      <Helmet title={`Pocket Wide | ${t('reset-password-page-title')}`} />
       {isSuccess ? (
         <Callout
           className="mt-4 max-w-sm"

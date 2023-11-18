@@ -111,5 +111,19 @@
   "send-password-reset-email": "Send password reset email",
   "password-reset-success": "Password reset email sent",
   "password-reset-success-text": "We send an email to reset your password, Click the link and follow instructions to reset your password",
-  "password-reset-fail": "Password reset fail"
+  "password-reset-fail": "Password reset fail",
+
+  "landing-page-title": "Take Control of Your Expenses with Pocket Wide",
+  "login-page-title": "Log In to your account",
+  "profile-page-title": "Profile",
+  "reset-password-page-title": "Reset password",
+  "signup-page-title": "Create your account for free",
+  "incomes-page-title": "Incomes",
+  "expenses-page-title": "Expenses",
+  "edit-income-page-title": "Edit income",
+  "edit-expense-page-title": "Edit expense",
+  "dashboard-page-title": "Dashboard",
+  "create-income-page-title": "New Income",
+  "create-expense-page-title": "New Expense",
+  "category-page-title": "Category"
 }

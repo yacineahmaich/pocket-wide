@@ -14,21 +14,23 @@ function Dashboard() {
   });
 
   return (
-    <div className="py-3">
-      <Helmet title="Pocket Wide | Dashboard" />
-      <Title className="mb-8 text-center text-gray-400">
-        {t('monthly-performance-dashboard')}
-      </Title>
-      <Stats />
+    <>
+      <Helmet title={`Pocket Wide | ${t('dashboard-page-title')}`} />
+      <div className="py-3">
+        <Title className="mb-8 text-center text-gray-400">
+          {t('monthly-performance-dashboard')}
+        </Title>
+        <Stats />
 
-      <div className="my-10 flex items-center justify-end">
-        <DateRangePicker value={dateRange} onValueChange={setDateRange} />
+        <div className="my-10 flex items-center justify-end">
+          <DateRangePicker value={dateRange} onValueChange={setDateRange} />
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <PerformanceChart dateRange={dateRange} />
+          <Overview dateRange={dateRange} />
+        </div>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        <PerformanceChart dateRange={dateRange} />
-        <Overview dateRange={dateRange} />
-      </div>
-    </div>
+    </>
   );
 }
 

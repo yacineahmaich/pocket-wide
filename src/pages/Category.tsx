@@ -29,7 +29,7 @@ function Category() {
 
   return (
     <>
-      <Helmet title="Pocket Wide | Catgegory" />
+      <Helmet title={`Pocket Wide | ${t('category-page-title')}`} />
       <div>
         <Title className="text-center text-gray-400">{t('category')}</Title>
         <div className="mt-10 flex items-center justify-between">

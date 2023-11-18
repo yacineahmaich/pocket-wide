@@ -25,7 +25,7 @@ function Hero() {
               delay: 0.1,
               duration: 0.6,
             }}
-            className="mb-3 text-4xl"
+            className="mb-3 text-2xl font-bold md:text-5xl"
           >
             Pocket <span className="text-tremor-brand">Wide</span>
           </MotionTitle>

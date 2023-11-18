@@ -111,5 +111,19 @@
   "send-password-reset-email": "Envoyer un e-mail de réinitialisation de mot de passe",
   "password-reset-success": "E-mail de réinitialisation de mot de passe envoyé",
   "password-reset-success-text": "Nous avons envoyé un e-mail pour réinitialiser votre mot de passe. Cliquez sur le lien et suivez les instructions pour réinitialiser votre mot de passe",
-  "password-reset-fail": "Échec de la réinitialisation du mot de passe"
+  "password-reset-fail": "Échec de la réinitialisation du mot de passe",
+
+  "landing-page-title": "Prenez le contrôle de vos dépenses avec Pocket Wide",
+  "login-page-title": "Connectez-vous à votre compte",
+  "profile-page-title": "Profil",
+  "reset-password-page-title": "Réinitialiser le mot de passe",
+  "signup-page-title": "Créez votre compte gratuitement",
+  "incomes-page-title": "Revenus",
+  "expenses-page-title": "Dépenses",
+  "edit-income-page-title": "Modifier les revenus",
+  "edit-expense-page-title": "Modifier les dépenses",
+  "dashboard-page-title": "Tableau de bord",
+  "create-income-page-title": "Nouveau revenu",
+  "create-expense-page-title": "Nouvelle dépense",
+  "category-page-title": "Catégorie"
 }
