@@ -20,11 +20,7 @@ function Cta() {
     >
       <Title className="mb-2 md:text-2xl">{t('cta-heading')}</Title>
       <Text className="mx-auto mb-4 max-w-md">{t('cta-subheading')}</Text>
-      <Button
-        icon={BiBoltCircle}
-        color="blue"
-        onClick={() => navigate('/login')}
-      >
+      <Button icon={BiBoltCircle} onClick={() => navigate('/login')}>
         {t('get-started')}
       </Button>
     </MotionCard>

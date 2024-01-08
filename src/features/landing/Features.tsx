@@ -51,7 +51,11 @@ function Features() {
             viewport={{ once: true }}
             className="bg-transparent"
           >
-            <Icon icon={feature.icon} color="blue" size="lg" />
+            <Icon
+              icon={feature.icon}
+              className="text-tremor-brand-emphasis"
+              size="lg"
+            />
             <Title className="mb-2">{feature.heading}</Title>
             <Text>{feature.text}</Text>
           </MotionCard>
