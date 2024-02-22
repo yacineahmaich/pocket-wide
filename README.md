@@ -9,6 +9,7 @@ A Finance tracking web app where users can track their expenses and incomes in o
 - Visualize your monthly expenses & icnomes
 - List expenses & incomes (with pagination)
 - Organize expenses & incomes under categories
+- File upload
 - Filtering
 - Search
 - Stats
