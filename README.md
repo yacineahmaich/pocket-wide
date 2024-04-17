@@ -15,6 +15,7 @@ A Finance tracking web app where users can track their expenses and incomes in o
 - Stats
 - Oauth
 - responsive design
+- multilang
 
 ## Technologies Used
 
